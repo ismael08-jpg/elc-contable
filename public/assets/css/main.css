@@ -1,0 +1,230 @@
+/* Colores de hencorp */
+
+.save-img {
+    background-image: url('../img/save.png');
+    background-size: auto;
+    background-position: center center;
+    background-repeat: no-repeat;
+    /* background-attachment: fixed; */
+    /*background-size: cover;*/
+}
+
+.bg-white {
+    background-color: azure;
+    border-radius: 25%;
+}
+
+.boton-exito {
+    display: inline-block;
+    border-radius: 4px;
+    background-color: #008f39;
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    transition: all 0.5s;
+    cursor: pointer;
+}
+
+.boton-exito:hover {
+    display: inline-block;
+    border-radius: 4px;
+    background-color: #045826;
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    transition: all 0.5s;
+    cursor: pointer;
+}
+
+.monto {
+    background-color: white;
+}
+
+.mayorA {
+    color: black;
+    font-size: large;
+}
+
+.filtrar {
+    display: inline-block;
+    border-radius: 4px;
+    background-color: #d88920;
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    transition: all 0.5s;
+    cursor: pointer;
+}
+
+.filtrar:hover {
+    background-color: #ac6509;
+}
+
+.numero {
+    width: 100%;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 2px solid #0684fc;
+    border-radius: 4px;
+}
+
+.foliva {
+    background-image: url('../img/fondo.jpg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+.bg-azul {
+    background-color: #02163a;
+}
+
+.bg-naranja {
+    background-color: #d88920;
+}
+
+.bg-griz-100 {
+    background-color: #606060;
+}
+
+.bg-griz {
+    background-color: #b7b7b7;
+}
+
+.txt-parti {
+    background-color: white;
+    border: 1px solid #aaa;
+    border-radius: 4px;
+    height: 28px;
+    width: 100%;
+}
+
+
+/* fin de los colores */
+
+
+/* Formulario de login */
+
+.position-r {
+    position: relative !important;
+}
+
+.icono-password {
+    position: absolute;
+    right: .5em;
+    top: .4em;
+    font-size: 1.4em;
+    cursor: pointer;
+}
+
+.frm-login {
+    background-color: #FFFFFF;
+    width: 100%;
+    max-width: 400px;
+}
+
+.container-login {
+    width: 100%;
+    height: calc(100vh - 76px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.7);
+}
+
+.encabezado-login {
+    font-size: 1.6em;
+    font-weight: bold;
+}
+
+.btn-azul-oscuro {
+    background-color: #02163a !important;
+    color: #fff !important;
+    transition: all 300ms ease-in;
+    width: 150px;
+}
+
+.btn-azul-oscuro:hover {
+    background-color: #043183 !important;
+    color: #fff !important;
+    transition: all 300ms ease-in;
+    width: 150px;
+}
+
+.btn-griz {
+    background-color: #606060 !important;
+    color: #fff!important;
+    transition: all 300ms ease-in;
+    width: 150px;
+}
+
+.btn-griz:hover {
+    background-color: #b7b7b7 !important;
+    color: #fff!important;
+    transition: all 300ms ease-in;
+    width: 150px;
+}
+
+.linea {
+    width: 35%;
+    height: 2px;
+    background-color: #000;
+}
+
+.btn-radius {
+    border-radius: 8px !important;
+    padding: 8px 18px !important;
+}
+
+.btn-azul {
+    background-color: #0684fc !important;
+    color: #fff !important;
+    transition: all 300ms ease-in;
+    width: 150px;
+}
+
+.btn-azul:hover {
+    background-color: #02163a !important;
+}
+
+.btn-naranja {
+    background-color: #d88920 !important;
+    color: #fff !important;
+    transition: all 300ms ease-in;
+    width: 150px;
+}
+
+.btn-naranja:hover {
+    background-color: #926122 !important;
+}
+
+.div-error {
+    width: 100%;
+    height: 1.1em;
+    margin-top: 1px;
+}
+
+.texto-error {
+    color: #c0392b !important;
+    font-size: 0.9em !important;
+}
+
+.hay-error {
+    border: solid 1px #c0392b !important;
+}
+
+.hay-error:focus {
+    outline: 0 !important;
+    box-shadow: 0 0 0 0.1rem #c0392b !important;
+}
+
+.correcto {
+    border: solid 1px #16a085 !important;
+}
+
+.correcto:focus {
+    outline: 0 !important;
+    box-shadow: 0 0 0 0.1rem #16a085 !important;
+}
