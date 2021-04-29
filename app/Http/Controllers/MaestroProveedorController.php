@@ -3,11 +3,11 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Models\MaestroCliente;
-use App\Models\Cliente;
-use App\Models\Ventum;
+use App\Models\MaestroProveedor;
+use App\Models\Proveedor;
+use App\Models\Compra;
 
-class MaestroClienteController extends Controller
+class MaestroProveedorController extends Controller
 {
     public $contador;
 
@@ -37,11 +37,11 @@ class MaestroClienteController extends Controller
         
         Auth::user()->autorizarRol([1]);
 
-        $maestro = MaestroCliente::select('maestro_cliente.*', 'cliente.*')
-        ->join('cliente', 'maestro_cliente.id_cliente', '=', 'cliente.id_cliente')
+        $maestro = MaestroProveedor::select('maestro_proveedor.*', 'proveedor.*')
+        ->join('proveedor', 'maestro_proveedor.id_proveedor', '=', 'proveedor.id_proveedor')
         ->get();
         
-        return view('maestros.maestroCliente', compact('maestro', 'alerta'));
+        return view('maestros.maestroProveedor', compact('maestro', 'alerta'));
     }
 
 
@@ -51,9 +51,9 @@ class MaestroClienteController extends Controller
 
         $validacion = $request->validate([
             
-            'nombre_cliente' => 'required',
-            'numero_cliente_icg' => 'required',
-            //'numero_cliente' => 'required',
+            'nombre_proveedor' => 'required',
+            'numero_proveedor_icg' => 'required',
+            //'numero_proveedor' => 'required',
             'nombre_comercial' => 'required',
 
             'nombre_del_sujeto' => 'required',
@@ -92,15 +92,15 @@ class MaestroClienteController extends Controller
             //'condiciones_operacion' =>'required',
         ]);
 
-        $cliente = new Cliente();
+        $proveedor = new Proveedor();
 
-        $cliente->nombre_cliente = $request->nombre_cliente;
-        $cliente->save();
+        $proveedor->nombre_proveedor = $request->nombre_proveedor;
+        $proveedor->save();
 
-        $maestro = new Maestrocliente();
-        $maestro->id_cliente = $cliente->id_cliente;
-        $maestro->numero_cliente_icg = $request->numero_cliente_icg;
-        $maestro->numero_cliente = $request->numero_cliente;
+        $maestro = new Maestroproveedor();
+        $maestro->id_proveedor = $proveedor->id_proveedor;
+        $maestro->numero_proveedor_icg = $request->numero_proveedor_icg;
+        $maestro->numero_proveedor = $request->numero_proveedor;
         $maestro->nombre_comercial = $request->nombre_comercial;
         $maestro->nombre_del_sujeto = $request->nombre_del_sujeto;
         $maestro->direccion = $request->direccion;
@@ -144,7 +144,7 @@ class MaestroClienteController extends Controller
         $request->session()->put('contador', 1);
             
         //return $this->alert;
-        return redirect()->route('maestroCliente.index');
+        return redirect()->route('maestroProveedor.index');
         }
 
 
@@ -157,11 +157,11 @@ class MaestroClienteController extends Controller
 
             $validacion = $request->validate([
                 
-                'fid_maestro_cliente' => 'required',
-                'fid_cliente' => 'required',
-                'fnombre_cliente' => 'required',
-                'fnumero_cliente_icg' => 'required',
-                //'numero_cliente' => 'required',
+                'fid_maestro_proveedor' => 'required',
+                'fid_proveedor' => 'required',
+                'fnombre_proveedor' => 'required',
+                'fnumero_proveedor_icg' => 'required',
+                //'numero_proveedor' => 'required',
                 'fnombre_comercial' => 'required',
 
                 'fnombre_del_sujeto' => 'required',
@@ -200,14 +200,14 @@ class MaestroClienteController extends Controller
                 //'fcondiciones_operacion' =>'required',
             ]);
 
-            $cliente = Cliente::find($request->fid_cliente);
-            $cliente->nombre_cliente = $request->fnombre_cliente;
-            $cliente->save();
+            $proveedor = Proveedor::find($request->fid_proveedor);
+            $proveedor->nombre_proveedor = $request->fnombre_proveedor;
+            $proveedor->save();
 
-            $maestro = Maestrocliente::find($request->fid_maestro_cliente);
-            $maestro->id_cliente = $request->fid_cliente;
-            $maestro->numero_cliente_icg = $request->fnumero_cliente_icg;
-            $maestro->numero_cliente = $request->fnumero_cliente;
+            $maestro = Maestroproveedor::find($request->fid_maestro_proveedor);
+            $maestro->id_proveedor = $request->fid_proveedor;
+            $maestro->numero_proveedor_icg = $request->fnumero_proveedor_icg;
+            $maestro->numero_proveedor = $request->fnumero_proveedor;
             $maestro->nombre_comercial = $request->fnombre_comercial;
             $maestro->nombre_del_sujeto = $request->fnombre_del_sujeto;
             $maestro->direccion = $request->fdireccion;
@@ -251,26 +251,26 @@ class MaestroClienteController extends Controller
             $request->session()->put('contador', 1);
         
             //return $this->alert;
-            return redirect()->route('maestroCliente.index');
+            return redirect()->route('maestroProveedor.index');
         }
 
         public function destroy(Request $request){
             Auth::user()->autorizarRol([1]);
 
             $validacion = $request->validate([
-                'did_maestro_cliente' => 'required',
-                'did_cliente' => 'required',
+                'did_maestro_proveedor' => 'required',
+                'did_proveedor' => 'required',
             ]);
 
-            $ventasCliente = Ventum::where("id_cliente", '=', $request->did_cliente )->get();
+            $ventasProveedor = Compra::where("id_proveedor", '=', $request->did_proveedor )->get();
 
-            if($ventasCliente->count() == 0){
+            if($ventasProveedor->count() == 0){
 
-                $maestro = Maestrocliente::find($request->did_maestro_cliente);
+                $maestro = Maestroproveedor::find($request->did_maestro_proveedor);
                 $maestro->delete();
 
-                $cliente = Cliente::find($request->did_cliente);
-                $cliente->delete();
+                $proveedor = Proveedor::find($request->did_proveedor);
+                $proveedor->delete();
 
                 
 
@@ -283,7 +283,7 @@ class MaestroClienteController extends Controller
                 $request->session()->put('contador', 1);
             }
 
-            return redirect()->route('maestroCliente.index');
+            return redirect()->route('maestroProveedor.index');
         }
 
 

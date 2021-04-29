@@ -10,14 +10,12 @@
             color: red;
         }
 
-        
-
-        
+                
     </style>
 
 
-    @include('maestros.modalDelete')
-    @include('maestros.modalUpdate')
+    @include('maestros.ProveedorModalDelete')
+    @include('maestros.ProveedorModalUpdate')
 
     <div class="row">
         <div class="col-12">
@@ -30,30 +28,30 @@
     <div>
         <x-table>
             <div class="row justify-content-center pt-5">
-                <h3>Gestión de Maestros de Clientes</h3>
+                <h3>Gestión de Maestros de Proveedores</h3>
             </div>
             <div class="m-5 my-2">
                 <div class="pb-2">
                 </div>
                 <section style="margin: auto">
                     <div class="container-fluid">
-                        <form action="{{route('maestroCliente.store')}}" method="POST">
+                        <form action="{{route('maestroProveedor.store')}}" method="POST">
                             @csrf
                             <div class="row">
                                 <div class="col-6">
-                                    <center><h5>Datos generales del cliente</h5></center>
+                                    <center><h5>Datos generales del proveedor</h5></center>
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <label>Nombre del Cliente<b>*</b></label>
-                                            <input type="text" class="form-control" name="nombre_cliente" value="{{old('nombre_cliente')}}" required>
+                                            <label>Nombre del Proveedor<b>*</b></label>
+                                            <input type="text" class="form-control" name="nombre_proveedor" value="{{old('nombre_proveedor')}}" required>
                                         </div>
                                         <div class="col-md-6">
-                                            <label>N° Cliente ICG<b>*</b></label>
-                                            <input type="text" class="form-control" name="numero_cliente_icg" required>
+                                            <label>N° Proveedor ICG<b>*</b></label>
+                                            <input type="text" class="form-control" name="numero_proveedor_icg" required>
                                         </div>
                                         <div class="col-md-6">
-                                            <label>Otro número de cliente</label>
-                                            <input type="text" class="form-control" name="numero_cliente">
+                                            <label>Otro número de proveedor</label>
+                                            <input type="text" class="form-control" name="numero_proveedor">
                                         </div>
                                         <div class="col-md-6">
                                             <label>Nombre Comercial <b>*</b></label>
@@ -278,7 +276,7 @@
                     <br>
                         
                             <div>
-                                @include('maestros.clienteTable')   
+                                @include('maestros.ProveedorTable')   
                             </div>
                         
                     <br>
@@ -310,7 +308,7 @@
     @endif
     @if ($alerta == "deleteError")
         <script>
-            toastr["error"]("El maestro no se puede eliminar. Tiene ventas ligadas", "Error");
+            toastr["error"]("El maestro no se puede eliminar. Tiene Compras ligadas", "Error");
         </script>
     @endif
     @if ($alerta == "delete")
@@ -321,25 +319,25 @@
 
     <script type="text/javascript">
 
-        function eliminarM(id_maestro_cliente,id_cliente){
-            $('#did_maestro_cliente').val('');
-            $('#did_cliente').val('');
+        function eliminarM(id_maestro_proveedor,id_proveedor){
+            $('#did_maestro_proveedor').val('');
+            $('#did_proveedor').val('');
 
-            $('#did_maestro_cliente').val(id_maestro_cliente);
-            $('#did_cliente').val(id_cliente);
-            $('#modalDelete').modal();
+            $('#did_maestro_proveedor').val(id_maestro_proveedor);
+            $('#did_proveedor').val(id_proveedor);
+            $('#ProveedorModalDelete').modal();
         }
 
-        function editarM(id_maestro_cliente,id_cliente, nombre_cliente,numero_cliente_icg,numero_cliente,nombre_comercial,nombre_del_sujeto,direccion,pais,codigo_pais,ciudad,departamento,municipio,telefono_fijo,pagina_web,correo,telefono_celular,paraiso_fiscal,nombre_contacto,cargo_contacto,pagina_web_contacto,correo_contacto,moneda_principal,tipo_cambio,giro_fical_negocio,tipo_contribuyente,nit_niff,n_registro_fiscal,cobra_iva,entera_iva,
+        function editarM(id_maestro_proveedor,id_proveedor, nombre_proveedor,numero_proveedor_icg,numero_proveedor,nombre_comercial,nombre_del_sujeto,direccion,pais,codigo_pais,ciudad,departamento,municipio,telefono_fijo,pagina_web,correo,telefono_celular,paraiso_fiscal,nombre_contacto,cargo_contacto,pagina_web_contacto,correo_contacto,moneda_principal,tipo_cambio,giro_fical_negocio,tipo_contribuyente,nit_niff,n_registro_fiscal,cobra_iva,entera_iva,
             porc_retencion,percepcion,cta_pasivo_uno,cta_pasivo_dos,cta_activo_uno,cta_activo_dos,
             comision,emitira_nc,condiciones_operacion,telefono_contacto){
 
 
-                $('#fid_maestro_cliente').val('');
-                $('#fid_cliente').val(''); 
-                $('#fnombre_cliente').val('');
-                $('#fnumero_cliente_icg').val('');
-                $('#fnumero_cliente').val('');
+                $('#fid_maestro_proveedor').val('');
+                $('#fid_proveedor').val(''); 
+                $('#fnombre_proveedor').val('');
+                $('#fnumero_proveedor_icg').val('');
+                $('#fnumero_proveedor').val('');
                 $('#fnombre_comercial').val('');
                 $('#fnombre_del_sujeto').val('');
                 $('#fdireccion').val('');
@@ -377,11 +375,11 @@
                 
 
 
-                $('#fid_maestro_cliente').val(id_maestro_cliente);
-                $('#fid_cliente').val(id_cliente); 
-                $('#fnombre_cliente').val(nombre_cliente);
-                $('#fnumero_cliente_icg').val(numero_cliente_icg);
-                $('#fnumero_cliente').val(numero_cliente);
+                $('#fid_maestro_proveedor').val(id_maestro_proveedor);
+                $('#fid_proveedor').val(id_proveedor); 
+                $('#fnombre_proveedor').val(nombre_proveedor);
+                $('#fnumero_proveedor_icg').val(numero_proveedor_icg);
+                $('#fnumero_proveedor').val(numero_proveedor);
                 $('#fnombre_comercial').val(nombre_comercial);
                 //$('#fnombre_del_sujeto').val(nombre_del_sujeto);
                 
@@ -429,10 +427,10 @@
                 $('#fcondiciones_operacion').val(condiciones_operacion);
                 
 
-            $('#modalEdit').modal();
+            $('#ProveedorModalEdit').modal();
         }
         
-        $('#maestroClienteTable').DataTable({
+        $('#maestroProveedorTable').DataTable({
                  
             responsive: true,
             autowidth: false,
