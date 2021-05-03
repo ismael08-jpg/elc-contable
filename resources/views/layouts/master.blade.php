@@ -10,10 +10,11 @@
     {{-- <title>@yield('title')</title> --}}
     <title>@yield('title')</title>
     
-   <!--Bootstrap-->
+   
     <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/all.min.css') }}">
-    
+
+    <!--Bootstrap-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     
     
@@ -48,6 +49,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous">
     </script>
+    <!--Toastr-->
     <script src="{{ asset('assets/toastr/toastr.min.js') }}"></script>
     <!--DataTables-->
     <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
@@ -55,7 +57,7 @@
     <script src="https://cdn.datatables.net/responsive/2.2.7/js/dataTables.responsive.min.js"></script>
     <script src="https://cdn.datatables.net/responsive/2.2.7/js/responsive.bootstrap4.min.js"></script>
 
-    @livewireScripts
+ 
     @yield('scripts')
    
 </body>

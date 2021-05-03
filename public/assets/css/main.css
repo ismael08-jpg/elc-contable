@@ -68,6 +68,15 @@
     border-radius: 4px;
 }
 
+.txt-form{
+    width: 100%;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 2px solid #E0E0E0;
+    border-radius: 4px;
+    color: 	#888888;
+}
+
 .foliva {
     background-image: url('../img/fondo.jpg');
     background-position: center center;
