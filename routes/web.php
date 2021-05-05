@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdministradorController;
 use App\Http\Controllers\MaestroClienteController;
 use App\Http\Controllers\MaestroProveedorController;
+use App\Http\Controllers\UsuariosController;
 use App\Models\CotCatalogoCredito;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Route;
@@ -33,9 +34,13 @@ Route::post('/maestro-proveedor/store', [MaestroProveedorController::class, 'sto
 Route::put('/maestro-proveedor/update', [MaestroProveedorController::class, 'update'])->name('maestroProveedor.update');
 Route::delete('/maestro-proveedor/destroy', [MaestroProveedorController::class, 'destroy'])->name('maestroProveedor.delete');
 
+/* Usuarios Routes*/
+Route::get('/usuarios', [UsuariosController::class, 'index'])->name('usuarios.index');
+Route::put('/usuarios/update', [UsuariosController::class, 'update'])->name('usuario.update');
+
 
 Route::get('/admin/index', [AdministradorController::class, 'index'])->name('administrador.index');
 
 
-Route::get('/usuarios', ShowUsers::class)->name('usuarios');
+
 Auth::routes(['register' => false]);

@@ -85,10 +85,10 @@
         </a>
       </li>
 
-      <li class="nav-item{{ $activePage == 'language' ? ' active' : '' }}">
-        <a class="nav-link" href="{{ route('maestroCliente.index') }}">
+      <li class="nav-item{{ $activePage == 'usuarios' ? ' active' : '' }}">
+        <a class="nav-link" href="{{ route('usuarios.index') }}">
           <i class="material-icons">language</i>
-          <p>{{ __('RTL Support') }}</p>
+          <p>{{ __('Usuarios') }}</p>
         </a>
       </li>
 
