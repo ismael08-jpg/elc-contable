@@ -1,51 +1,3 @@
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 @extends('layouts.main', ['activePage' => 'maestro-proveedor', 'titlePage' => __('Maestro Proveedor')])
 @section('title', 'Maestro de Proveedor')
 
@@ -81,19 +33,19 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <label>Nombre del Proveedor<b>*</b></label>
-                                        <input type="text" class="form-control" name="nombre_proveedor" value="{{old('nombre_proveedor')}}" required>
+                                        <input type="text" class="txt-form" name="nombre_proveedor" value="{{old('nombre_proveedor')}}" required>
                                     </div>
                                     <div class="col-md-6">
                                         <label>N° Proveedor ICG<b>*</b></label>
-                                        <input type="text" class="form-control" name="numero_proveedor_icg" required>
+                                        <input type="text" class="txt-form" name="numero_proveedor_icg" required>
                                     </div>
                                     <div class="col-md-6">
                                         <label>Otro número de proveedor</label>
-                                        <input type="text" class="form-control" name="numero_proveedor">
+                                        <input type="text" class="txt-form" name="numero_proveedor">
                                     </div>
                                     <div class="col-md-6">
                                         <label>Nombre Comercial <b>*</b></label>
-                                        <input type="text" class="form-control" name="nombre_comercial">
+                                        <input type="text" class="txt-form" name="nombre_comercial">
                                     </div>
                                     <div class="col-md-6">
                                         <label>Nombre del Sujeto<b>*</b></label><br>
@@ -121,23 +73,23 @@
                                     <hr>
                                     <div class="col-md-6">
                                         <label>Nombre<b>*</b></label>
-                                        <input type="text" class="form-control" required name="nombre_contacto">
+                                        <input type="text" class="txt-form" required name="nombre_contacto">
                                     </div>
                                     <div class="col-md-6">
                                         <label>Cargo<b>*</b></label>
-                                        <input type="text" class="form-control" required name="cargo_contacto">
+                                        <input type="text" class="txt-form" required name="cargo_contacto">
                                     </div>
                                     <div class="col-md-6">
                                         <label>Página web</label>
-                                        <input type="text" class="form-control"  name="pagina_web_contacto">
+                                        <input type="text" class="txt-form"  name="pagina_web_contacto">
                                     </div>
                                     <div class="col-md-6">
                                         <label>Correo <b>*</b></label>
-                                        <input type="email" class="form-control" required name="correo_contacto">
+                                        <input type="email" class="txt-form" required name="correo_contacto">
                                     </div>
                                     <div class="col-md-6">
                                         <label>Teléfono Móvil Contacto</label>
-                                        <input type="text" class="form-control" name="telefono_contacto">
+                                        <input type="text" class="txt-form" name="telefono_contacto">
                                     </div>
                                     
                                 </div>
@@ -150,29 +102,29 @@
                                     
                                     <div class="col-md-12">
                                         <label>Dirección<b>*</b></label>
-                                        <textarea class="form-control" name="direccion" required id="" cols="20" rows="2">
+                                        <textarea class="txt-form" name="direccion" required id="" cols="20" rows="2">
 
                                         </textarea>
                                     </div>
                                     <div class="col-md-6">
                                         <label>País<b>*</b></label>
-                                        <input type="text" class="form-control" required name="pais">
+                                        <input type="text" class="txt-form" required name="pais">
                                     </div>
                                     <div class="col-md-6">
                                         <label>Código país (según mh)<b>*</b></label>
-                                        <input type="text" class="form-control" required name="codigo_pais">
+                                        <input type="text" class="txt-form" required name="codigo_pais">
                                     </div>
                                     <div class="col-md-6">
                                         <label>Ciudad<b>*</b></label>
-                                        <input type="text" class="form-control" required name="ciudad">
+                                        <input type="text" class="txt-form" required name="ciudad">
                                     </div>
                                     <div class="col-md-6">
                                         <label>Departamento<b>*</b></label>
-                                        <input type="text" class="form-control" required name="departamento">
+                                        <input type="text" class="txt-form" required name="departamento">
                                     </div>
                                     <div class="col-md-6">
                                         <label>Municipio</label>
-                                        <input type="text" class="form-control" name="municipio">
+                                        <input type="text" class="txt-form" name="municipio">
                                     </div>
 
                                     
@@ -183,19 +135,19 @@
                                     <hr>
                                     <div class="col-md-6">
                                         <label>Teléfono fijo<b>*</b></label>
-                                        <input type="text" class="form-control" required name="telefono_fijo">
+                                        <input type="text" class="txt-form" required name="telefono_fijo">
                                     </div>
                                     <div class="col-md-6">
                                         <label>Página web</label>
-                                        <input type="text" class="form-control" name="pagina_web">
+                                        <input type="text" class="txt-form" name="pagina_web">
                                     </div>
                                     <div class="col-md-6">
                                         <label>Correo<b>*</b></label>
-                                        <input type="email" class="form-control" required name="correo">
+                                        <input type="email" class="txt-form" required name="correo">
                                     </div>
                                     <div class="col-md-6">
                                         <label>Teléfono Móvil</label>
-                                        <input type="text" class="form-control" name="telefono_celular">
+                                        <input type="text" class="txt-form" name="telefono_celular">
                                     </div>
                                 </div>
 
@@ -210,15 +162,15 @@
                             
                         <div class="col-3">
                                 <label>Moneda principal<b>*</b></label>
-                                <input type="text" class="form-control" required name="moneda_principal">
+                                <input type="text" class="txt-form" required name="moneda_principal">
                             </div>
                             <div class="col-md-3">
                                 <label>Tipo de cambio</label>
-                                <input type="text" class="form-control" name="tipo_cambio">
+                                <input type="text" class="txt-form" name="tipo_cambio">
                             </div>
                             <div class="col-md-3">
                                 <label>Giro Fiscal del negocio<b>*</b></label>
-                                <input type="text" class="form-control" required name="giro_fical_negocio">
+                                <input type="text" class="txt-form" required name="giro_fical_negocio">
                             </div>
                             <div class="col-md-3">
                                 <label>Tipo contribuyente<b>*</b></label><br>
@@ -233,11 +185,11 @@
                             </div>
                             <div class="col-md-3">
                                 <label>NIT/NIFF<b>*</b></label>
-                                <input type="text" class="form-control" required name="nit_niff">
+                                <input type="text" class="txt-form" required name="nit_niff">
                             </div>
                             <div class="col-md-3">
                                 <label>N° Registro fiscal<b>*</b></label>
-                                <input type="text" class="form-control" required name="n_registro_fiscal">
+                                <input type="text" class="txt-form" required name="n_registro_fiscal">
                             </div>
     
                             <div class="col-md-3">
@@ -269,7 +221,7 @@
                             </div>
                             <div class="mt-2 col-md-3">
                                 <label>Retención (%)<b>*</b></label>
-                                <input type="number" required class="form-control" min="0"  name="porc_retencion">
+                                <input type="number" required class="txt-form" min="0"  name="porc_retencion">
                             </div>
                             <div class="mt-2 col-md-3">
                                 <label>Percepció<b>*</b></label>
@@ -283,27 +235,27 @@
                             </div>
                             <div class="mt-2 col-md-3">
                                 <label>Cuenta Pasivo #1<b>*</b></label>
-                                <input type="text" class="form-control" required name="cta_pasivo_uno">
+                                <input type="text" class="txt-form" required name="cta_pasivo_uno">
                             </div>
                             <div class="mt-2 col-md-3">
                                 <label>Cuenta Pasivo #2</label>
-                                <input type="text" class="form-control" name="cta_pasivo_dos">
+                                <input type="text" class="txt-form" name="cta_pasivo_dos">
                             </div>
                             <div class="mt-2 col-md-3">
                                 <label>Cuenta Activo #1<b>*</b></label>
-                                <input type="text" class="form-control" required name="cta_activo_uno">
+                                <input type="text" class="txt-form" required name="cta_activo_uno">
                             </div>
                             <div class="mt-2 col-md-3">
                                 <label>Cuenta Activo #2</label>
-                                <input type="text" class="form-control" name="cta_activo_dos">
+                                <input type="text" class="txt-form" name="cta_activo_dos">
                             </div>
                             <div class="mt-2 col-md-6">
                                 <label>% Comisión<b>*</b></label>
-                                <input type="number"  required class="form-control" min="0" name="comision">
+                                <input type="number"  required class="txt-form" min="0" name="comision">
                             </div>
                             <div class="mt-2 col-md-6">
                                 <label>Condiciones de la Operación</label>
-                                <textarea name="condiciones_operacion" class="form-control" cols="30" rows="3"></textarea>
+                                <textarea name="condiciones_operacion" class="txt-form" cols="30" rows="3"></textarea>
                             </div>
                     </div>
                     <div class="row justify-content-center">

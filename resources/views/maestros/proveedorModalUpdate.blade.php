@@ -28,19 +28,19 @@
                       
                           <div class="col-md-6">
                               <label>Nombre del Proveedor<b>*</b></label>
-                              <input type="text" class="form-control" id="fnombre_proveedor" name="fnombre_proveedor" required>
+                              <input type="text" class="txt-form" id="fnombre_proveedor" name="fnombre_proveedor" required>
                           </div>
                           <div class="col-md-6">
                               <label>N° Proveedor ICG<b>*</b></label>
-                              <input type="text" class="form-control" name="fnumero_proveedor_icg" id="fnumero_proveedor_icg" required>
+                              <input type="text" class="txt-form" name="fnumero_proveedor_icg" id="fnumero_proveedor_icg" required>
                           </div>
                           <div class="col-md-6">
                               <label>Otro número de proveedor</label>
-                              <input type="text" class="form-control" name="fnumero_proveedor" id="fnumero_proveedor">
+                              <input type="text" class="txt-form" name="fnumero_proveedor" id="fnumero_proveedor">
                           </div>
                           <div class="col-md-6">
                               <label>Nombre Comercial <b>*</b></label>
-                              <input type="text" class="form-control" name="fnombre_comercial" id="fnombre_comercial">
+                              <input type="text" class="txt-form" name="fnombre_comercial" id="fnombre_comercial">
                           </div>
                           <div class="col-md-6">
 
@@ -72,23 +72,23 @@
                           <hr>
                           <div class="col-md-6">
                               <label>Nombre<b>*</b></label>
-                              <input type="text" class="form-control" required name="fnombre_contacto" id="fnombre_contacto">
+                              <input type="text" class="txt-form" required name="fnombre_contacto" id="fnombre_contacto">
                           </div>
                           <div class="col-md-6">
                               <label>Cargo<b>*</b></label>
-                              <input type="text" class="form-control" required name="fcargo_contacto" id="fcargo_contacto">
+                              <input type="text" class="txt-form" required name="fcargo_contacto" id="fcargo_contacto">
                           </div>
                           <div class="col-md-6">
                               <label>Página web</label>
-                              <input type="text" class="form-control" name="fpagina_web_contacto" id="fpagina_web_contacto">
+                              <input type="text" class="txt-form" name="fpagina_web_contacto" id="fpagina_web_contacto">
                           </div>
                           <div class="col-md-6">
                               <label>Correo <b>*</b></label>
-                              <input type="email" class="form-control" required name="fcorreo_contacto" id="fcorreo_contacto">
+                              <input type="email" class="txt-form" required name="fcorreo_contacto" id="fcorreo_contacto">
                           </div>
                           <div class="col-md-6">
                               <label>Teléfono Móvil Contacto</label>
-                              <input type="text" class="form-control" name="ftelefono_contacto" id="ftelefono_contacto">
+                              <input type="text" class="txt-form" name="ftelefono_contacto" id="ftelefono_contacto">
                           </div>
 
 
@@ -108,29 +108,29 @@
 
                           <div class="col-md-12">
                               <label>Dirección<b>*</b></label>
-                              <textarea class="form-control" name="fdireccion" id="fdireccion" required id="" cols="20" rows="2">
+                              <textarea class="txt-form" name="fdireccion" id="fdireccion" required id="" cols="20" rows="2">
 
                           </textarea>
                           </div>
                           <div class="col-md-6">
                               <label>País<b>*</b></label>
-                              <input type="text" class="form-control" required name="fpais" id="fpais">
+                              <input type="text" class="txt-form" required name="fpais" id="fpais">
                           </div>
                           <div class="col-md-6">
                               <label>Código país (según mh)<b>*</b></label>
-                              <input type="text" class="form-control" required name="fcodigo_pais" id="fcodigo_pais">
+                              <input type="text" class="txt-form" required name="fcodigo_pais" id="fcodigo_pais">
                           </div>
                           <div class="col-md-6">
                               <label>Ciudad<b>*</b></label>
-                              <input type="text" class="form-control" required id="fciudad" name="fciudad">
+                              <input type="text" class="txt-form" required id="fciudad" name="fciudad">
                           </div>
                           <div class="col-md-6">
                               <label>Departamento<b>*</b></label>
-                              <input type="text" class="form-control" required name="fdepartamento" id="fdepartamento">
+                              <input type="text" class="txt-form" required name="fdepartamento" id="fdepartamento">
                           </div>
                           <div class="col-md-6">
                               <label>Municipio</label>
-                              <input type="text" class="form-control" name="fmunicipio" id="fmunicipio">
+                              <input type="text" class="txt-form" name="fmunicipio" id="fmunicipio">
                           </div>
 
 
@@ -143,19 +143,19 @@
                           <hr>
                           <div class="col-md-6">
                               <label>Teléfono fijo<b>*</b></label>
-                              <input type="text" class="form-control" required name="ftelefono_fijo" id="ftelefono_fijo">
+                              <input type="text" class="txt-form" required name="ftelefono_fijo" id="ftelefono_fijo">
                           </div>
                           <div class="col-md-6">
                               <label>Página web</label>
-                              <input type="text" class="form-control" id="fpagina_web" name="fpagina_web">
+                              <input type="text" class="txt-form" id="fpagina_web" name="fpagina_web">
                           </div>
                           <div class="col-md-6">
                               <label>Correo<b>*</b></label>
-                              <input type="email" class="form-control" id="fcorreo" required name="fcorreo" >
+                              <input type="email" class="txt-form" id="fcorreo" required name="fcorreo" >
                           </div>
                           <div class="col-md-6">
                               <label>Teléfono Móvil</label>
-                              <input type="text" class="form-control" name="ftelefono_celular" id="ftelefono_celular">
+                              <input type="text" class="txt-form" name="ftelefono_celular" id="ftelefono_celular">
                           </div>
                       
 
@@ -175,15 +175,15 @@
 
                       <div class="col-md-3">
                           <label>Moneda principal<b>*</b></label>
-                          <input type="text" class="form-control" required name="fmoneda_principal" id="fmoneda_principal" >
+                          <input type="text" class="txt-form" required name="fmoneda_principal" id="fmoneda_principal" >
                       </div>
                       <div class="col-md-3">
                           <label>Tipo de cambio</label>
-                          <input type="text" class="form-control" name="ftipo_cambio" id="ftipo_cambio">
+                          <input type="text" class="txt-form" name="ftipo_cambio" id="ftipo_cambio">
                       </div>
                       <div class="col-md-3">
                           <label>Giro Fiscal del negocio<b>*</b></label>
-                          <input type="text" class="form-control" required name="fgiro_fical_negocio" id="fgiro_fical_negocio">
+                          <input type="text" class="txt-form" required name="fgiro_fical_negocio" id="fgiro_fical_negocio">
                       </div>
                       <div class="col-md-3">
                           <label>Tipo contribuyente<b>*</b></label><br>
@@ -198,11 +198,11 @@
                       </div>
                       <div class="col-md-3">
                           <label>NIT/NIFF<b>*</b></label>
-                          <input type="text" class="form-control" required name="fnit_niff" id="fnit_niff">
+                          <input type="text" class="txt-form" required name="fnit_niff" id="fnit_niff">
                       </div>
                       <div class="col-md-3">
                           <label>N° Registro fiscal<b>*</b></label>
-                          <input type="text" class="form-control" required name="fn_registro_fiscal" id="fn_registro_fiscal">
+                          <input type="text" class="txt-form" required name="fn_registro_fiscal" id="fn_registro_fiscal">
                       </div>
 
                       <div class="col-md-3">
@@ -234,7 +234,7 @@
                       </div>
                       <div class="mt-2 col-md-3">
                           <label>Retención (%)<b>*</b></label>
-                          <input type="number" required class="form-control" min="0" name="fporc_retencion" id="fporc_retencion">
+                          <input type="number" required class="txt-form" min="0" name="fporc_retencion" id="fporc_retencion">
                       </div>
                       <div class="mt-2 col-md-3">
                           <label>Percepció<b>*</b></label>
@@ -248,27 +248,27 @@
                       </div>
                       <div class="mt-2 col-md-3">
                           <label>Cuenta Pasivo #1<b>*</b></label>
-                          <input type="text" class="form-control" required name="fcta_pasivo_uno" id="fcta_pasivo_uno">
+                          <input type="text" class="txt-form" required name="fcta_pasivo_uno" id="fcta_pasivo_uno">
                       </div>
                       <div class="mt-2 col-md-3">
                           <label>Cuenta Pasivo #2</label>
-                          <input type="text" class="form-control" name="fcta_pasivo_dos" id="fcta_pasivo_dos">
+                          <input type="text" class="txt-form" name="fcta_pasivo_dos" id="fcta_pasivo_dos">
                       </div>
                       <div class="mt-2 col-md-3">
                           <label>Cuenta Activo #1<b>*</b></label>
-                          <input type="text" class="form-control" required name="fcta_activo_uno" id="fcta_activo_uno">
+                          <input type="text" class="txt-form" required name="fcta_activo_uno" id="fcta_activo_uno">
                       </div>
                       <div class="mt-2 col-md-3">
                           <label>Cuenta Activo #2</label>
-                          <input type="text" class="form-control" name="fcta_activo_dos" id="fcta_activo_dos">
+                          <input type="text" class="txt-form" name="fcta_activo_dos" id="fcta_activo_dos">
                       </div>
                       <div class="mt-2 col-md-6">
                           <label>% Comisión<b>*</b></label>
-                          <input type="number" required class="form-control" min="0" id="fcomision" name="fcomision">
+                          <input type="number" required class="txt-form" min="0" id="fcomision" name="fcomision">
                       </div>
                       <div class="mt-2 col-md-6">
                           <label>Condiciones de la Operación</label>
-                          <textarea name="fcondiciones_operacion" id="fcondiciones_operacion" class="form-control" cols="30" rows="3"></textarea>
+                          <textarea name="fcondiciones_operacion" id="fcondiciones_operacion" class="txt-form" cols="30" rows="3"></textarea>
                       </div>
                   </div>
                 </div>

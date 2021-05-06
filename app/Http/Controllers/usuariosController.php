@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Usuario;
 use App\Models\TiposUsuario;
+use Illuminate\Support\Facades\Hash;
 
 class UsuariosController extends Controller
 {
@@ -50,6 +51,7 @@ class UsuariosController extends Controller
             'usuario' => 'required',
             'email' => 'required|email|unique:usuarios,email,'.$request->id,
             'tipo_usuario' => 'required|numeric|in:2,1',
+            
         ]);
 
         $usuarios = Usuario::find($request->id);
@@ -57,6 +59,7 @@ class UsuariosController extends Controller
         $usuarios->usuario = $request->usuario;
         $usuarios->tipo_usuario= $request->tipo_usuario;
         $usuarios->email = $request->email;
+        
         $usuarios->save();
 
         $request->session()->put('alerta', 'update');
@@ -64,5 +67,23 @@ class UsuariosController extends Controller
    
         return redirect()->route('usuarios.index');
 
+        //$cliente->Password = Hash::make(Input::get('newpassword'));
+
     }
+
+    public function updatePassword(Request $request){
+        $validacion = $request->validate([
+            'password' => 'required|min:5|max:30',
+        ]);
+        
+        $usuarios = Usuario::find($request->idP);
+        $usuarios->password = Hash::make($request->passwordP);
+        $usuarios->save();
+
+        $request->session()->put('alerta', 'updatePassword');
+        $request->session()->put('contador', 1);
+
+        return redirect()->route('usuarios.index');
+    }
+
 }

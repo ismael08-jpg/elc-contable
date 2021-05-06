@@ -14,6 +14,7 @@
 
 {{-- @include('usuarios.UsuariosModalDelete') --}}
 @include('usuarios.UsuariosModalUpdate')
+@include('usuarios.passwordModal')
 
 
 <div>
@@ -61,8 +62,8 @@
     @endif
     @if ($alerta == "update")
         <script>
-            toastr["success"]("Maestro Actualizado Correctamente", "Operación correcta");
-            toastr["warning"]("Usted cambió los datos del maestro. Estos cambios no afectaran a las ventas registradas anteriormente a este cambio", "Operación correcta");
+            toastr["success"]("Usuario Actualizado Correctamente", "Operación correcta");
+            // toastr["warning"]("Datos. Estos cambios no afectaran a las ventas registradas anteriormente a este cambio", "Operación correcta");
         </script>
     @endif
     @if ($alerta == "deleteError")
@@ -92,6 +93,13 @@
 
 
             $('#UsuarioModalEdit').modal();
+        }
+
+        function changePassword(idp){
+            //
+            $('#idp').val(idp);
+    
+            $('#UsuarioModalEditPassword').modal();
         }
 
 

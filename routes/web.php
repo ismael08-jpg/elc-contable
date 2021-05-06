@@ -37,6 +37,7 @@ Route::delete('/maestro-proveedor/destroy', [MaestroProveedorController::class, 
 /* Usuarios Routes*/
 Route::get('/usuarios', [UsuariosController::class, 'index'])->name('usuarios.index');
 Route::put('/usuarios/update', [UsuariosController::class, 'update'])->name('usuario.update');
+Route::put('/usuarios/update/password', [UsuariosController::class, 'update'])->name('usuario.updatePassword');
 
 
 Route::get('/admin/index', [AdministradorController::class, 'index'])->name('administrador.index');

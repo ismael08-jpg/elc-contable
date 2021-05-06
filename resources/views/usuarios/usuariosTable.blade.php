@@ -24,6 +24,9 @@
              @endif
              <td>{{$us->email}}</td>
              <td>
+                <button class="btn" onclick="changePassword({{$us->id}})">Cambiar contraseña</button>
+             </td>
+             <td>
                 <input type="image" onclick="eliminarU({{$us->id}});" form="formulario1" class="btn-calc math sombra" height="40px" width="40px" 
                 src="{{asset('assets/img/del.png')}}"/>
              </td>

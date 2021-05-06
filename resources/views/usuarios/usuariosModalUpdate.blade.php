@@ -10,7 +10,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="{{route('usuario.update')}}" method="POST">
+            <form action="{{route('usuario.update')}}" autocomplete="of" method="POST">
                 {{-- {{route('mestroCliente.delete')}} --}}
                 @csrf
                 @method('PUT')
@@ -38,6 +38,7 @@
                                 @endforeach
                             </select>
                         </div>
+                        
                     </div>
                 </div>
                 
