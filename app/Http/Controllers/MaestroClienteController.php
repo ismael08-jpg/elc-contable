@@ -6,6 +6,9 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\MaestroCliente;
 use App\Models\Cliente;
 use App\Models\Ventum;
+use App\Models\Pais;
+use App\Models\Estado;
+use App\Models\Municipio;
 
 class MaestroClienteController extends Controller
 {
@@ -40,8 +43,44 @@ class MaestroClienteController extends Controller
         $maestro = MaestroCliente::select('maestro_cliente.*', 'cliente.*')
         ->join('cliente', 'maestro_cliente.id_cliente', '=', 'cliente.id_cliente')
         ->get();
+
+        $pais = Pais::get();
+        $paisArray[''] = "Selecciona un País";
+
+        foreach($pais as $p){
+            $paisArray[$p->id] = $p->nombre_pais;
+        }
         
-        return view('maestros.maestroCliente', compact('maestro', 'alerta'));
+        return view('maestros.maestroCliente', compact('maestro', 'paisArray', 'alerta'));
+    }
+
+    public function getEstados(Request $request){
+        Auth::user()->autorizarRol([1,2]);
+
+        if($request->ajax()){
+            $estados = Estado::where('id_pais', '=', $request->paisId)->get();
+            foreach($estados as $estados){
+                $estadoArray[$estados->id] = $estados->nombre_estado;
+            }
+
+            return response()->json($estadoArray);
+
+        }
+
+    }
+
+    public function getMunicipios(Request $request){
+        Auth::user()->autorizarRol([1,2]);
+
+        if($request->ajax()){
+            $municipios = Municipio::where('id_estado', '=', $request->estadoId)->get();
+            foreach($municipios as $municipios){
+                $municipioArray[$municipios->id] = $municipios->nombre_municipio;
+            }
+
+            return response()->json($municipioArray);
+
+        }
     }
 
 
@@ -104,10 +143,16 @@ class MaestroClienteController extends Controller
         $maestro->nombre_comercial = $request->nombre_comercial;
         $maestro->nombre_del_sujeto = $request->nombre_del_sujeto;
         $maestro->direccion = $request->direccion;
-        $maestro->pais = $request->pais;
+
+        $pai = Pais::select('nombre_pais')->where('id', '=', $request->pais)->first();
+        $maestro->pais = $pai->nombre_pais;
+        
         $maestro->codigo_pais = $request->codigo_pais;
         $maestro->ciudad = $request->ciudad;
-        $maestro->departamento = $request->departamento;
+
+        $dep = Estado::select('nombre_estado')->where('id', '=', $request->departamento)->first();
+        $maestro->departamento = $dep->nombre_estado;
+
         $maestro->municipio = $request->municipio;
         $maestro->telefono_fijo = $request->telefono_fijo;
         $maestro->pagina_web = $request->pagina_web;

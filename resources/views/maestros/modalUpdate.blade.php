@@ -42,6 +42,7 @@
                               <label>Nombre Comercial <b>*</b></label>
                               <input type="text" class="txt-form" name="fnombre_comercial" id="fnombre_comercial">
                           </div>
+                          
                           <div class="col-md-6">
 
                               <label>Nombre del Sujeto<b>*</b></label><br>
@@ -53,6 +54,7 @@
                                   <label for="female">Juridico</label><br>
                               </div>
                           </div>
+
                           <div class="col-md-6">
                               <label>¿Es paraiso fiscal?</label><br>
                               <div id="fparaiso_fiscal">

@@ -6,6 +6,10 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\MaestroProveedor;
 use App\Models\Proveedor;
 use App\Models\Compra;
+use App\Models\Pais;
+use App\Models\Estado;
+use App\Models\Municipio;
+
 
 class MaestroProveedorController extends Controller
 {
@@ -37,11 +41,19 @@ class MaestroProveedorController extends Controller
         
         Auth::user()->autorizarRol([1]);
 
+        $pais = Pais::get();
+        $paisArray[''] = "Selecciona un País";
+
+        foreach($pais as $p){
+            $paisArray[$p->id] = $p->nombre_pais;
+        }
+        
+
         $maestro = MaestroProveedor::select('maestro_proveedor.*', 'proveedor.*')
         ->join('proveedor', 'maestro_proveedor.id_proveedor', '=', 'proveedor.id_proveedor')
         ->get();
         
-        return view('maestros.maestroProveedor', compact('maestro', 'alerta'));
+        return view('maestros.maestroProveedor', compact('maestro', 'alerta', 'paisArray'));
     }
 
 
@@ -104,10 +116,17 @@ class MaestroProveedorController extends Controller
         $maestro->nombre_comercial = $request->nombre_comercial;
         $maestro->nombre_del_sujeto = $request->nombre_del_sujeto;
         $maestro->direccion = $request->direccion;
-        $maestro->pais = $request->pais;
+        
+        $pai = Pais::select('nombre_pais')->where('id', '=', $request->pais)->first();
+        $maestro->pais = $pai->nombre_pais;
+
         $maestro->codigo_pais = $request->codigo_pais;
         $maestro->ciudad = $request->ciudad;
-        $maestro->departamento = $request->departamento;
+
+        
+        $dep = Estado::select('nombre_estado')->where('id', '=', $request->departamento)->first();
+        $maestro->departamento = $dep->nombre_estado;
+
         $maestro->municipio = $request->municipio;
         $maestro->telefono_fijo = $request->telefono_fijo;
         $maestro->pagina_web = $request->pagina_web;

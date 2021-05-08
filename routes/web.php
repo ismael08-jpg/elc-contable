@@ -28,11 +28,17 @@ Route::post('/maestro-cliente/store', [MaestroClienteController::class, 'store']
 Route::put('/maestro-cliente/update', [MaestroClienteController::class, 'update'])->name('maestroCliente.update');
 Route::delete('/maestro-cliente/destroy', [MaestroClienteController::class, 'destroy'])->name('maestroCliente.delete');
 
+/*Ajax Maestros*/
+Route::get('/estados', [MaestroClienteController::class, 'getEstados']);
+Route::get('/municipios', [MaestroClienteController::class, 'getMunicipios']);
+
 /* Maestro Proveedor Routes*/
 Route::get('/maestro-proveedor', [MaestroProveedorController::class, 'index'])->name('maestroProveedor.index');
 Route::post('/maestro-proveedor/store', [MaestroProveedorController::class, 'store'])->name('maestroProveedor.store');
 Route::put('/maestro-proveedor/update', [MaestroProveedorController::class, 'update'])->name('maestroProveedor.update');
 Route::delete('/maestro-proveedor/destroy', [MaestroProveedorController::class, 'destroy'])->name('maestroProveedor.delete');
+
+
 
 /* Usuarios Routes*/
 Route::get('/usuarios', [UsuariosController::class, 'index'])->name('usuarios.index');

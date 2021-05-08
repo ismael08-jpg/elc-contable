@@ -106,10 +106,18 @@
 
                                         </textarea>
                                     </div>
+
                                     <div class="col-md-6">
                                         <label>País<b>*</b></label>
-                                        <input type="text" class="txt-form" required name="pais">
+                                        <select  class="select-css" required id="txtPais" name="pais">
+                                            @foreach ($paisArray as $index => $paiss)
+                                                <option value="{{$index}}">
+                                                    {{$paiss}}
+                                                </option>
+                                            @endforeach
+                                        </select>
                                     </div>
+
                                     <div class="col-md-6">
                                         <label>Código país (según mh)<b>*</b></label>
                                         <input type="text" class="txt-form" required name="codigo_pais">
@@ -118,13 +126,21 @@
                                         <label>Ciudad<b>*</b></label>
                                         <input type="text" class="txt-form" required name="ciudad">
                                     </div>
+
                                     <div class="col-md-6">
-                                        <label>Departamento<b>*</b></label>
-                                        <input type="text" class="txt-form" required name="departamento">
+                                        <label>Departamento/Estado<b>*</b></label>
+                                        {{-- <input type="text" class="txt-form" required name="departamento"> --}}
+                                        <select name="departamento" id="txtEstado" required class="select-css"></select>
                                     </div>
+
                                     <div class="col-md-6">
                                         <label>Municipio</label>
-                                        <input type="text" class="txt-form" name="municipio">
+                                        <div id="hiddenMunicipio">
+                                            <input type="text" id="txtMunicipio" class="txt-form" name="municipio">
+                                        </div>
+                                        <div id="hiddenSelectMunicipio" >
+                                            <select name="municipio" disabled id="selectMunicipio" class="select-css"></select>
+                                        </div>
                                     </div>
 
                                     
@@ -183,13 +199,25 @@
                                     <label for="otro">Otro</label><br> 
                                 </div>
                             </div>
+
                             <div class="col-md-3">
                                 <label>NIT/NIFF<b>*</b></label>
-                                <input type="text" class="txt-form" required name="nit_niff">
+                                <div id="hiddenNit_niff">
+                                    <input type="text" class="txt-form" required id="txtNit_niff" name="nit_niff">
+                                </div>
+                                <div id="hiddenNitValidado">
+                                    <input type="text" disabled placeholder="0000-000000-000-0" pattern="[0-9]{4}-[0-9]{6}-[0-9]{3}-[0-9]{1}" class="txt-form" required id="txtNitValidado" name="nit_niff">
+                                </div>
                             </div>
+
                             <div class="col-md-3">
                                 <label>N° Registro fiscal<b>*</b></label>
-                                <input type="text" class="txt-form" required name="n_registro_fiscal">
+                                <div id="hiddenNRegistro">
+                                    <input type="text" class="txt-form" required  name="n_registro_fiscal" required id="txtNRegistro" >
+                                </div>
+                                <div id="hiddenNRegistroValidado">
+                                    <input type="text" name="n_registro_fiscal" class="txt-form" disabled placeholder="0000-000000-000-0" pattern="[0-9]{4}-[0-9]{6}-[0-9]{3}-[0-9]{1}"  required id="nRegistroValidado" >
+                                </div>
                             </div>
     
                             <div class="col-md-3">
@@ -220,7 +248,7 @@
                                 </div>
                             </div>
                             <div class="mt-2 col-md-3">
-                                <label>Retención (%)<b>*</b></label>
+                                <label>Retención Fiscal (%)<b>*</b></label>
                                 <input type="number" required class="txt-form" min="0"  name="porc_retencion">
                             </div>
                             <div class="mt-2 col-md-3">
@@ -440,13 +468,94 @@
     
 
     $(document).ready(function() {
-          $("#btn1").click(function(){
-            toastr["warning"]("Mensaje de prueba", "titulo");
-          });   
-          
-          
+        $('#hiddenSelectMunicipio').hide();
+        $('#hiddenNitValidado').hide();
+        $('#hiddenNRegistroValidado').hide();
 
-          
+        $('#txtPais').on('change', function(){
+            let paisId = $('#txtPais').val();
+
+            if($.trim(paisId) != ''){
+
+                $.get('estados', {paisId: paisId}, function(estados){
+
+                    $('#txtEstado').empty();
+                    $('#txtEstado').append("<option value=''>Seleccione una estado</option>");
+                    
+                    $.each(estados, function(index, value){
+                        $('#txtEstado').append("<option value='"+index+"'>"+value+"</option>");
+                    });
+
+                });
+            }
+
+        });
+
+        $('#txtPais').on('change', function(){
+            let paisId = $('#txtPais').val();
+
+            if(paisId == 51){
+                //Municipio
+                $('#hiddenMunicipio').hide('slow');
+                $('#txtMunicipio').prop('disabled', true);
+                $('#hiddenSelectMunicipio').show('slow');
+                $('#selectMunicipio').prop('disabled', false);
+
+                //nit y nif
+                $('#hiddenNit_niff').hide('slow');
+                $('#txtNit_niff').prop('disabled', true);
+                $('#hiddenNitValidado').show('slow');
+                $('#txtNitValidado').prop('disabled', false);
+
+                //Número de registro fiscal
+                $('#hiddenNRegistro').hide('slow');
+                $('#txtNRegistro').prop('disabled', true);
+                $('#hiddenNRegistroValidado').show('slow');
+                $('#nRegistroValidado').prop('disabled', false);
+
+
+            } else{
+
+                $('#hiddenMunicipio').show('slow');
+                $('#txtMunicipio').prop('disabled', false);
+                $('#hiddenSelectMunicipio').hide('slow');
+                $('#selectMunicipio').prop('disabled', true);
+
+                //nit y nif
+                $('#hiddenNit_niff').show('slow');
+                $('#txtNit_niff').prop('disabled', false);
+                $('#hiddenNitValidado').hide('slow');
+                $('#txtNitValidado').prop('disabled', true);
+
+                //Número de registro fiscal
+                $('#hiddenNRegistro').show('slow');
+                $('#txtNRegistro').prop('disabled', false);
+                $('#hiddenNRegistroValidado').hide('slow');
+                $('#nRegistroValidado').prop('disabled', true);
+            }
+
+
+        });
+
+        $('#txtEstado').on('change', function(){
+            let estadoId = $('#txtEstado').val();
+
+            if($.trim(estadoId) != ''){
+
+                $.get('municipios', {estadoId: estadoId}, function(municipios){
+
+                    $('#selectMunicipio').empty();
+                    $('#selectMunicipio').append("<option value=''>Seleccione una Municipio</option>");
+                    console.log(municipios);
+                    $.each(municipios, function(index, value){
+                        $('#selectMunicipio').append("<option value='"+value+"'>"+value+"</option>");
+                    });
+
+                });
+            }
+
+        });  
+
     });
 
 </script>

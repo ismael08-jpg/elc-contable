@@ -68,18 +68,23 @@
     border-radius: 4px;
 }
 
+label{
+    color: 	#2e2a2a;
+    font-size: large;
+}
+
 .txt-form{
     width: 100%;
     margin: 8px 0;
     box-sizing: border-box;
-    border: 2px solid #E0E0E0;
+    border: 2px solid #797777;
     border-radius: 4px;
-    color: 	#888888;
+    color: 	#2e2a2a;
 }
 
 .txt-form:focus {
-    border-color: #aaa;
-    color: 	#aaa;
+    border-color: rgb(0, 0, 0);
+    color: 	rgb(0, 0, 0);
     box-shadow: 0 0 0 3px -moz-mac-focusring;
     
     outline: none;
@@ -254,11 +259,13 @@
     width: 100%;
     margin: 8px 0;
     box-sizing: border-box;
-    border: 2px solid #E0E0E0;
+    border: 2px solid #797777;
     border-radius: 4px;
-    color: 	#888888;
+    color: 	#2e2a2a;
     height: 30px;
     display: block;
+
+    
 
   
   font-size: 16px;
@@ -288,10 +295,10 @@
   display: none;
 }
 .select-css:hover {
-  border-color: #888;
+  border-color: rgb(0, 0, 0);
 }
 .select-css:focus {
-  border-color: #aaa;
+  border-color: rgb(0, 0, 0);
   
   box-shadow: 0 0 0 3px -moz-mac-focusring;
   color: #222; 
