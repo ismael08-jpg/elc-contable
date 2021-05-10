@@ -12,11 +12,11 @@ use Illuminate\Database\Eloquent\Model;
  * Class MaestroCliente
  * 
  * @property int $id_maestro_cliente
- * @property int $id_cliente
+ * @property int|null $id_cliente
  * @property string|null $numero_cliente_icg
- * @property string $numero_cliente
- * @property string $nombre_comercial
- * @property string $nombre_del_sujeto
+ * @property string|null $numero_cliente
+ * @property string|null $nombre_comercial
+ * @property string|null $nombre_del_sujeto
  * @property string|null $direccion
  * @property string|null $pais
  * @property string|null $codigo_pais
@@ -51,8 +51,9 @@ use Illuminate\Database\Eloquent\Model;
  * @property float|null $comision
  * @property string|null $emitira_nc
  * @property string|null $condiciones_operacion
+ * @property string|null $condiciones_credito
  * 
- * @property Cliente $cliente
+ * @property Cliente|null $cliente
  *
  * @package App\Models
  */
@@ -60,11 +61,9 @@ class MaestroCliente extends Model
 {
 	protected $table = 'maestro_cliente';
 	protected $primaryKey = 'id_maestro_cliente';
-	public $incrementing = false;
 	public $timestamps = false;
 
 	protected $casts = [
-		'id_maestro_cliente' => 'int',
 		'id_cliente' => 'int',
 		'porc_retencion' => 'float',
 		'comision' => 'float'
@@ -109,7 +108,8 @@ class MaestroCliente extends Model
 		'cta_activo_dos',
 		'comision',
 		'emitira_nc',
-		'condiciones_operacion'
+		'condiciones_operacion',
+		'condiciones_credito'
 	];
 
 	public function cliente()

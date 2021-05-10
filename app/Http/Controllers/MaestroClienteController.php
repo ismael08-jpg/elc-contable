@@ -9,6 +9,7 @@ use App\Models\Ventum;
 use App\Models\Pais;
 use App\Models\Estado;
 use App\Models\Municipio;
+use App\Models\Moneda;
 
 class MaestroClienteController extends Controller
 {
@@ -21,13 +22,7 @@ class MaestroClienteController extends Controller
     }
     
 
-    public function index(Request $request){
-
-        // if ($request->session()->has('contador'))
-        //     $contador = $request->session()->get('contador');
-        // else 
-        //     $contador = 0;
-        
+    public function index(Request $request){  
         if ($request->session()->has('alerta') and $request->session()->get('contador') == 1)
             {
                 $alerta = $request->session()->get('alerta');
@@ -45,13 +40,12 @@ class MaestroClienteController extends Controller
         ->get();
 
         $pais = Pais::get();
-        $paisArray[''] = "Selecciona un País";
-
-        foreach($pais as $p){
-            $paisArray[$p->id] = $p->nombre_pais;
-        }
         
-        return view('maestros.maestroCliente', compact('maestro', 'paisArray', 'alerta'));
+
+        $moneda = Moneda::select('codigo', 'nombre_moneda', 'simbolo')->orderBy('nombre_moneda')->get();
+        $estado = Estado::all();
+        $municipio = Municipio::all();
+        return view('maestros.maestroCliente', compact('maestro', 'pais', 'moneda', 'estado', 'municipio', 'alerta'));
     }
 
     public function getEstados(Request $request){

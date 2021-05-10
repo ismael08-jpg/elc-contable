@@ -51,6 +51,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property float|null $comision
  * @property string|null $emitira_nc
  * @property string|null $condiciones_operacion
+ * @property string $condiciones_credito
  * 
  * @property Proveedor $proveedor
  *
@@ -60,11 +61,9 @@ class MaestroProveedor extends Model
 {
 	protected $table = 'maestro_proveedor';
 	protected $primaryKey = 'id_maestro_proveedor';
-	public $incrementing = false;
 	public $timestamps = false;
 
 	protected $casts = [
-		'id_maestro_proveedor' => 'int',
 		'id_proveedor' => 'int',
 		'porc_retencion' => 'float',
 		'comision' => 'float'
@@ -109,7 +108,8 @@ class MaestroProveedor extends Model
 		'cta_activo_dos',
 		'comision',
 		'emitira_nc',
-		'condiciones_operacion'
+		'condiciones_operacion',
+		'condiciones_credito'
 	];
 
 	public function proveedor()

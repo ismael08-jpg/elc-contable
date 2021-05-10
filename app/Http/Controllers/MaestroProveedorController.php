@@ -8,6 +8,7 @@ use App\Models\Proveedor;
 use App\Models\Compra;
 use App\Models\Pais;
 use App\Models\Estado;
+use App\Models\Moneda;
 use App\Models\Municipio;
 
 
@@ -42,18 +43,14 @@ class MaestroProveedorController extends Controller
         Auth::user()->autorizarRol([1]);
 
         $pais = Pais::get();
-        $paisArray[''] = "Selecciona un País";
-
-        foreach($pais as $p){
-            $paisArray[$p->id] = $p->nombre_pais;
-        }
-        
 
         $maestro = MaestroProveedor::select('maestro_proveedor.*', 'proveedor.*')
         ->join('proveedor', 'maestro_proveedor.id_proveedor', '=', 'proveedor.id_proveedor')
         ->get();
-        
-        return view('maestros.maestroProveedor', compact('maestro', 'alerta', 'paisArray'));
+        $moneda = Moneda::select('codigo', 'nombre_moneda', 'simbolo')->orderBy('nombre_moneda')->get();
+        $estado = Estado::all();
+        $municipio = Municipio::all();
+        return view('maestros.maestroProveedor', compact('maestro', 'alerta', 'pais', 'estado', 'municipio', 'moneda'));
     }
 
 

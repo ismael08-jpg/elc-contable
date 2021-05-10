@@ -34,24 +34,24 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <label>Nombre del Cliente<b>*</b></label>
-                                        <input type="text" class="txt-form" name="nombre_cliente" value="{{old('nombre_cliente')}}" required>
+                                        <input type="text" maxlength="50"  class="txt-form" name="nombre_cliente" value="{{old('nombre_cliente')}}" required>
                                     </div>
                                     <div class="col-md-6">
                                         <label>N° Cliente ICG<b>*</b></label>
-                                        <input type="text" class="txt-form" name="numero_cliente_icg" required>
+                                        <input type="text" maxlength="50"  class="txt-form" name="numero_cliente_icg" required>
                                     </div>
                                     <div class="col-md-6">
                                         <label>Otro número de cliente</label>
-                                        <input type="text" class="txt-form" name="numero_cliente">
+                                        <input type="text" maxlength="50"  class="txt-form" name="numero_cliente">
                                     </div>
                                     <div class="col-md-6">
                                         <label>Nombre Comercial <b>*</b></label>
-                                        <input type="text" class="txt-form" name="nombre_comercial">
+                                        <input type="text" maxlength="50"  class="txt-form" name="nombre_comercial">
                                     </div>
                                     <div class="col-md-6">
                                         <label>Nombre del Sujeto<b>*</b></label><br>
                                         <div id="nombre_sujeto" >
-                                            <input type="radio" id="natural" required name="nombre_del_sujeto" value="Natural" >
+                                            <input type="radio"  id="natural" required name="nombre_del_sujeto" value="Natural" >
                                             <label for="male">Natural</label><br>
                                             <input type="radio" id="juridico" name="nombre_del_sujeto" value="Juridico" >
                                             <label for="female">Juridico</label><br> 
@@ -74,23 +74,23 @@
                                     <hr>
                                     <div class="col-md-6">
                                         <label>Nombre<b>*</b></label>
-                                        <input type="text" class="txt-form" required name="nombre_contacto">
+                                        <input type="text" maxlength="50"  class="txt-form" required name="nombre_contacto">
                                     </div>
                                     <div class="col-md-6">
                                         <label>Cargo<b>*</b></label>
-                                        <input type="text" class="txt-form" required name="cargo_contacto">
+                                        <input type="text" maxlength="50"  class="txt-form" required name="cargo_contacto">
                                     </div>
                                     <div class="col-md-6">
                                         <label>Página web</label>
-                                        <input type="text" class="txt-form"  name="pagina_web_contacto">
+                                        <input type="text" maxlength="50"  class="txt-form"  name="pagina_web_contacto">
                                     </div>
                                     <div class="col-md-6">
                                         <label>Correo <b>*</b></label>
-                                        <input type="email" class="txt-form" required name="correo_contacto">
+                                        <input type="email" placeholder="someone@example.com" class="txt-form" required name="correo_contacto">
                                     </div>
                                     <div class="col-md-6">
                                         <label>Teléfono Móvil Contacto</label>
-                                        <input type="text" class="txt-form" name="telefono_contacto">
+                                        <input type="text" maxlength="50"  class="txt-form" name="telefono_contacto">
                                     </div>
                                     
                                 </div>
@@ -103,17 +103,18 @@
                                     
                                     <div class="col-md-12">
                                         <label>Dirección<b>*</b></label>
-                                        <textarea class="txt-form" name="direccion" required id="" cols="20" rows="2">
+                                        <textarea maxlength="50" rea class="txt-form" name="direccion" required maxlength="200" cols="20" rows="2">
 
-                                        </textarea>
+                                        </textarea maxlength="50" rea>
                                     </div>
                                     
                                     <div class="col-md-6">
                                         <label>País<b>*</b></label>
                                         <select  class="select-css" required id="txtPais" name="pais">
-                                            @foreach ($paisArray as $index => $paiss)
-                                                <option value="{{$index}}">
-                                                    {{$paiss}}
+                                            <option value="">Seleccione un País</option>
+                                            @foreach ($pais as $pais)
+                                                <option value="{{$pais->id}}">
+                                                    {{$pais->nombre_pais}}
                                                 </option>
                                             @endforeach
                                         </select>
@@ -121,17 +122,17 @@
 
                                     <div class="col-md-6">
                                         <label>Código país (según mh)<b>*</b></label>
-                                        <input type="text" class="txt-form" required name="codigo_pais">
+                                        <input type="text" maxlength="50"  class="txt-form" required name="codigo_pais">
                                     </div>
 
                                     <div class="col-md-6">
                                         <label>Ciudad<b>*</b></label>
-                                        <input type="text" class="txt-form" required name="ciudad">
+                                        <input type="text" maxlength="50"  class="txt-form" required name="ciudad">
                                     </div>
 
                                     <div class="col-md-6">
                                         <label>Departamento/Estado<b>*</b></label>
-                                        {{-- <input type="text" class="txt-form" required name="departamento"> --}}
+                                        {{-- <input type="text" maxlength="50"  class="txt-form" required name="departamento"> --}}
                                         <select name="departamento" id="txtEstado" required class="select-css"></select>
                                     </div>
 
@@ -140,7 +141,7 @@
                                     <div class="col-md-6">
                                         <label>Municipio</label>
                                         <div id="hiddenMunicipio">
-                                            <input type="text" id="txtMunicipio" class="txt-form" name="municipio">
+                                            <input type="text" maxlength="50"  id="txtMunicipio" class="txt-form" name="municipio">
                                         </div>
                                         <div id="hiddenSelectMunicipio" >
                                             <select name="municipio" disabled id="selectMunicipio" class="select-css"></select>
@@ -155,19 +156,19 @@
                                     <hr>
                                     <div class="col-md-6">
                                         <label>Teléfono fijo<b>*</b></label>
-                                        <input type="text" class="txt-form" required name="telefono_fijo">
+                                        <input type="text" maxlength="50"  class="txt-form" required name="telefono_fijo">
                                     </div>
                                     <div class="col-md-6">
                                         <label>Página web</label>
-                                        <input type="text" class="txt-form" name="pagina_web">
+                                        <input type="text" maxlength="50"  class="txt-form" name="pagina_web">
                                     </div>
                                     <div class="col-md-6">
                                         <label>Correo<b>*</b></label>
-                                        <input type="email" class="txt-form" required name="correo">
+                                        <input type="email" maxlength="50"  placeholder="someone@example.com"  class="txt-form" required name="correo">
                                     </div>
                                     <div class="col-md-6">
                                         <label>Teléfono Móvil</label>
-                                        <input type="text" class="txt-form" name="telefono_celular">
+                                        <input type="text" maxlength="50"  class="txt-form" name="telefono_celular">
                                     </div>
                                 </div>
 
@@ -180,17 +181,30 @@
                         
                         <div class="mt-8 col-12"><center><h3 class="mt-10">Informción general</h3></center></div>
                             
-                        <div class="col-3">
+                        <div class="col-6">
                                 <label>Moneda principal<b>*</b></label>
-                                <input type="text" class="txt-form" required name="moneda_principal">
+                                    
+                                <select name="moneda_principal" class="select-css" required >
+                                    <option value="">Seleccione una moneda</option>
+                                    @foreach ($moneda as $m)
+                                        <option value="{{$m->nombre_moneda}} ({{$m->simbolo}})">{{$m->nombre_moneda}} ({{$m->simbolo}})</option>
+                                    @endforeach
+                                </select>
                             </div>
-                            <div class="col-md-3">
+
+                            <div class="col-md-6">
                                 <label>Tipo de cambio</label>
-                                <input type="text" class="txt-form" name="tipo_cambio">
+                                
+                                <select name="tipo_cambio" class="select-css" required >
+                                    <option value="">Seleccione un tipo de cambio</option>
+                                    @foreach ($moneda as $m)
+                                        <option value="{{$m->nombre_moneda}} ({{$m->simbolo}})">{{$m->nombre_moneda}} ({{$m->simbolo}})</option>
+                                    @endforeach
+                                </select>
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-md-6">
                                 <label>Giro Fiscal del negocio<b>*</b></label>
-                                <input type="text" class="txt-form" required name="giro_fical_negocio">
+                                <input type="text" maxlength="50"  class="txt-form" required name="giro_fical_negocio">
                             </div>
                             <div class="col-md-3">
                                 <label>Tipo contribuyente<b>*</b></label><br>
@@ -207,10 +221,10 @@
                             <div class="col-md-3">
                                 <label>NIT/NIFF<b>*</b></label>
                                 <div id="hiddenNit_niff">
-                                    <input type="text" class="txt-form" required id="txtNit_niff" name="nit_niff">
+                                    <input type="text" maxlength="50"  class="txt-form" required id="txtNit_niff" name="nit_niff">
                                 </div>
                                 <div id="hiddenNitValidado">
-                                    <input type="text" disabled placeholder="0000-000000-000-0" pattern="[0-9]{4}-[0-9]{6}-[0-9]{3}-[0-9]{1}" class="txt-form" required id="txtNitValidado" name="nit_niff">
+                                    <input type="text" maxlength="50"  disabled placeholder="0000-000000-000-0" pattern="[0-9]{4}-[0-9]{6}-[0-9]{3}-[0-9]{1}" class="txt-form" required id="txtNitValidado" name="nit_niff">
                                 </div>
                             </div>
 
@@ -219,10 +233,10 @@
                             <div class="col-md-3">
                                 <label>N° Registro fiscal<b>*</b></label>
                                 <div id="hiddenNRegistro">
-                                    <input type="text" class="txt-form" required  name="n_registro_fiscal" required id="txtNRegistro" >
+                                    <input type="text" maxlength="50"  class="txt-form" required  name="n_registro_fiscal" required id="txtNRegistro" >
                                 </div>
                                 <div id="hiddenNRegistroValidado">
-                                    <input type="text" name="n_registro_fiscal" class="txt-form" disabled placeholder="0000-000000-000-0" pattern="[0-9]{4}-[0-9]{6}-[0-9]{3}-[0-9]{1}"  required id="nRegistroValidado" >
+                                    <input type="text" maxlength="50"  name="n_registro_fiscal" class="txt-form" disabled placeholder="0000-000000-000-0" pattern="[0-9]{4}-[0-9]{6}-[0-9]{3}-[0-9]{1}"  required id="nRegistroValidado" >
                                 </div>
                             </div>
     
@@ -269,19 +283,19 @@
                             </div>
                             <div class="mt-2 col-md-3">
                                 <label>Cuenta Pasivo #1<b>*</b></label>
-                                <input type="text" class="txt-form" required name="cta_pasivo_uno">
+                                <input type="text" maxlength="50"  class="txt-form" required name="cta_pasivo_uno">
                             </div>
                             <div class="mt-2 col-md-3">
                                 <label>Cuenta Pasivo #2</label>
-                                <input type="text" class="txt-form" name="cta_pasivo_dos">
+                                <input type="text" maxlength="50"  class="txt-form" name="cta_pasivo_dos">
                             </div>
                             <div class="mt-2 col-md-3">
                                 <label>Cuenta Activo #1<b>*</b></label>
-                                <input type="text" class="txt-form" required name="cta_activo_uno">
+                                <input type="text" maxlength="50"  class="txt-form" required name="cta_activo_uno">
                             </div>
                             <div class="mt-2 col-md-3">
                                 <label>Cuenta Activo #2</label>
-                                <input type="text" class="txt-form" name="cta_activo_dos">
+                                <input type="text" maxlength="50"  class="txt-form" name="cta_activo_dos">
                             </div>
                             <div class="mt-2 col-md-6">
                                 <label>% Comisión<b>*</b></label>
@@ -289,7 +303,7 @@
                             </div>
                             <div class="mt-2 col-md-6">
                                 <label>Condiciones de la Operación</label>
-                                <textarea name="condiciones_operacion" class="txt-form" cols="30" rows="3"></textarea>
+                                <textarea maxlength="50" name="condiciones_operacion" class="txt-form" cols="30" rows="3"></textarea>
                             </div>
                     </div>
                     <div class="row justify-content-center">
@@ -340,7 +354,9 @@
     </script>
 @endif
 
-<script type="text/javascript">
+<script>
+
+
 
     function eliminarM(id_maestro_cliente,id_cliente){
         $('#did_maestro_cliente').val('');
@@ -355,6 +371,21 @@
         porc_retencion,percepcion,cta_pasivo_uno,cta_pasivo_dos,cta_activo_uno,cta_activo_dos,
         comision,emitira_nc,condiciones_operacion,telefono_contacto){
 
+
+
+            if(pais=="El Salvador"){
+                document.getElementById("fnit_niff").setAttribute("pattern", "[0-9]{4}-[0-9]{6}-[0-9]{3}-[0-9]{1}");
+                document.getElementById("fnit_niff").setAttribute("placeholder", "0000-256359-656-6");
+                document.getElementById("fn_registro_fiscal").setAttribute("pattern", "[0-9]{4}-[0-9]{6}-[0-9]{3}-[0-9]{1}");
+                document.getElementById("fn_registro_fiscal").setAttribute("placeholder", "0000-256359-656-6");
+            } else{
+                document.getElementById("fnit_niff").removeAttribute("pattern");
+                document.getElementById("fnit_niff").removeAttribute("placeholder");
+                document.getElementById("fn_registro_fiscal").removeAttribute("pattern");
+                document.getElementById("fn_registro_fiscal").removeAttribute("placeholder");
+            }
+
+            
 
             $('#fid_maestro_cliente').val('');
             $('#fid_cliente').val(''); 
@@ -475,6 +506,15 @@
     
 
     $(document).ready(function() {
+        $(function() {  
+            $("textarea[maxlength]").bind('input propertychange', function() {  
+                var maxLength = $(this).attr('maxlength');  
+                if ($(this).val().length > maxLength) {  
+                    $(this).val($(this).val().substring(0, maxLength));  
+                }  
+            })  
+        }); 
+
         $('#hiddenSelectMunicipio').hide();
         $('#hiddenNitValidado').hide();
         $('#hiddenNRegistroValidado').hide();
@@ -498,8 +538,33 @@
             }
 
         });
+        
+        $('#fpais').on('change', function(){
+
+            let p = $('#fpais').val();
+            
+            if( p == "El Salvador"){
+                document.getElementById("fnit_niff").setAttribute("pattern", "[0-9]{4}-[0-9]{6}-[0-9]{3}-[0-9]{1}");
+                document.getElementById("fnit_niff").setAttribute("placeholder", "0000-256359-656-6");
+                document.getElementById("fn_registro_fiscal").setAttribute("pattern", "[0-9]{4}-[0-9]{6}-[0-9]{3}-[0-9]{1}");
+                document.getElementById("fn_registro_fiscal").setAttribute("placeholder", "0000-256359-656-6");
+            } else{
+                
+                document.getElementById("fnit_niff").removeAttribute("pattern");
+                document.getElementById("fnit_niff").removeAttribute("placeholder");
+                document.getElementById("fn_registro_fiscal").removeAttribute("pattern");
+                document.getElementById("fn_registro_fiscal").removeAttribute("placeholder");
+            }
+            
+        });
+
+        
 
         $('#txtPais').on('change', function(){
+
+            
+
+
             let paisId = $('#txtPais').val();
 
             if(paisId == 51){
