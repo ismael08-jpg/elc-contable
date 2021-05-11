@@ -287,6 +287,10 @@
                           <label>Condiciones de la Operación</label>
                           <textarea name="fcondiciones_operacion" id="fcondiciones_operacion" class="txt-form" cols="60" rows="6"></textarea>
                       </div>
+                      <div class="mt-2 col-md-6">
+                        <label>Condiciones del crédito </label>
+                        <textarea name="fcondiciones_credito" id="fcondiciones_credito"  maxlength="50"  class="txt-form" cols="30" rows="3"></textarea>
+                      </div>
                   </div>
                 </div>
 

@@ -44,6 +44,7 @@
              <th>% Comisión</th>
              <th>¿Emitirá N/C?</th>
              <th>Condiciones de la operación</th>
+             <th>Condiciones del crédito</th>
              <th>Dirección</th>
              <th>-</th>
              <th>-</th>
@@ -98,7 +99,9 @@
              <td>{{$us->comision}}%</td>
              <td>{{$us->emitira_nc}}</td>
              <td>{{$us->condiciones_operacion}}</td>
+             <td>{{$us->condiciones_credito}}</td>
              <td>{{$us->direccion}}</td>
+             
 
 
              <td>
@@ -106,7 +109,7 @@
                 src="{{asset('assets/img/del.png')}}"/>
              </td>
              <td>
-                 <input type="image" onclick="editarM({{$us->id_maestro_cliente}},{{$us->id_cliente}}, '{{$us->nombre_cliente}}','{{$us->numero_cliente_icg}}','{{$us->numero_cliente}}','{{$us->nombre_comercial}}','{{$us->nombre_del_sujeto}}','{{$us->direccion}}','{{$us->pais}}','{{$us->codigo_pais}}','{{$us->ciudad}}','{{$us->departamento}}','{{$us->municipio}}','{{$us->telefono_fijo}}','{{$us->pagina_web}}','{{$us->correo}}','{{$us->telefono_celular}}','{{$us->paraiso_fiscal}}','{{$us->nombre_contacto}}','{{$us->cargo_contacto}}','{{$us->pagina_web_contacto}}','{{$us->correo_contacto}}','{{$us->moneda_principal}}','{{$us->tipo_cambio}}','{{$us->giro_fical_negocio}}','{{$us->tipo_contribuyente}}','{{$us->nit_niff}}','{{$us->n_registro_fiscal}}','{{$us->cobra_iva}}','{{$us->entera_iva}}',{{$us->porc_retencion}},'{{$us->percepcion}}','{{$us->cta_pasivo_uno}}','{{$us->cta_pasivo_dos}}','{{$us->cta_activo_uno}}','{{$us->cta_activo_dos}}',{{$us->comision}},'{{$us->emitira_nc}}','{{$us->condiciones_operacion}}', '{{$us->telefono_contacto}}')" class="btn-calc math sombra" height="40px" width="40px" src="{{asset('assets/img/edi.png')}}"/>
+                 <input type="image" onclick="editarM({{$us->id_maestro_cliente}},{{$us->id_cliente}}, '{{$us->nombre_cliente}}','{{$us->numero_cliente_icg}}','{{$us->numero_cliente}}','{{$us->nombre_comercial}}','{{$us->nombre_del_sujeto}}','{{$us->direccion}}','{{$us->pais}}','{{$us->codigo_pais}}','{{$us->ciudad}}','{{$us->departamento}}','{{$us->municipio}}','{{$us->telefono_fijo}}','{{$us->pagina_web}}','{{$us->correo}}','{{$us->telefono_celular}}','{{$us->paraiso_fiscal}}','{{$us->nombre_contacto}}','{{$us->cargo_contacto}}','{{$us->pagina_web_contacto}}','{{$us->correo_contacto}}','{{$us->moneda_principal}}','{{$us->tipo_cambio}}','{{$us->giro_fical_negocio}}','{{$us->tipo_contribuyente}}','{{$us->nit_niff}}','{{$us->n_registro_fiscal}}','{{$us->cobra_iva}}','{{$us->entera_iva}}',{{$us->porc_retencion}},'{{$us->percepcion}}','{{$us->cta_pasivo_uno}}','{{$us->cta_pasivo_dos}}','{{$us->cta_activo_uno}}','{{$us->cta_activo_dos}}',{{$us->comision}},'{{$us->emitira_nc}}','{{$us->condiciones_operacion}}', '{{$us->telefono_contacto}}','{{$us->condiciones_credito}}')" class="btn-calc math sombra" height="40px" width="40px" src="{{asset('assets/img/edi.png')}}"/>
             </td>
              
              

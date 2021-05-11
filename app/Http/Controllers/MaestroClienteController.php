@@ -83,7 +83,7 @@ class MaestroClienteController extends Controller
 
 
         $validacion = $request->validate([
-            
+            'condiciones_credito' => 'required',
             'nombre_cliente' => 'required',
             'numero_cliente_icg' => 'required',
             //'numero_cliente' => 'required',
@@ -131,6 +131,7 @@ class MaestroClienteController extends Controller
         $cliente->save();
 
         $maestro = new Maestrocliente();
+        $maestro->condiciones_credito = $request->condiciones_credito;
         $maestro->id_cliente = $cliente->id_cliente;
         $maestro->numero_cliente_icg = $request->numero_cliente_icg;
         $maestro->numero_cliente = $request->numero_cliente;
@@ -195,7 +196,7 @@ class MaestroClienteController extends Controller
             Auth::user()->autorizarRol([1]);
 
             $validacion = $request->validate([
-                
+                'fcondiciones_credito' => 'required',
                 'fid_maestro_cliente' => 'required',
                 'fid_cliente' => 'required',
                 'fnombre_cliente' => 'required',
@@ -244,6 +245,9 @@ class MaestroClienteController extends Controller
             $cliente->save();
 
             $maestro = Maestrocliente::find($request->fid_maestro_cliente);
+
+            $maestro->condiciones_credito = $request->fcondiciones_credito;
+
             $maestro->id_cliente = $request->fid_cliente;
             $maestro->numero_cliente_icg = $request->fnumero_cliente_icg;
             $maestro->numero_cliente = $request->fnumero_cliente;

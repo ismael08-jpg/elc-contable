@@ -290,11 +290,15 @@
                             </div>
                             <div class="mt-2 col-md-6">
                                 <label>% Comisión<b>*</b></label>
-                                <input type="number"  required class="txt-form" min="0" name="comision">
+                                <input type="number" max="100"  required class="txt-form" min="0" name="comision">
                             </div>
                             <div class="mt-2 col-md-6">
                                 <label>Condiciones de la Operación</label>
-                                <textarea name="condiciones_operacion" class="txt-form" cols="30" rows="3"></textarea>
+                                <textarea maxlength="50" name="condiciones_operacion" class="txt-form" cols="30" rows="3"></textarea>
+                            </div>
+                            <div class="mt-2 col-md-6">
+                                <label>Condiciones del crédito </label>
+                                <textarea name="condiciones_credito" maxlength="50"  class="txt-form" cols="30" rows="3"></textarea>
                             </div>
                     </div>
                     <div class="row justify-content-center">
@@ -359,7 +363,7 @@
 
     function editarM(id_maestro_proveedor,id_proveedor, nombre_proveedor,numero_proveedor_icg,numero_proveedor,nombre_comercial,nombre_del_sujeto,direccion,pais,codigo_pais,ciudad,departamento,municipio,telefono_fijo,pagina_web,correo,telefono_celular,paraiso_fiscal,nombre_contacto,cargo_contacto,pagina_web_contacto,correo_contacto,moneda_principal,tipo_cambio,giro_fical_negocio,tipo_contribuyente,nit_niff,n_registro_fiscal,cobra_iva,entera_iva,
         porc_retencion,percepcion,cta_pasivo_uno,cta_pasivo_dos,cta_activo_uno,cta_activo_dos,
-        comision,emitira_nc,condiciones_operacion,telefono_contacto){
+        comision,emitira_nc,condiciones_operacion,telefono_contacto, condiciones_credito){
 
             if(pais=="El Salvador"){
                 document.getElementById("fnit_niff").setAttribute("pattern", "[0-9]{4}-[0-9]{6}-[0-9]{3}-[0-9]{1}");
@@ -412,15 +416,17 @@
             $('#fcomision').val('');
             $('#femitira_nc').val('');
             $('#fcondiciones_operacion').val('');
+            $('#fcondiciones_credito').val('');
             
 
-
+            $('#fcondiciones_credito').val(condiciones_credito);
             $('#fid_maestro_proveedor').val(id_maestro_proveedor);
             $('#fid_proveedor').val(id_proveedor); 
             $('#fnombre_proveedor').val(nombre_proveedor);
             $('#fnumero_proveedor_icg').val(numero_proveedor_icg);
             $('#fnumero_proveedor').val(numero_proveedor);
             $('#fnombre_comercial').val(nombre_comercial);
+            
             //$('#fnombre_del_sujeto').val(nombre_del_sujeto);
             
             document.querySelector("#fnombre_del_sujeto > [value='"+nombre_del_sujeto+"']").checked = true;	

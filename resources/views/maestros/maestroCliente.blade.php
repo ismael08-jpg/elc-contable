@@ -305,6 +305,10 @@
                                 <label>Condiciones de la Operación</label>
                                 <textarea maxlength="50" name="condiciones_operacion" class="txt-form" cols="30" rows="3"></textarea>
                             </div>
+                            <div class="mt-2 col-md-6">
+                                <label>Condiciones del crédito </label>
+                                <textarea name="condiciones_credito" maxlength="50"  class="txt-form" cols="30" rows="3"></textarea>
+                            </div>
                     </div>
                     <div class="row justify-content-center">
                         <input type="submit" value="Crear" class=" mt-5 btn btn-radius btn-azul">
@@ -369,7 +373,7 @@
 
     function editarM(id_maestro_cliente,id_cliente, nombre_cliente,numero_cliente_icg,numero_cliente,nombre_comercial,nombre_del_sujeto,direccion,pais,codigo_pais,ciudad,departamento,municipio,telefono_fijo,pagina_web,correo,telefono_celular,paraiso_fiscal,nombre_contacto,cargo_contacto,pagina_web_contacto,correo_contacto,moneda_principal,tipo_cambio,giro_fical_negocio,tipo_contribuyente,nit_niff,n_registro_fiscal,cobra_iva,entera_iva,
         porc_retencion,percepcion,cta_pasivo_uno,cta_pasivo_dos,cta_activo_uno,cta_activo_dos,
-        comision,emitira_nc,condiciones_operacion,telefono_contacto){
+        comision,emitira_nc,condiciones_operacion,telefono_contacto,condiciones_credito){
 
 
 
@@ -426,9 +430,10 @@
             $('#fcomision').val('');
             $('#femitira_nc').val('');
             $('#fcondiciones_operacion').val('');
+            $('#fcondiciones_credito').val('');
             
 
-
+            $('#fcondiciones_credito').val(condiciones_credito);
             $('#fid_maestro_cliente').val(id_maestro_cliente);
             $('#fid_cliente').val(id_cliente); 
             $('#fnombre_cliente').val(nombre_cliente);

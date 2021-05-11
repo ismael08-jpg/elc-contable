@@ -60,6 +60,7 @@ class MaestroProveedorController extends Controller
 
         $validacion = $request->validate([
             
+            'condiciones_credito' => 'required',
             'nombre_proveedor' => 'required',
             'numero_proveedor_icg' => 'required',
             //'numero_proveedor' => 'required',
@@ -107,6 +108,7 @@ class MaestroProveedorController extends Controller
         $proveedor->save();
 
         $maestro = new Maestroproveedor();
+        $maestro->condiciones_credito = $request->condiciones_credito;
         $maestro->id_proveedor = $proveedor->id_proveedor;
         $maestro->numero_proveedor_icg = $request->numero_proveedor_icg;
         $maestro->numero_proveedor = $request->numero_proveedor;
@@ -172,7 +174,7 @@ class MaestroProveedorController extends Controller
             Auth::user()->autorizarRol([1]);
 
             $validacion = $request->validate([
-                
+                'fcondiciones_credito' => 'required',
                 'fid_maestro_proveedor' => 'required',
                 'fid_proveedor' => 'required',
                 'fnombre_proveedor' => 'required',
@@ -221,6 +223,7 @@ class MaestroProveedorController extends Controller
             $proveedor->save();
 
             $maestro = Maestroproveedor::find($request->fid_maestro_proveedor);
+            $maestro->condiciones_credito = $request->fcondiciones_credito;
             $maestro->id_proveedor = $request->fid_proveedor;
             $maestro->numero_proveedor_icg = $request->fnumero_proveedor_icg;
             $maestro->numero_proveedor = $request->fnumero_proveedor;
