@@ -77,6 +77,23 @@ class MaestroClienteController extends Controller
         }
     }
 
+    public function getParaiso(Request $request)
+    {
+        Auth::user()->autorizarRol([1,2]);
+        if($request->ajax()){
+
+            $paraiso = Pais::where('id', '=', $request->paisId)->get();
+            
+            foreach($paraiso as $paraiso){
+                $paraisoArray[$paraiso->id] = $paraiso->paraiso_fiscal;
+            }
+
+            return response()->json($paraisoArray);
+
+        }
+
+    }
+
 
     public function store(Request $request){
         Auth::user()->autorizarRol([1]);

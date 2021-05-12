@@ -60,9 +60,9 @@
                                     <div class="col-md-6">
                                         <label>¿Es paraiso fiscal?</label><br>
                                         <div id="paraiso_fiscal">
-                                            <input type="radio" id="natural" name="paraiso_fiscal" required value="Si">
+                                            <input type="radio" id="natural" readonly name="paraiso_fiscal" required value="Si">
                                             <label for="male">Si</label><br>
-                                            <input type="radio" id="juridico" name="paraiso_fiscal" value="No">
+                                            <input type="radio" readonly id="juridico" name="paraiso_fiscal" value="No">
                                             <label for="female">No</label><br> 
                                         </div>
                                     </div>
@@ -527,6 +527,7 @@
 
         $('#txtPais').on('change', function(){
             let paisId = $('#txtPais').val();
+            
 
             if($.trim(paisId) != ''){
 
@@ -541,6 +542,23 @@
 
                 });
             }
+
+            if($.trim(paisId) != ''){
+                let id_p;
+                let paraiso_sn;
+                $.get('pariso-pais', {paisId: paisId}, function(paraiso){
+
+                    $.each(paraiso, function(index, value){
+                        paraiso_sn = value;    
+                        id_p = index;
+                    });
+
+                    document.querySelector("#paraiso_fiscal > [value='"+paraiso_sn+"']").checked = true;	
+
+                });
+            }
+
+            
 
         });
         

@@ -529,6 +529,21 @@
                 });
             }
 
+            if($.trim(paisId) != ''){
+                let id_p;
+                let paraiso_sn;
+                $.get('pariso-pais', {paisId: paisId}, function(paraiso){
+
+                    $.each(paraiso, function(index, value){
+                        paraiso_sn = value;    
+                        id_p = index;
+                    });
+
+                    document.querySelector("#paraiso_fiscal > [value='"+paraiso_sn+"']").checked = true;	
+
+                });
+            }
+
         });
 
         $('#fpais').on('change', function(){
