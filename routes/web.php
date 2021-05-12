@@ -32,13 +32,13 @@ Route::delete('/maestro-cliente/destroy', [MaestroClienteController::class, 'des
 Route::get('/estados', [MaestroClienteController::class, 'getEstados']);
 Route::get('/municipios', [MaestroClienteController::class, 'getMunicipios']);
 Route::get('/pariso-pais', [MaestroClienteController::class, 'getParaiso']);
+Route::get('/pariso-estado', [MaestroClienteController::class, 'getParaisoEstado']);
 
 /* Maestro Proveedor Routes*/
 Route::get('/maestro-proveedor', [MaestroProveedorController::class, 'index'])->name('maestroProveedor.index');
 Route::post('/maestro-proveedor/store', [MaestroProveedorController::class, 'store'])->name('maestroProveedor.store');
 Route::put('/maestro-proveedor/update', [MaestroProveedorController::class, 'update'])->name('maestroProveedor.update');
 Route::delete('/maestro-proveedor/destroy', [MaestroProveedorController::class, 'destroy'])->name('maestroProveedor.delete');
-
 
 
 /* Usuarios Routes*/

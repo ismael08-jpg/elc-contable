@@ -652,6 +652,24 @@
                 });
             }
 
+
+            //change the state of "paraiso fiscal"
+            if($.trim(estadoId) != ''){
+                let paraisoPais;
+                let paraisoEstado;
+                $.get('pariso-estado', {estadoId: estadoId}, function(paraiso){
+
+                    $.each(paraiso, function(index, value){
+                        paraisoEstado = value;    
+                        paraisoPais = index;
+                    });
+                    document.querySelector("#paraiso_fiscal > [value='"+paraisoEstado+"']").checked = true;	
+
+                });
+
+                
+            }
+
         });  
 
     });
