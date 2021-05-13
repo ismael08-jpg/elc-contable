@@ -31,10 +31,10 @@
 
         <div class="collapse show" id="laravelExample">
           <ul class="nav">
-            <li class="nav-item{{ $activePage == 'profile' ? ' active' : '' }}">
-              <a class="nav-link" href="{{ route('maestroCliente.index') }}">
+            <li class="nav-item{{ $activePage == 'venta' ? ' active' : '' }}">
+              <a class="nav-link" href="{{ route('venta.index') }}">
                 <span class="sidebar-mini"> UP </span>
-                <span class="sidebar-normal">{{ __('maestroCliente.index') }} </span>
+                <span class="sidebar-normal">{{ __('Gestión de Ventas') }} </span>
               </a>
             </li>
             <li class="nav-item{{ $activePage == 'user-management' ? ' active' : '' }}">

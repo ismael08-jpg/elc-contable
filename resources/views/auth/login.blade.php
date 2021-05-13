@@ -62,7 +62,7 @@
 
 
 
-@extends('layouts.main', ['class' => 'off-canvas-sidebar', 'activePage' => 'login', 'title' => __('Eurolatin Centroamerica')])
+@extends('layouts.main', ['class' => 'off-canvas-sidebar', 'activePage' => 'login', 'title' => __('Eurolatin Consultancy')])
 
 @section('title', 'Login')
 

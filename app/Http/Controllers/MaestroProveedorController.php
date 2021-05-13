@@ -25,10 +25,7 @@ class MaestroProveedorController extends Controller
 
     public function index(Request $request){
 
-        // if ($request->session()->has('contador'))
-        //     $contador = $request->session()->get('contador');
-        // else 
-        //     $contador = 0;
+        Auth::user()->autorizarRol([1]);
         
         if ($request->session()->has('alerta') and $request->session()->get('contador') == 1)
             {
@@ -40,7 +37,7 @@ class MaestroProveedorController extends Controller
             $alerta = "no traia valor";
         }
         
-        Auth::user()->autorizarRol([1]);
+        
 
         $pais = Pais::get();
 

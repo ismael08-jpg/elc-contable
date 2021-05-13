@@ -4,6 +4,7 @@ use App\Http\Controllers\AdministradorController;
 use App\Http\Controllers\MaestroClienteController;
 use App\Http\Controllers\MaestroProveedorController;
 use App\Http\Controllers\UsuariosController;
+use App\Http\Controllers\VentaController;
 use App\Models\CotCatalogoCredito;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Route;
@@ -45,6 +46,15 @@ Route::delete('/maestro-proveedor/destroy', [MaestroProveedorController::class, 
 Route::get('/usuarios', [UsuariosController::class, 'index'])->name('usuarios.index');
 Route::put('/usuarios/update', [UsuariosController::class, 'update'])->name('usuario.update');
 Route::put('/usuarios/update/password', [UsuariosController::class, 'update'])->name('usuario.updatePassword');
+
+/* Venta y cuentas de venta Routes*/
+Route::get('/venta', [VentaController::class, 'index'])->name('venta.index');
+Route::post('/venta/store', [VentaController::class, 'store'])->name('venta.store');
+Route::put('/venta/update', [VentaController::class, 'update'])->name('venta.update');
+Route::delete('/venta/destroy', [VentaController::class, 'destroy'])->name('venta.delete');
+Route::put('/venta/pay', [VentaController::class, 'pay'])->name('venta.pay');
+Route::put('/venta/edit/pay', [VentaController::class, 'editPay'])->name('venta.edit.pay');
+
 
 
 Route::get('/admin/index', [AdministradorController::class, 'index'])->name('administrador.index');

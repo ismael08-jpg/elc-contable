@@ -13,7 +13,7 @@
 
 
 {{-- @include('usuarios.UsuariosModalDelete') --}}
-@include('usuarios.UsuariosModalUpdate')
+@include('usuarios.usuariosModalUpdate')
 @include('usuarios.passwordModal')
 
 
@@ -24,7 +24,6 @@
         </div>
         <div class="m-5 my-2">
             
-            {{$alerta}}
             @error('nombre')
                 <br>
                     <small>*{{$message}}</small>
@@ -45,6 +44,7 @@
                     <small>*{{$message}}</small>
                 <br>
             @enderror
+            
             @include('usuarios.usuariosTable')   
         </div>
     </x-table>

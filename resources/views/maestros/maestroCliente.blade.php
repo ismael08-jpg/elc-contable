@@ -103,9 +103,7 @@
                                     
                                     <div class="col-md-12">
                                         <label>Dirección<b>*</b></label>
-                                        <textarea maxlength="50" rea class="txt-form" name="direccion" required maxlength="200" cols="20" rows="2">
-
-                                        </textarea maxlength="50" rea>
+                                        <textarea maxlength="200" class="txt-form" name="direccion" required maxlength="200" ></textarea>
                                     </div>
                                     
                                     <div class="col-md-6">
@@ -179,7 +177,7 @@
                     <hr>
                     <div class="row">
                         
-                        <div class="mt-8 col-12"><center><h3 class="mt-10">Informción general</h3></center></div>
+                        <div class="mt-8 col-12"><center><h3 class="mt-10">Información general</h3></center></div>
                             
                         <div class="col-6">
                                 <label>Moneda principal<b>*</b></label>
@@ -236,7 +234,7 @@
                                     <input type="text" maxlength="50"  class="txt-form" required  name="n_registro_fiscal" required id="txtNRegistro" >
                                 </div>
                                 <div id="hiddenNRegistroValidado">
-                                    <input type="text" maxlength="50"  name="n_registro_fiscal" class="txt-form" disabled placeholder="0000-000000-000-0" pattern="[0-9]{4}-[0-9]{6}-[0-9]{3}-[0-9]{1}"  required id="nRegistroValidado" >
+                                    <input type="text" maxlength="7"  name="n_registro_fiscal" class="txt-form" disabled placeholder="0000000" pattern="[0-9]{7}"  required id="nRegistroValidado" >
                                 </div>
                             </div>
     
@@ -272,7 +270,7 @@
                                 <input type="number" required class="txt-form" min="0"  name="porc_retencion">
                             </div>
                             <div class="mt-2 col-md-3">
-                                <label>Percepció<b>*</b></label>
+                                <label>Percepción<b>*</b></label>
                     
                                 <div id="percepcion">
                                     <input type="radio" id="percepcion1" name="percepcion" required value="Si">
@@ -335,11 +333,11 @@
 @push('js')
 
    
-@if ($alerta == "create"){
+@if ($alerta == "create")
     <script>
         toastr["success"]("Maestro Agregado Correctamente", "Operación correcta");
     </script>
-}
+
 @endif
 @if ($alerta == "update")
     <script>
@@ -380,8 +378,8 @@
             if(pais=="El Salvador"){
                 document.getElementById("fnit_niff").setAttribute("pattern", "[0-9]{4}-[0-9]{6}-[0-9]{3}-[0-9]{1}");
                 document.getElementById("fnit_niff").setAttribute("placeholder", "0000-256359-656-6");
-                document.getElementById("fn_registro_fiscal").setAttribute("pattern", "[0-9]{4}-[0-9]{6}-[0-9]{3}-[0-9]{1}");
-                document.getElementById("fn_registro_fiscal").setAttribute("placeholder", "0000-256359-656-6");
+                document.getElementById("fn_registro_fiscal").setAttribute("pattern", "[0-9]{7}");
+                document.getElementById("fn_registro_fiscal").setAttribute("placeholder", "0000000");
             } else{
                 document.getElementById("fnit_niff").removeAttribute("pattern");
                 document.getElementById("fnit_niff").removeAttribute("placeholder");

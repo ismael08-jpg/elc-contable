@@ -11,14 +11,14 @@
 </style>
 
 
-@include('maestros.ProveedorModalDelete')
-@include('maestros.ProveedorModalUpdate')
+@include('maestros.proveedorModalDelete')
+@include('maestros.proveedorModalUpdate')
 
 
 <div>
     <x-table>
         <div class="row justify-content-center pt-5">
-            <h3>Gestión de Maestros de Proveedores</h3>
+            <h4>Gestión de Maestros de Proveedores</h4>
         </div>
         <div class="m-5 my-2">
             <div class="pb-2">
@@ -29,7 +29,7 @@
                         @csrf
                         <div class="row">
                             <div class="col-6">
-                                <center><h5>Datos generales del proveedor</h5></center>
+                                <center><h3>Datos generales del proveedor</h3></center>
                                 <div class="row">
                                     <div class="col-md-6">
                                         <label>Nombre del Proveedor<b>*</b></label>
@@ -68,7 +68,7 @@
 
                                     <div class="col-md-12">
                                         <hr>
-                                        <center><h5 class="mt-3">Persona de Contacto</h5></center>
+                                        <center><h3 class="mt-3">Persona de Contacto</h3></center>
                                     </div>
                                     <hr>
                                     <div class="col-md-6">
@@ -97,7 +97,7 @@
 
                             
                             <div class="col-6">
-                                <center><h5> Dirección</h5></center>
+                                <center><h3> Dirección</h3></center>
                                 <div class="row">
                                     
                                     <div class="col-md-12">
@@ -147,7 +147,7 @@
                                     
                                     <div class="col-md-12">
                                         <hr>
-                                        <center><h5 class="mt-3"> Contacto</h5></center>
+                                        <center><h3 class="mt-3"> Contacto</h3></center>
                                     </div>
                                     <hr>
                                     <div class="col-md-6">
@@ -175,7 +175,7 @@
                     <hr>
                     <div class="row">
                         
-                        <div class="mt-8 col-12"><center><h5 class="mt-10">Informción general</h5></center></div>
+                        <div class="mt-8 col-12"><center><h3 class="mt-10">Información general</h3></center></div>
                             
                         <div class="col-6">
                                 <label>Moneda principal<b>*</b></label>
@@ -227,7 +227,7 @@
                                     <input type="text" maxlength="50" class="txt-form" required  name="n_registro_fiscal" required id="txtNRegistro" >
                                 </div>
                                 <div id="hiddenNRegistroValidado">
-                                    <input type="text" maxlength="50" name="n_registro_fiscal" class="txt-form" disabled placeholder="0000-000000-000-0" pattern="[0-9]{4}-[0-9]{6}-[0-9]{3}-[0-9]{1}"  required id="nRegistroValidado" >
+                                    <input type="text" maxlength="50" name="n_registro_fiscal" class="txt-form" disabled placeholder="0000000" pattern="[0-9]{7}"  required id="nRegistroValidado" >
                                 </div>
                             </div>
     
@@ -263,7 +263,7 @@
                                 <input type="number" required class="txt-form" min="0"  name="porc_retencion">
                             </div>
                             <div class="mt-2 col-md-3">
-                                <label>Percepció<b>*</b></label>
+                                <label>Percepción<b>*</b></label>
                     
                                 <div id="percepcion">
                                     <input type="radio" name="percepcion" required value="Si">
@@ -293,7 +293,7 @@
                                 <input type="number" max="100"  required class="txt-form" min="0" name="comision">
                             </div>
                             <div class="mt-2 col-md-6">
-                                <label>Condiciones de la Operación</label>
+                                <label>Condiciones de la operación</label>
                                 <textarea maxlength="50" name="condiciones_operacion" class="txt-form" cols="30" rows="3"></textarea>
                             </div>
                             <div class="mt-2 col-md-6">
@@ -309,7 +309,7 @@
                 <br>
                     
                         <div>
-                            @include('maestros.ProveedorTable')   
+                            @include('maestros.proveedorTable')   
                         </div>
                     
                 <br>
@@ -368,8 +368,8 @@
             if(pais=="El Salvador"){
                 document.getElementById("fnit_niff").setAttribute("pattern", "[0-9]{4}-[0-9]{6}-[0-9]{3}-[0-9]{1}");
                 document.getElementById("fnit_niff").setAttribute("placeholder", "0000-256359-656-6");
-                document.getElementById("fn_registro_fiscal").setAttribute("pattern", "[0-9]{4}-[0-9]{6}-[0-9]{3}-[0-9]{1}");
-                document.getElementById("fn_registro_fiscal").setAttribute("placeholder", "0000-256359-656-6");
+                document.getElementById("fn_registro_fiscal").setAttribute("pattern", "[0-9]{7}");
+                document.getElementById("fn_registro_fiscal").setAttribute("placeholder", "0000000");
             } else{
                 document.getElementById("fnit_niff").removeAttribute("pattern");
                 document.getElementById("fnit_niff").removeAttribute("placeholder");
