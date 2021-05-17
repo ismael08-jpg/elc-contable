@@ -227,7 +227,7 @@
                                     <input type="text" maxlength="50" class="txt-form" required  name="n_registro_fiscal" required id="txtNRegistro" >
                                 </div>
                                 <div id="hiddenNRegistroValidado">
-                                    <input type="text" maxlength="50" name="n_registro_fiscal" class="txt-form" disabled placeholder="0000000" pattern="[0-9]{7}"  required id="nRegistroValidado" >
+                                    <input type="text" maxlength="50" name="n_registro_fiscal" class="txt-form" disabled placeholder="0000000" pattern=""  required id="nRegistroValidado" >
                                 </div>
                             </div>
     
@@ -368,13 +368,13 @@
             if(pais=="El Salvador"){
                 document.getElementById("fnit_niff").setAttribute("pattern", "[0-9]{4}-[0-9]{6}-[0-9]{3}-[0-9]{1}");
                 document.getElementById("fnit_niff").setAttribute("placeholder", "0000-256359-656-6");
-                document.getElementById("fn_registro_fiscal").setAttribute("pattern", "[0-9]{7}");
-                document.getElementById("fn_registro_fiscal").setAttribute("placeholder", "0000000");
+                //document.getElementById("fn_registro_fiscal").setAttribute("pattern", "[0-9]{7}");
+                //document.getElementById("fn_registro_fiscal").setAttribute("placeholder", "0000000");
             } else{
                 document.getElementById("fnit_niff").removeAttribute("pattern");
                 document.getElementById("fnit_niff").removeAttribute("placeholder");
-                document.getElementById("fn_registro_fiscal").removeAttribute("pattern");
-                document.getElementById("fn_registro_fiscal").removeAttribute("placeholder");
+                //document.getElementById("fn_registro_fiscal").removeAttribute("pattern");
+                //document.getElementById("fn_registro_fiscal").removeAttribute("placeholder");
             }
 
             $('#fid_maestro_proveedor').val('');
