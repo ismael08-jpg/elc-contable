@@ -11,7 +11,7 @@
 </style>
 
 
-@include('maestros.proveedorModalDelete')
+@include('maestros.ProveedorModalDelete')
 @include('maestros.proveedorModalUpdate')
 
 
