@@ -39,7 +39,7 @@ class MaestroProveedorController extends Controller
         
         
 
-        $pais = Pais::get();
+        $pais = Pais::select("*")->orderBy("nombre_pais")->get();
 
         $maestro = MaestroProveedor::select('maestro_proveedor.*', 'proveedor.*')
         ->join('proveedor', 'maestro_proveedor.id_proveedor', '=', 'proveedor.id_proveedor')

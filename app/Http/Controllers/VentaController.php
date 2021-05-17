@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\MaestroCliente;
 use App\Models\Cliente;
 use App\Models\Ventum;
+use App\Models\CuentasCobrar;
+
 
 class VentaController extends Controller
 {
@@ -56,9 +58,16 @@ class VentaController extends Controller
             'fecha_emision' => 'required',
             'fecha_vencimiento' => 'required',
         ]);
-        
+
+        //Cuenta X cobrar de la venta
+        $cuentaCobrar = new CuentasCobrar();
+        $cuentaCobrar->monto_cobrar = $request->monto_ven;
+        $cuentaCobrar->fecha_vencimiento_monto = $request->fecha_vencimiento;
+        $cuentaCobrar->save();
+
         //store ventas
         $venta = new Ventum();
+        
 
         $venta->id_cliente = $request->id_cliente; 
         $venta->credito_fiscal = $request->credito_fiscal; 
@@ -66,14 +75,18 @@ class VentaController extends Controller
         $venta->concepto_ven = $request->concepto_ven;
         $venta->fecha_emision = $request->fecha_emision;
         $venta->fecha_vencimiento = $request->fecha_vencimiento;
+        $venta->id_cuenta_cobrar= $cuentaCobrar->id_cuenta_cobrar;
+
         $venta->save();
 
-        //guardamos las seciones para las alertas de toastr
+        //guardamos las seciones para las alertas de toastr	
         $request->session()->put('alerta', 'create');
         $request->session()->put('contador', 1);
 
         return redirect()->route('venta.index');
     }
+
+
 
 
     //function to update the ventas
@@ -92,7 +105,7 @@ class VentaController extends Controller
             'uFecha_vencimiento' => 'required',
         ]);
 
-        //store ventas
+        //update ventas
         $venta = Ventum::find($request->uId_venta);
 
         $venta->id_cliente = $request->uId_cliente; 
@@ -102,12 +115,25 @@ class VentaController extends Controller
         $venta->fecha_emision = $request->uFecha_emision;
         $venta->fecha_vencimiento = $request->uFecha_vencimiento;
         $venta->save();
+
+        //update CXC
+        $cuenta = CuentasCobrar::find($venta->id_cuenta_cobrar);
+        $cuenta->monto_cobrar = $request->uMonto_ven; 
+        $cuenta->fecha_vencimiento_monto = $request->uFecha_vencimiento; 
+        $cuenta->save();
+
         
         $request->session()->put('alerta', 'update');
         $request->session()->put('contador', 1);
 
         return redirect()->route('venta.index');
     }
+
+
+
+
+
+
 
     //function to delete the ventas
 
@@ -119,8 +145,11 @@ class VentaController extends Controller
             'dId_venta' => 'required',
         ]);
 
-        //store ventas
+        //Eliminar venta
         $venta = Ventum::find($request->dId_venta);
+        //eliminamos la cuenta por cobrar
+        $cuentaCobrar = CuentasCobrar::find($venta->id_cuenta_cobrar);
+        $cuentaCobrar->delete();
         $venta->delete();
         
         $request->session()->put('alerta', 'delete');
@@ -128,6 +157,10 @@ class VentaController extends Controller
 
         return redirect()->route('venta.index');
     }
+
+
+
+
 
 
     //This is a function to pay the ventas
@@ -140,12 +173,15 @@ class VentaController extends Controller
             'fecha_pago'=>'required',
         ]);
 
-        //store ventas
+        //pay ventas
         $venta = Ventum::find($request->pId_venta);
-
-       
         $venta->fecha_pago_venta = $request->fecha_pago;
         $venta->save();
+
+        //pay CxC
+        $cuenta = CuentasCobrar::find($venta->id_cuenta_cobrar);
+        $cuenta->fecha_pago_monto = $request->fecha_pago;
+        $cuenta->save();
         
         $request->session()->put('alerta', 'pay');
         $request->session()->put('contador', 1);
@@ -162,12 +198,15 @@ class VentaController extends Controller
             'epFecha_pago'=>'required',
         ]);
 
-        //store ventas
+        //edit pay venta
         $venta = Ventum::find($request->epId_venta);
-
-       
         $venta->fecha_pago_venta = $request->epFecha_pago;
         $venta->save();
+
+        //edit pay CxC
+        $cuenta = CuentasCobrar::find($venta->id_cuenta_cobrar);
+        $cuenta->fecha_pago_monto = $request->epFecha_pago;
+        $cuenta->save();
         
         $request->session()->put('alerta', 'editPay');
         $request->session()->put('contador', 1);

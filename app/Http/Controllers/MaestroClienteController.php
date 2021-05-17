@@ -39,7 +39,7 @@ class MaestroClienteController extends Controller
         ->join('cliente', 'maestro_cliente.id_cliente', '=', 'cliente.id_cliente')
         ->get();
 
-        $pais = Pais::get();
+        $pais = Pais::select("*")->orderBy("nombre_pais")->get();
         
 
         $moneda = Moneda::select('codigo', 'nombre_moneda', 'simbolo')->orderBy('nombre_moneda')->get();

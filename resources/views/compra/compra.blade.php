@@ -24,85 +24,41 @@
             
         </div>
         @include('compra.compraTable')
+        @include('compra.modals.update')
+        
     </x-table>
 </div>
 
 @endsection
-
+<!--
+    $('#compraEdit').modal();
+-->
 @push('js')
-
-  
-
-    {{-- @if ($alerta == "create")
-        <script>
-            toastr["success"]("Detalle de Venta Creado Correctamente", "Operación correcta");
-        </script>
-    @endif
-
-    @if ($alerta == "delete")
-        <script>
-            toastr["warning"]("Venta eliminada correctamente", "Operación correcta");
-        </script>
-    @endif
-    @if ($alerta == "update")
-        <script>
-            toastr["success"]("Venta actualizada correctamente", "Operación correcta");
-        </script>
-    @endif
-    @if ($alerta == "pay")
-        <script>
-            toastr["success"]("Venta cobrada correctamente", "Operación correcta");
-        </script>
-    @endif
-    @if ($alerta == "editPay")
-        <script>
-            toastr["success"]("Venta actualizada correctamente", "Operación correcta");
-        </script>
-    @endif
-   --}}
-
+    
     @if ($errors->any())
         <script>
             toastr["error"]("Hay errores en los datos ingresados, Por favor echa un vistaso", "Error");
         </script>
+        
     @endif
 
-   <script>
+    @if ($alerta == "create")
+        <script>
+            toastr["success"]("Compra Creada correctamente", "Operación correcta");
+        </script>
+    @endif
+    @if ($alerta == "delete")
+        <script>
+            toastr["warning"]("Compra eliminada correctamente", "Operación correcta");
+        </script>
+    @endif
+    @if ($alerta == "update")
+        <script>
+            toastr["success"]("Compra actualizada correctamente", "Operación correcta");
+        </script>
+    @endif
 
-        $(document).ready(function(){
-            
-            $('#ventaTable').DataTable({
-                
-                responsive: true,
-                autowidth: false,
-        
-                "language": {
-                    "lengthMenu": "Mostrar _MENU_ registros por página",
-                    "zeroRecords": "Nada encontrado - disculpa :(",
-                    "info": "Mostrando la página _PAGE_ de _PAGES_",
-                    "infoEmpty": "No hay registros disponibles",
-                    "infoFiltered": "(filtrado de _MAX_ registros totales)",
-                    "search": "Buscar:",
-                    "paginate": {
-                        "next": "Siguiente",
-                        "previous": "Anterior",
-                    }
-                }
-                   
-            });
-
-           
-            
-            
-        });
-
-
-       
-
-         
-
-    
-   </script>
+   <script src="{{asset('assets/js/compra.js')}}"></script>
 
 
 @endpush
