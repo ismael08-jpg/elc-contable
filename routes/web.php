@@ -4,7 +4,9 @@ use App\Http\Controllers\AdministradorController;
 use App\Http\Controllers\MaestroClienteController;
 use App\Http\Controllers\MaestroProveedorController;
 use App\Http\Controllers\UsuariosController;
+use App\Http\Controllers\DetalleVentaController;
 use App\Http\Controllers\VentaController;
+use App\Http\Controllers\CompraController;
 use App\Models\CotCatalogoCredito;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Route;
@@ -49,11 +51,21 @@ Route::put('/usuarios/update/password', [UsuariosController::class, 'update'])->
 
 /* Venta y cuentas de venta Routes*/
 Route::get('/venta', [VentaController::class, 'index'])->name('venta.index');
-Route::post('/venta/store', [VentaController::class, 'store'])->name('venta.store');
+Route::post('/venta/create', [VentaController::class, 'store'])->name('venta.store');
 Route::put('/venta/update', [VentaController::class, 'update'])->name('venta.update');
 Route::delete('/venta/destroy', [VentaController::class, 'destroy'])->name('venta.delete');
 Route::put('/venta/pay', [VentaController::class, 'pay'])->name('venta.pay');
 Route::put('/venta/edit/pay', [VentaController::class, 'editPay'])->name('venta.edit.pay');
+//-- Detalles de venta --//
+Route::get('/venta/detalle-venta/{id}', [DetalleVentaController::class, 'index'])->name('detalleVenta.index');
+Route::post('/venta/detalle-venta/create', [DetalleVentaController::class, 'store'])->name('detalleVenta.create');
+
+/* Venta y cuentas de venta Routes*/
+Route::get('/compra/{id}', [CompraController::class, 'index'])->name('compra.index');
+Route::post('/compra/create', [CompraController::class, 'store'])->name('compra.create');
+Route::put('/compra/update', [CompraController::class, 'update'])->name('compra.update');
+Route::delete('/compra/destroy', [CompraController::class, 'destroy'])->name('compra.delete');
+
 
 
 

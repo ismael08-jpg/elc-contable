@@ -11,6 +11,8 @@
              <th>Fecha en que se pagó</th>
              <th>-</th>
              <th>-</th>
+             <th>-</th>
+             <th>-</th>
         </tr>
     </thead>
     <tbody>
@@ -39,7 +41,12 @@
              <td>
                  <input type="image" onclick="editarV({{$ven->id_venta}}, {{$ven->id_cliente}},'{{$ven->credito_fiscal}}', {{$ven->monto_ven}}, '{{$ven->concepto_ven}}', '{{$ven->fecha_emision->format('Y-m-d')}}', '{{$ven->fecha_vencimiento->format('Y-m-d')}}')" class="btn-calc math sombra" height="40px" width="40px" src="{{asset('assets/img/edi.png')}}"/>
             </td>
-             
+            <td>
+                <a href="{{route('detalleVenta.index', $ven->id_venta)}}">Detalles</a>
+            </td>
+            <td>
+                <a href="{{route('compra.index', $ven->id_venta)}}">Compras</a>
+            </td>
              
          </tr>    
          @endforeach

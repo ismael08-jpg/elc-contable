@@ -33,14 +33,14 @@
           <ul class="nav">
             <li class="nav-item{{ $activePage == 'venta' ? ' active' : '' }}">
               <a class="nav-link" href="{{ route('venta.index') }}">
-                <span class="sidebar-mini"> UP </span>
+                <span class="sidebar-mini"> GV </span>
                 <span class="sidebar-normal">{{ __('Gestión de Ventas') }} </span>
               </a>
             </li>
-            <li class="nav-item{{ $activePage == 'user-management' ? ' active' : '' }}">
-              <a class="nav-link" href="{{ route('maestroCliente.index') }}">
-                <span class="sidebar-mini"> UM </span>
-                <span class="sidebar-normal"> {{ __('User Management') }} </span>
+            <li class="nav-item{{ $activePage == 'compra' ? ' active' : '' }}">
+              <a class="nav-link" href="{{ route('compra.index', 43) }}">
+                <span class="sidebar-mini"> GC </span>
+                <span class="sidebar-normal"> {{ __('Gestión de Compras') }} </span>
               </a>
             </li>
           </ul>
