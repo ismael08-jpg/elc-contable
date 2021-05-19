@@ -1,5 +1,5 @@
 <!-- Modal -->
-<div class="modal fade " id="compraDelete" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+<div class="modal fade " id="detalleDelete" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
     aria-hidden="true">
 
     <div class="modal-dialog modal-dialog-centered modal-xs" role="document">
@@ -10,10 +10,11 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="{{route('compra.delete')}}" method="POST">
+            <form action="{{route('detalleCompra.delete')}}" method="POST">
                 
                 @csrf
                 @method('delete')
+                <input type="hidden" name="did_detalle_compra" id="did_detalle_compra">
                 <input type="hidden" name="did_compra" id="did_compra">
                
 

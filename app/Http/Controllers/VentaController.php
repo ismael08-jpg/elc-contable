@@ -7,7 +7,9 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\MaestroCliente;
 use App\Models\Cliente;
 use App\Models\Ventum;
+use App\Models\Compra;
 use App\Models\CuentasCobrar;
+use App\Models\DetalleVentum;
 
 
 class VentaController extends Controller
@@ -147,16 +149,30 @@ class VentaController extends Controller
 
         //Eliminar venta
         $venta = Ventum::find($request->dId_venta);
-        //eliminamos la cuenta por cobrar
-        $cuentaCobrar = CuentasCobrar::find($venta->id_cuenta_cobrar);
-        $cuentaCobrar->delete();
-        $venta->delete();
         
-        $request->session()->put('alerta', 'delete');
-        $request->session()->put('contador', 1);
+        //valida si tiene filas en alguna otra tabla para que no se pueda eliminar
+        $compra = Compra::Select('*')->where('id_venta', '=', $request->dId_venta);
+        $detalle = DetalleVentum::Select('*')->where('id_venta', '=', $request->dId_venta);
+        
+
+        
+        if(!($compra->count() > 0 || $detalle->count() > 0)){
+            //eliminamos la cuenta por cobrar
+            $cuentaCobrar = CuentasCobrar::find($venta->id_cuenta_cobrar);
+            $cuentaCobrar->delete();
+            $venta->delete();
+            
+            $request->session()->put('alerta', 'delete');
+            $request->session()->put('contador', 1);
+        }else{
+            $request->session()->put('alerta', 'errorDelete');
+            $request->session()->put('contador', 1);
+        }
 
         return redirect()->route('venta.index');
     }
+
+    
 
 
 

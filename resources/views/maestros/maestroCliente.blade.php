@@ -224,7 +224,7 @@
                                 <div id="hiddenNitValidado">
                                     <input type="text" maxlength="50"  disabled placeholder="0000-000000-000-0" pattern="[0-9]{4}-[0-9]{6}-[0-9]{3}-[0-9]{1}" class="txt-form" required id="txtNitValidado" name="nit_niff">
                                 </div>
-                            </div>
+                            </div>  
 
                             
 

@@ -339,6 +339,7 @@ class MaestroClienteController extends Controller
 
             $ventasCliente = Ventum::where("id_cliente", '=', $request->did_cliente )->get();
 
+            //Validamos que no tengan ventas ligaddas
             if($ventasCliente->count() == 0){
 
                 $maestro = Maestrocliente::find($request->did_maestro_cliente);

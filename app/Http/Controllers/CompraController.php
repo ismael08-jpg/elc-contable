@@ -12,6 +12,7 @@ use App\Models\Proveedor;
 use App\Models\CuentasCobrar;
 use App\Models\CuentasPagar;
 use App\Models\MaestroProveedor;
+use App\Models\DetalleCompra;
 
 
 
@@ -24,7 +25,7 @@ class CompraController extends Controller
     }
 
     public function index($id, Request $request){
-
+        Auth::user()->autorizarRol([1]);
         //Validación para alertas de toastr
         if ($request->session()->has('alerta') and $request->session()->get('contador') == 1)
             {
@@ -55,7 +56,7 @@ class CompraController extends Controller
     }
 
     public function store(Request $request){
-
+        Auth::user()->autorizarRol([1]);
 
         /*Validaciones del lado del servidor*/
         $validacion = $request->validate([
@@ -109,7 +110,7 @@ class CompraController extends Controller
 
     //Update ventas, CXC y CXP
     public function update(Request $request){
-
+        Auth::user()->autorizarRol([1]);
         /*Validaciones del lado del servidor*/
         $validacion = $request->validate([
             'uid_compra' => 'required|numeric',
@@ -162,5 +163,41 @@ class CompraController extends Controller
 
 
 
-    public function destroy(){}
+    public function destroy(Request $request){
+        Auth::user()->autorizarRol([1]);
+
+        $validacion = $request->validate([
+            'did_compra' => 'required|numeric',
+        ]);
+
+        //preparamos los objetos para eliminar las fulas
+        $compra = Compra::find($request->did_compra);
+        $cuentaPagar = CuentasPagar::find($compra->id_cuenta_pagar);
+        $cuentaCobrar = CuentasCobrar::find($compra->id_cuenta_cobrar);
+    
+        //salvamos el id de la venta para poder regressar :V
+        $id_venta = $compra->id_venta;
+
+        //validamos que no hayan detalles ligados
+        $detalle = DetalleCompra::where('id_compra', '=', $request->did_compra);
+        
+        //validación
+        if($detalle->count() == 0){
+            //eliminamos
+            $compra->delete();
+            $cuentaPagar->delete();
+            $cuentaCobrar->delete();
+            
+
+            //alertas
+            $request->session()->put('alerta', 'delete');
+            $request->session()->put('contador', 1);
+        } else{
+            $request->session()->put('alerta', 'errorDelete');
+            $request->session()->put('contador', 1);
+        }
+
+        return redirect()->route('compra.index', $id_venta);
+
+    }
 }

@@ -25,6 +25,8 @@
         </div>
         @include('compra.compraTable')
         @include('compra.modals.update')
+        @include('compra.modals.delete')
+
         
     </x-table>
 </div>
@@ -52,6 +54,13 @@
             toastr["warning"]("Compra eliminada correctamente", "Operación correcta");
         </script>
     @endif
+    
+    @if ($alerta == "errorDelete")
+        <script>
+            toastr["error"]("Tienes que eliminar antes los detalles de esta compra", "No se pudo eliminar");
+        </script>
+    @endif
+
     @if ($alerta == "update")
         <script>
             toastr["success"]("Compra actualizada correctamente", "Operación correcta");

@@ -77,7 +77,11 @@
             toastr["success"]("Venta actualizada correctamente", "Operación correcta");
         </script>
     @endif
-  
+    @if ($alerta == "errorDelete")
+        <script>
+            toastr["error"]("La venta tiene compras o detalles de compra ligados", "No se pudo eliminar");
+        </script>
+    @endif
   
 
    <script>

@@ -41,3 +41,8 @@ function editarC(id_compra, id_proveedor, credito_fiscal, monto_com,
 
 
 }
+
+function eliminarC(id_compra){
+    $('#did_compra').val(id_compra);
+    $('#compraDelete').modal();
+}

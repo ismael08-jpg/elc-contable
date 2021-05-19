@@ -38,7 +38,7 @@
               </a>
             </li>
             <li class="nav-item{{ $activePage == 'compra' ? ' active' : '' }}">
-              <a class="nav-link" href="{{ route('compra.index', 43) }}">
+              <a class="nav-link" href="#">
                 <span class="sidebar-mini"> GC </span>
                 <span class="sidebar-normal"> {{ __('Gestión de Compras') }} </span>
               </a>

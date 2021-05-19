@@ -14,6 +14,7 @@
              <th>Comisión</th>
              <th>-</th>
              <th>-</th>
+             <th>-</th>
         </tr>
     </thead>
     <tbody>
@@ -48,9 +49,12 @@
 
              
 
+             <td>
+                  <a href="{{route('detalleCompra.index', $con->id_compra)}}">Detalles</a>
+            </td>
 
              <td>
-                <input type="image" onclick="eluminarV({{$con->id_venta}});"  class="btn-calc math sombra" height="40px" width="40px" 
+                <input type="image" onclick="eliminarC({{$con->id_compra}});"  class="btn-calc math sombra" height="40px" width="40px" 
                 src="{{asset('assets/img/del.png')}}"/>
              </td>
              <td>

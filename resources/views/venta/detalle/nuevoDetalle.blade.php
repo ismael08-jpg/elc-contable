@@ -15,7 +15,7 @@
         
         <div class="col-md-6">
             <label>Precio Unitario</label>
-            <input type="text"  class="txt-form" value="0" name="precio_unitario" id="precio_unitario">
+            <input type="text"  class="txt-form"  name="precio_unitario" id="precio_unitario" value="{{old('precio_unitario', 0)}}">
             @error('precio_unitario')
                         <small>*{{$message}}</small>
                     <br>
@@ -25,7 +25,7 @@
         
         <div class="col-md-6">
             <label>Cantidad</label>
-            <input type="text"  value="0" class="txt-form" name="cantidad" id="cantidad">
+            <input type="text"   class="txt-form" name="cantidad" id="cantidad" value="{{old('cantidad', 0)}}">
             @error('cantidad')
                         <small>*{{$message}}</small>
                     <br>
@@ -35,7 +35,7 @@
         
         <div class="col-md-6">
             <label>Presupuesto</label>
-            <input type="text"  class="txt-form" name="presupuesto">
+            <input type="text"  class="txt-form" name="presupuesto" value="{{old('presupuesto')}}">
             @error('presupuesto')
                         <small>*{{$message}}</small>
                     <br>
@@ -45,7 +45,7 @@
 
         <div class="col-md-6">
             <label>Ventas no Sujetas</label>
-            <input type="text"  value="0"  class="txt-form" name="ventas_no_sujetas">
+            <input type="text"    class="txt-form" name="ventas_no_sujetas" value="{{old('ventas_no_sujetas', 0)}}">
             @error('ventas_no_sujetas')
                         <small>*{{$message}}</small>
                     <br>
@@ -55,7 +55,7 @@
 
         <div class="col-md-6">
             <label>Ventas Grabadas</label>
-            <input type="text"  value="0" class="txt-form" name="ventas_grabadas">
+            <input type="text"  value="0" class="txt-form" name="ventas_grabadas"  value="{{old('ventas_grabadas')}}">
             @error('ventas_grabadas')
                         <small>*{{$message}}</small>
                     <br>
