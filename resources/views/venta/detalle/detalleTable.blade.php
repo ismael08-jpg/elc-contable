@@ -31,7 +31,7 @@
                 src="{{asset('assets/img/del.png')}}"/>
              </td>
              <td>
-                 <input type="image" onclick="editarV({{$det->id_detalle_venta}})" class="btn-calc math sombra" height="40px" width="40px" src="{{asset('assets/img/edi.png')}}"/>
+                 <input type="image" onclick="editarV({{$det->id_detalle_venta}}, {{$det->id_venta}},'{{$det->descripcion}}',{{$det->precio_unitario}},{{$det->cantidad}},{{$det->presupuesto}},{{$det->ventas_no_sujetas}},{{$det->ventas_grabadas}})" class="btn-calc math sombra" height="40px" width="40px" src="{{asset('assets/img/edi.png')}}"/>
             </td>
              
              

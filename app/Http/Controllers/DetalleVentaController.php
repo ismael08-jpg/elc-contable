@@ -73,5 +73,56 @@ class detalleVentaController extends Controller
         $request->session()->put('contador', 1);
         return redirect()->route('detalleVenta.index', $request->id_venta);
     }
+
+    public function update(Request $request)
+    {
+        Auth::user()->autorizarRol([1]);
+
+        $validacion = $request->validate([
+            'uid_detalle_venta' => 'required|numeric',
+            //'uid_venta' => 'required|numeric',
+            'udescripcion' => 'required|max:200',
+            'uprecio_unitario' => 'required|numeric|min:1',
+            'ucantidad' => 'required|numeric|min:1',
+            'upresupuesto' => 'required|numeric|min:0',
+            'uventas_no_sujetas' => 'required|numeric|min:0',
+            'uventas_grabadas' => 'required|numeric|min:0',
+        ]);
+
+        $detalle = DetalleVentum::find($request->uid_detalle_venta);
+        $detalle->descripcion = $request->udescripcion;
+        $detalle->precio_unitario  = $request->uprecio_unitario;
+        $detalle->cantidad = $request->ucantidad;
+        $detalle->presupuesto = $request->upresupuesto;
+        $detalle->ventas_no_sujetas = $request->uventas_no_sujetas;
+        $detalle->ventas_grabadas = $request->uventas_grabadas;
+        $detalle->sub_total = $request->ucantidad*$request->uprecio_unitario;
+        $detalle->save();
+        
+        //alertas
+        $request->session()->put('alerta', 'update');
+        $request->session()->put('contador', 1);
+        return redirect()->route('detalleVenta.index', $detalle->id_venta);
+
+    }
+
+    public function destroy(Request $request)
+    {
+        Auth::user()->autorizarRol([1]);
+
+        $validacion = $request->validate([
+            'did_detalle_venta' => 'required|numeric',
+        ]);
+
+        $detalle = DetalleVentum::find($request->did_detalle_venta);
+        $id = $detalle->id_venta;
+        $detalle->delete();
+        
+        //alertas
+        $request->session()->put('alerta', 'delete');
+        $request->session()->put('contador', 1);
+        return redirect()->route('detalleVenta.index', $id);
+
+    }
     
 }

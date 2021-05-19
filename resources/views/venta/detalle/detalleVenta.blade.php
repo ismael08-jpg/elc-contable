@@ -26,6 +26,8 @@
 
         <div class="m-5 my-2">
             @include('venta.detalle.nuevoDetalle')
+            @include('venta.detalle.modals.update')
+            @include('venta.detalle.modals.delete')
             
         </div>
         @include('venta.detalle.detalleTable')
@@ -104,14 +106,42 @@
                 $('#subTotal').val(subT);
                
             });
+
+
             
             
         });
 
 
-       
+    function editarV(id_detalle_venta, id_venta,descripcion,precio_unitario,cantidad,presupuesto,ventas_no_sujetas,ventas_grabadas){
+        $('#uid_detalle_venta').val(id_detalle_venta);
+        $('#uid_venta').val(id_venta);
+        $('#udescripcion').val(descripcion);
+        $('#uprecio_unitario').val(precio_unitario);
+        $('#ucantidad').val(cantidad);
+        $('#upresupuesto').val(presupuesto);
+        $('#uventas_no_sujetas').val(ventas_no_sujetas);
+        $('#uventas_grabadas').val(ventas_grabadas);
+        $('#usubTotal').val(precio_unitario*cantidad);
+  
+        
+        $('#detalleEdit').modal();
+    }
 
-         
+    $('#uprecio_unitario').on('change', function(){
+        let = precioU = $('#uprecio_unitario').val();
+        let = cant = $('#ucantidad').val();
+
+        let subT = (precioU*cant);
+        $('#usubTotal').val(subT);
+        
+    });
+
+    function eluminarV (id_detalle_venta) {
+        $('#did_detalle_venta').val(id_detalle_venta);
+        $('#detalleDelete').modal();
+    }
+       
 
     
    </script>

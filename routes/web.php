@@ -6,6 +6,8 @@ use App\Http\Controllers\MaestroProveedorController;
 use App\Http\Controllers\UsuariosController;
 use App\Http\Controllers\DetalleVentaController;
 use App\Http\Controllers\VentaController;
+use App\Http\Controllers\PaisController;
+use App\Http\Controllers\EstadoController;
 use App\Http\Controllers\CompraController;
 use App\Http\Controllers\DetalleCompraController;
 use App\Models\CotCatalogoCredito;
@@ -74,6 +76,15 @@ Route::get('/compra/detalle-compra/{id}', [DetalleCompraController::class, 'inde
 Route::post('/compra/detalle-compra/create', [DetalleCompraController::class, 'store'])->name('detalleCompra.create');
 Route::put('/compra/detalle-compra/update', [DetalleCompraController::class, 'update'])->name('detalleCompra.update');
 Route::delete('/compra/detalle-compra/destroy', [DetalleCompraController::class, 'destroy'])->name('detalleCompra.delete');
+
+/*/-- PAIS --/*/
+Route::get('pais/paraiso-fiscal', [PaisController::class, 'index'])->name('pais.index');
+Route::put('pais/paraiso-fiscal', [PaisController::class, 'update'])->name('pais.update');
+
+/*/-- Estado --/*/
+Route::get('estado/paraiso-fiscal', [EstadoController::class, 'index'])->name('estado.index');
+Route::put('estado/paraiso-fiscal', [EstadoController::class, 'update'])->name('estado.update');
+
 
 
 Route::get('/admin/index', [AdministradorController::class, 'index'])->name('administrador.index');

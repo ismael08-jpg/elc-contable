@@ -78,16 +78,23 @@
         </a>
       </li>
 
-      <li class="nav-item{{ $activePage == 'notifications' ? ' active' : '' }}">
-        <a class="nav-link" href="{{ route('maestroCliente.index') }}">
-          <i class="material-icons">notifications</i>
-          <p>{{ __('Notifications') }}</p>
+      <li class="nav-item{{ $activePage == 'pais' ? ' active' : '' }}">
+        <a class="nav-link" href="{{ route('pais.index') }}">
+          <i class="material-icons"><img src="{{asset('assets/img/pais.png')}}" height="25px" width="25px"   alt=""></i>
+          <p>{{ __('País') }}</p>
+        </a>
+      </li>
+
+      <li class="nav-item{{ $activePage == 'estado' ? ' active' : '' }}">
+        <a class="nav-link" href="{{ route('estado.index') }}">
+          <i class="material-icons"><img src="{{asset('assets/img/estado.png')}}" height="25px" width="25px"   alt=""></i>
+          <p>{{ __('Estado') }}</p>
         </a>
       </li>
 
       <li class="nav-item{{ $activePage == 'usuarios' ? ' active' : '' }}">
         <a class="nav-link" href="{{ route('usuarios.index') }}">
-          <i class="material-icons">language</i>
+          <i class="material-icons"><img class="material-icons" src="{{asset('assets/img/usuario.png')}}" height="25px" width="25px" alt=""></i>
           <p>{{ __('Usuarios') }}</p>
         </a>
       </li>
