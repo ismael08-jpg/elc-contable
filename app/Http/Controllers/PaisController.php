@@ -57,4 +57,42 @@ class PaisController extends Controller
 
         return redirect()->route('pais.index');
     }
+
+
+
+    //ajax de pais
+    public function getCodigoPais(Request $request){
+
+        Auth::user()->autorizarRol([1,2]);
+        if($request->ajax()){
+
+            $paraiso = Pais::where('id', '=', $request->paisId)->get();
+            
+            foreach($paraiso as $paraiso){
+                $codigoArray[$paraiso->id] = $paraiso->codigo;
+            }
+
+            return response()->json($codigoArray);
+
+        }
+    }
+
+    //ajax de pais
+    public function getCodigo(Request $request){
+
+        Auth::user()->autorizarRol([1,2]);
+        if($request->ajax()){
+
+            $paraiso = Pais::where('nombre_pais', '=', $request->pais)->get();
+            
+            foreach($paraiso as $paraiso){
+                $codigoArray[$paraiso->id] = $paraiso->codigo;
+            }
+
+            return response()->json($codigoArray);
+
+        }
+    }
+
+
 }

@@ -39,6 +39,9 @@ Route::get('/estados', [MaestroClienteController::class, 'getEstados']);
 Route::get('/municipios', [MaestroClienteController::class, 'getMunicipios']);
 Route::get('/pariso-pais', [MaestroClienteController::class, 'getParaiso']);
 Route::get('/pariso-estado', [MaestroClienteController::class, 'getParaisoEstado']);
+Route::get('/codigo', [PaisController::class, 'getCodigoPais']);
+Route::get('/codigoPais', [PaisController::class, 'getCodigo']);
+
 
 /* Maestro Proveedor Routes*/
 Route::get('/maestro-proveedor', [MaestroProveedorController::class, 'index'])->name('maestroProveedor.index');
