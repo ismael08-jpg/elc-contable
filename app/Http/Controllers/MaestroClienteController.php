@@ -113,28 +113,36 @@ class MaestroClienteController extends Controller
     public function store(Request $request){
         Auth::user()->autorizarRol([1]);
 
+        if($request->pais == 55){
+            $d = 12;
+        } else{
+            $d = 11;
+        }
 
         $validacion = $request->validate([
-            'condiciones_credito' => 'required',
-            'nombre_cliente' => 'required',
-            'numero_cliente_icg' => 'required',
+            //'condiciones_credito' => 'required',
+            'nombre_cliente' => 'required|max:50',
+            'numero_cliente_icg' => 'required|max:50',
             //'numero_cliente' => 'required',
-            'nombre_comercial' => 'required',
+            'nombre_comercial' => 'required|max:50',
 
-            'nombre_del_sujeto' => 'required',
-            'direccion' => 'required',
-            'pais' =>'required',
-            'codigo_pais' =>'required',
-            'ciudad' =>'required',
-            'departamento' =>'required',
-            'municipio' =>'required',
-            //'telefono_fijo' =>'required',
-            'pagina_web' =>'required',
+            'nombre_del_sujeto' => 'required|max:50',
+            //'direccion' => 'required',
+            'pais' =>'required|max:50',
+            'codigo_pais' =>'required|max:50',
+            'ciudad' =>'required|max:50',
+            'departamento' =>'required|max:50',
+            'municipio' =>'required|max:50',
+            
+
+            'telefono_fijo' =>'required|size:'.$d,
+
+            //'pagina_web' =>'required',
             'correo' =>'email|required',
-            'telefono_celular' =>'required',
+            'telefono_celular' =>'size:'.$d,
            'paraiso_fiscal' =>'required',
             'nombre_contacto' =>'required',
-            'telefono_contacto' =>'required',
+            'telefono_contacto' =>'required|size:'.$d,
             'cargo_contacto' =>'required',
             //'pagina_web_contacto' =>
             'correo_contacto' =>'email|required',
@@ -153,9 +161,13 @@ class MaestroClienteController extends Controller
             'cta_activo_uno' =>'required',
              //'cta_activo_dos' =>
             'comision' => 'required|numeric|min:0.00',
-            'emitira_nc' =>'required',
+            'emitira_nc' =>'required|max:2',
             //'condiciones_operacion' =>'required',
         ]);
+
+        $mas = '+';
+        
+        
 
         $cliente = new Cliente();
 
@@ -163,12 +175,17 @@ class MaestroClienteController extends Controller
         $cliente->save();
 
         $maestro = new Maestrocliente();
+        if($request->hasFile('condiciones_credito'))
         $maestro->condiciones_credito = $request->condiciones_credito;
+
         $maestro->id_cliente = $cliente->id_cliente;
         $maestro->numero_cliente_icg = $request->numero_cliente_icg;
+        if($request->hasFile('numero_cliente'))
         $maestro->numero_cliente = $request->numero_cliente;
         $maestro->nombre_comercial = $request->nombre_comercial;
         $maestro->nombre_del_sujeto = $request->nombre_del_sujeto;
+
+        if($request->hasFile('direccion'))
         $maestro->direccion = $request->direccion;
 
         $pai = Pais::select('nombre_pais')->where('id', '=', $request->pais)->first();
@@ -181,14 +198,16 @@ class MaestroClienteController extends Controller
         $maestro->departamento = $dep->nombre_estado;
 
         $maestro->municipio = $request->municipio;
-        $maestro->telefono_fijo = $request->telefono_fijo;
+        
+        $maestro->telefono_fijo = $mas.$request->telefono_fijo; //telefono
         $maestro->pagina_web = $request->pagina_web;
         $maestro->correo = $request->correo;
-        $maestro->telefono_celular = $request->telefono_celular;
+        if($request->hasFile('telefono_celular'))
+        $maestro->telefono_celular = $mas.$request->telefono_celular; //Telefono
         $maestro->paraiso_fiscal = $request->paraiso_fiscal;
         $maestro->nombre_contacto = $request->nombre_contacto;
         $maestro->cargo_contacto = $request->cargo_contacto;
-        $maestro->telefono_contacto = $request->telefono_contacto;
+        $maestro->telefono_contacto = $mas.$request->telefono_contacto; //telefono
         $maestro->pagina_web_contacto = $request->pagina_web_contacto;
         $maestro->correo_contacto = $request->correo_contacto;
         $maestro->moneda_principal = $request->moneda_principal;
@@ -203,12 +222,15 @@ class MaestroClienteController extends Controller
         $maestro->porc_retencion = $request->porc_retencion;
         $maestro->percepcion = $request->percepcion;
         $maestro->cta_pasivo_uno = $request->cta_pasivo_uno;
+        if($request->hasFile('cta_pasivo_dos'))
         $maestro->cta_pasivo_dos = $request->cta_pasivo_dos;
         $maestro->cta_activo_uno = $request->cta_activo_uno;
+        if($request->hasFile('cta_activo_dos'))
         $maestro->cta_activo_dos = $request->cta_activo_dos;
         $maestro->comision = $request->comision;
         $maestro->emitira_nc = $request->emitira_nc;
 
+        if($request->hasFile('ondiciones_operacion'))
         $maestro->condiciones_operacion = $request->condiciones_operacion;
         $maestro->save();
 

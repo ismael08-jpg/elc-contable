@@ -7,6 +7,21 @@
     }
 
 
+     //Botón de Sow y hide nuevo proveedor
+     let banderaHide = 0;
+     $("#nuevoMaestro").hide('slow'); 
+      
+     $('#btnNuenvoMaestro').on('click', function(){
+         if(banderaHide==0){
+             $("#nuevoMaestro").show('slow'); 
+             banderaHide = 1;
+         }else{
+             $("#nuevoMaestro").hide('slow'); 
+             banderaHide = 0;
+         }
+     });
+
+
     $('#fpais').on('change', function(){
         let pais = $('#fpais').val();
         let codigo;
@@ -37,6 +52,8 @@
 
     });
 
+   
+
 
     //
     $('#txtPais').on('change', function(){
@@ -44,6 +61,36 @@
         let codigo;
         if($.trim(paisId) != ''){
 
+            // Código de telefono
+            if(paisId != "Estados Unidos")
+            {
+                document.getElementById("tFijo").setAttribute("pattern", "[0-9]{11}");
+                document.getElementById("tFijo").setAttribute("placeholder", "50300000000");//
+
+                document.getElementById("tMovil").setAttribute("pattern", "[0-9]{11}");
+                document.getElementById("tMovil").setAttribute("placeholder", "50300000000");
+
+                document.getElementById("tContacto").setAttribute("pattern", "[0-9]{11}");
+                document.getElementById("tContacto").setAttribute("placeholder", "50300000000");
+            } else{
+                document.getElementById("tFijo").setAttribute("pattern", "[0-9]{12}");
+                document.getElementById("tFijo").setAttribute("placeholder", "150300000000");
+
+                document.getElementById("tMovil").setAttribute("pattern", "[0-9]{12}");
+                document.getElementById("tMovil").setAttribute("placeholder", "150300000000");
+
+                document.getElementById("tContacto").setAttribute("pattern", "[0-9]{12}");
+                document.getElementById("tContacto").setAttribute("placeholder", "150300000000");
+            }
+
+            if(paisId != "Estados Unidos")
+            {
+                document.getElementById("tFijo").setAttribute("pattern", "[0-9]{11}");
+                document.getElementById("tFijo").setAttribute("placeholder", "00088888888");
+            } else{
+                document.getElementById("tFijo").setAttribute("pattern", "[0-9]{12}");
+                document.getElementById("tFijo").setAttribute("placeholder", "000088887777");
+            }
                 
                 
             $.get('codigo', {paisId: paisId}, function(codigos){

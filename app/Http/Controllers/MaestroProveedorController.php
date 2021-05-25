@@ -219,7 +219,14 @@ class MaestroProveedorController extends Controller
             $proveedor->nombre_proveedor = $request->fnombre_proveedor;
             $proveedor->save();
 
+
+
+
             $maestro = Maestroproveedor::find($request->fid_maestro_proveedor);
+
+
+            $mas = '+';
+            $tFijo =  $mas.$request->ftelefono_fijo;
             $maestro->condiciones_credito = $request->fcondiciones_credito;
             $maestro->id_proveedor = $request->fid_proveedor;
             $maestro->numero_proveedor_icg = $request->fnumero_proveedor_icg;
@@ -232,7 +239,7 @@ class MaestroProveedorController extends Controller
             $maestro->ciudad = $request->fciudad;
             $maestro->departamento = $request->fdepartamento;
             $maestro->municipio = $request->fmunicipio;
-            $maestro->telefono_fijo = $request->ftelefono_fijo;
+            $maestro->telefono_fijo = $tFijo;
             $maestro->pagina_web = $request->fpagina_web;
             $maestro->correo = $request->fcorreo;
             $maestro->telefono_celular = $request->ftelefono_celular;
