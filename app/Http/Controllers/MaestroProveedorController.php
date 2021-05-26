@@ -108,15 +108,15 @@ class MaestroProveedorController extends Controller
         $proveedor->save();
 
         $maestro = new Maestroproveedor();
-        if($request->hasFile('condiciones_credito'))
+        if($request->has('condiciones_credito'))
         $maestro->condiciones_credito = $request->condiciones_credito;
         $maestro->id_proveedor = $proveedor->id_proveedor;
         $maestro->numero_proveedor_icg = $request->numero_proveedor_icg;
-        if($request->hasFile('numero_proveedor'))
+        if($request->has('numero_proveedor'))
         $maestro->numero_proveedor = $request->numero_proveedor;
         $maestro->nombre_comercial = $request->nombre_comercial;
         $maestro->nombre_del_sujeto = $request->nombre_del_sujeto;
-        if($request->hasFile('direccion'))
+        if($request->has('direccion'))
         $maestro->direccion = $request->direccion;
         
         $pai = Pais::select('nombre_pais')->where('id', '=', $request->pais)->first();
@@ -133,7 +133,7 @@ class MaestroProveedorController extends Controller
         $maestro->telefono_fijo = $request->telefono_fijo;
         $maestro->pagina_web = $request->pagina_web;
         $maestro->correo = $request->correo;
-        if($request->hasFile('telefono_celular'))
+        if($request->has('telefono_celular'))
         $maestro->telefono_celular = $request->telefono_celular;
         $maestro->paraiso_fiscal = $request->paraiso_fiscal;
         $maestro->nombre_contacto = $request->nombre_contacto;
@@ -153,15 +153,15 @@ class MaestroProveedorController extends Controller
         $maestro->porc_retencion = $request->porc_retencion;
         $maestro->percepcion = $request->percepcion;
         $maestro->cta_pasivo_uno = $request->cta_pasivo_uno;
-        if($request->hasFile('cta_pasivo_dos'))
+        if($request->has('cta_pasivo_dos'))
         $maestro->cta_pasivo_dos = $request->cta_pasivo_dos;
         $maestro->cta_activo_uno = $request->cta_activo_uno;
-        if($request->hasFile('cta_activo_dos'))
+        if($request->has('cta_activo_dos'))
         $maestro->cta_activo_dos = $request->cta_activo_dos;
         $maestro->comision = $request->comision;
         $maestro->emitira_nc = $request->emitira_nc;
 
-        if($request->hasFile('ondiciones_operacion'))
+        if($request->has('ondiciones_operacion'))
         $maestro->condiciones_operacion = $request->condiciones_operacion;
         $maestro->save();
 
@@ -246,15 +246,15 @@ class MaestroProveedorController extends Controller
 
 
            
-            if($request->hasFile('condiciones_credito'))
+            if($request->has('condiciones_credito'))
             $maestro->condiciones_credito = $request->fcondiciones_credito;
             $maestro->id_proveedor = $request->fid_proveedor;
             $maestro->numero_proveedor_icg = $request->fnumero_proveedor_icg;
-            if($request->hasFile('fnumero_proveedor'))
+            if($request->has('fnumero_proveedor'))
             $maestro->numero_proveedor = $request->fnumero_proveedor;
             $maestro->nombre_comercial = $request->fnombre_comercial;
             $maestro->nombre_del_sujeto = $request->fnombre_del_sujeto;
-            if($request->hasFile('fdireccion'))
+            if($request->has('fdireccion'))
             $maestro->direccion = $request->fdireccion;
             $maestro->pais = $request->fpais;
             $maestro->codigo_pais = $request->fcodigo_pais;
@@ -262,16 +262,16 @@ class MaestroProveedorController extends Controller
             $maestro->departamento = $request->fdepartamento;
             $maestro->municipio = $request->fmunicipio;
             $maestro->telefono_fijo = $request->ftelefono_fijo;
-            if($request->hasFile('fpagina_web'))
+            if($request->has('fpagina_web'))
             $maestro->pagina_web = $request->fpagina_web;
             $maestro->correo = $request->fcorreo;
-            if($request->hasFile('ftelefono_celular'))
+            if($request->has('ftelefono_celular'))
             $maestro->telefono_celular = $request->ftelefono_celular;
             $maestro->paraiso_fiscal = $request->fparaiso_fiscal;
             $maestro->nombre_contacto = $request->fnombre_contacto;
             $maestro->cargo_contacto = $request->fcargo_contacto;
             $maestro->telefono_contacto = $request->ftelefono_contacto;
-            if($request->hasFile('fpagina_web_contacto'))
+            if($request->has('fpagina_web_contacto'))
             $maestro->pagina_web_contacto = $request->fpagina_web_contacto;
             $maestro->correo_contacto = $request->fcorreo_contacto;
             $maestro->moneda_principal = $request->fmoneda_principal;
@@ -286,14 +286,14 @@ class MaestroProveedorController extends Controller
             $maestro->porc_retencion = $request->fporc_retencion;
             $maestro->percepcion = $request->fpercepcion;
             $maestro->cta_pasivo_uno = $request->fcta_pasivo_uno;
-            if($request->hasFile('fcta_pasivo_dos'))
+            if($request->has('fcta_pasivo_dos'))
             $maestro->cta_pasivo_dos = $request->fcta_pasivo_dos;
             $maestro->cta_activo_uno = $request->fcta_activo_uno;
-            if($request->hasFile('fcta_activo_dos'))
+            if($request->has('fcta_activo_dos'))
             $maestro->cta_activo_dos = $request->fcta_activo_dos;
             $maestro->comision = $request->fcomision;
             $maestro->emitira_nc = $request->femitira_nc;
-            if($request->hasFile('fcondiciones_operacion'))
+            if($request->has('fcondiciones_operacion'))
             $maestro->condiciones_operacion = $request->fcondiciones_operacion;
             $maestro->save();
 

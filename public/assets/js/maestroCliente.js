@@ -73,9 +73,13 @@
         }else{
             $('#confirme').append('Nit o Niff: <b>'+$('#txtNit_niff').val()+'</b><br>');
             $('#confirme').append('Número de registro fiscal: <b>'+$('#txtNRegistro').val()+'</b><br>');
-        }    
-        $('#confirme').append('Cobra IVA: <b>'+$('#cobraIva').val()+'</b><br>');
-        $('#confirme').append('Entera IVA: <b>'+$('#enteraIva').val()+'</b><br>');
+        }   
+        
+        $('#confirme').append('Cobra IVA: <b>'+$('input[name="cobra_iva"]:checked').val()+'</b><br>');
+        $('#confirme').append('Entera IVA: <b>'+$('input[name="entera_iva"]:checked').val()+'</b><br>');
+
+
+
         $('#confirme').append('Porcentaje Retención: <b>'+$('#porc_retencion').val()+'</b><br>');
         $('#confirme').append('Percepción: <b>'+$('input[name="percepcion"]:checked').val()+'</b><br>');
         $('#confirme').append('Cuenta Pasivo #1: <b>'+$('#cta_pasivo_uno').val()+'</b><br>');
