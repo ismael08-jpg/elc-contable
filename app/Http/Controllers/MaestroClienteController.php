@@ -204,6 +204,7 @@ class MaestroClienteController extends Controller
         $maestro->pagina_web = $request->pagina_web;
         $maestro->correo = $request->correo;
         if($request->hasFile('telefono_celular'))
+        $maestro->telefono_celular = $request->telefono_celular;
         $maestro->paraiso_fiscal = $request->paraiso_fiscal;
         $maestro->nombre_contacto = $request->nombre_contacto;
         $maestro->cargo_contacto = $request->cargo_contacto;
@@ -249,31 +250,42 @@ class MaestroClienteController extends Controller
         public function update(Request $request){
             Auth::user()->autorizarRol([1]);
 
+            if($request->pais == "Estados Unidos"){
+                $d = 16;
+            } else{
+                $d = 15;
+            }
+
+            //Si no pasa las validaciones queremos que abra el modal XD
+            $request->session()->put('alerta', 'modal');
+            $request->session()->put('contador', 1);
+    
+
             $validacion = $request->validate([
-                'fcondiciones_credito' => 'required',
+                'fcondiciones_credito' => 'max:200',//-----------
                 'fid_maestro_cliente' => 'required',
                 'fid_cliente' => 'required',
                 'fnombre_cliente' => 'required',
                 'fnumero_cliente_icg' => 'required',
-                //'numero_cliente' => 'required',
+                'numero_cliente' => 'max:50', //----
                 'fnombre_comercial' => 'required',
 
                 'fnombre_del_sujeto' => 'required',
-                'fdireccion' => 'required',
+                'fdireccion' => 'max:200', //---------------
                 'fpais' =>'required',
                 'fcodigo_pais' =>'required',
                 'fciudad' =>'required',
-                'fdepartamento' =>'required',
-                'fmunicipio' =>'required',
-                //'ftelefono_fijo' =>'required',
-                'fpagina_web' =>'required',
+                'fdepartamento' =>'required|max:50',
+                'fmunicipio' =>'required|max:50',
+                'ftelefono_fijo' =>'required|max:'.$d, 
+                'fpagina_web' =>'max:200', //----------------------
                 'fcorreo' =>'email|required',
-                'ftelefono_celular' =>'required',
+                'ftelefono_celular' =>'max:'.$d,// ------------------------
                 'fparaiso_fiscal' =>'required',
                 'fnombre_contacto' =>'required',
-                'ftelefono_contacto' =>'required',
+                'ftelefono_contacto' =>'required|max:'.$d,
                 'fcargo_contacto' =>'required',
-                //'fpagina_web_contacto' =>
+                'fpagina_web_contacto' => 'max:200', ///-----------------
                 'fcorreo_contacto' =>'email|required',
                 'fmoneda_principal' =>'required',
                 'ftipo_cambio' =>'required',
@@ -286,27 +298,31 @@ class MaestroClienteController extends Controller
                 'fporc_retencion' => 'required|numeric|min:0.00',
                 'fpercepcion' =>'required',
                 'fcta_pasivo_uno' =>'required',
-                //'fcta_pasivo_dos' =>'required',
+                'fcta_pasivo_dos' =>'max:50',//-----------
                 'fcta_activo_uno' =>'required',
-                 //'fcta_activo_dos' =>
+                'fcta_activo_dos' =>'max:50',//-----------
                 'fcomision' => 'required|numeric|min:0.00',
                 'femitira_nc' =>'required',
-                //'fcondiciones_operacion' =>'required',
+                'fcondiciones_operacion' =>'max:200',//-----------
             ]);
 
             $cliente = Cliente::find($request->fid_cliente);
             $cliente->nombre_cliente = $request->fnombre_cliente;
             $cliente->save();
 
+            
             $maestro = Maestrocliente::find($request->fid_maestro_cliente);
 
+            if($request->hasFile('fid_maestro_cliente'))
             $maestro->condiciones_credito = $request->fcondiciones_credito;
 
             $maestro->id_cliente = $request->fid_cliente;
             $maestro->numero_cliente_icg = $request->fnumero_cliente_icg;
+            if($request->hasFile('fnumero_cliente'))
             $maestro->numero_cliente = $request->fnumero_cliente;
             $maestro->nombre_comercial = $request->fnombre_comercial;
             $maestro->nombre_del_sujeto = $request->fnombre_del_sujeto;
+            if($request->hasFile('fdireccion'))
             $maestro->direccion = $request->fdireccion;
             $maestro->pais = $request->fpais;
             $maestro->codigo_pais = $request->fcodigo_pais;
@@ -314,6 +330,7 @@ class MaestroClienteController extends Controller
             $maestro->departamento = $request->fdepartamento;
             $maestro->municipio = $request->fmunicipio;
             $maestro->telefono_fijo = $request->ftelefono_fijo;
+            if($request->hasFile('fpagina_web'))
             $maestro->pagina_web = $request->fpagina_web;
             $maestro->correo = $request->fcorreo;
             $maestro->telefono_celular = $request->ftelefono_celular;
@@ -321,6 +338,7 @@ class MaestroClienteController extends Controller
             $maestro->nombre_contacto = $request->fnombre_contacto;
             $maestro->cargo_contacto = $request->fcargo_contacto;
             $maestro->telefono_contacto = $request->ftelefono_contacto;
+            if($request->hasFile('fpagina_web_contacto'))
             $maestro->pagina_web_contacto = $request->fpagina_web_contacto;
             $maestro->correo_contacto = $request->fcorreo_contacto;
             $maestro->moneda_principal = $request->fmoneda_principal;
@@ -335,12 +353,15 @@ class MaestroClienteController extends Controller
             $maestro->porc_retencion = $request->fporc_retencion;
             $maestro->percepcion = $request->fpercepcion;
             $maestro->cta_pasivo_uno = $request->fcta_pasivo_uno;
+            if($request->hasFile('fcta_activo_dos'))
             $maestro->cta_pasivo_dos = $request->fcta_pasivo_dos;
             $maestro->cta_activo_uno = $request->fcta_activo_uno;
+            if($request->hasFile('fcta_activo_dos'))
             $maestro->cta_activo_dos = $request->fcta_activo_dos;
             $maestro->comision = $request->fcomision;
             $maestro->emitira_nc = $request->femitira_nc;
 
+            if($request->hasFile('fcondiciones_operacion'))
             $maestro->condiciones_operacion = $request->fcondiciones_operacion;
             $maestro->save();
 

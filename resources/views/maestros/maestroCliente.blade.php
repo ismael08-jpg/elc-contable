@@ -64,6 +64,13 @@
     </script>
 @endif
 
+@if ($errors->any() && $alerta == "modal")
+    <script>
+        toastr["error"]("Hay errores con los datos ingresados", "Error");
+        $('#modalEdit').modal();  
+    </script>
+@endif
+
    
 @if ($alerta == "create")
     <script>

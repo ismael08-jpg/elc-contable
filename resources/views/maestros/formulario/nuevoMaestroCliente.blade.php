@@ -46,7 +46,7 @@
             @enderror
         </div>
         <div class="col-md-6">
-            <label>¿Es paraiso fiscal?</label><br>
+            <label>¿Es paraiso fiscal?</label><br>           
             <div id="paraiso_fiscal">
                 <input type="radio" name="paraiso_fiscal" required value="Si"  onclick="des(this.form,0)" {{ old('paraiso_fiscal')=="Si" ? 'checked='.'"'.'checked'.'"' : '' }}>
                 <label for="Si">Si</label><br>
@@ -409,4 +409,6 @@
 {{-- <div class="row justify-content-center">
     <input type="submit" value="Crear" class=" mt-5 btn btn-radius btn-azul">
 </div> --}}
+
+
 </form>   

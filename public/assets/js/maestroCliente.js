@@ -1,4 +1,4 @@
-    
+    let fpais;
    
    /*Disculpa por el desorden de código*/
     var viejo = 255;

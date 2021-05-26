@@ -40,9 +40,8 @@
                     let p2 = $(this).val().slice(7,11);
                     let p3 = $(this).val().slice(12,14);
 
-                    console.log($(this).val().slice(2,5));
-                    console.log($(this).val().slice(6,10));
-                    console.log($(this).val().slice(11,15));
+                  
+                    
 
                     $(this).val("+1("+p1+")"+p2+"-"+p3);
 
@@ -51,9 +50,8 @@
                     let p2 = $(this).val().slice(6,10);
                     let p3 = $(this).val().slice(11,15);
 
-                    console.log($(this).val().slice(2,5));
-                    console.log($(this).val().slice(6,10));
-                    console.log($(this).val().slice(11,15));
+                 
+                    
 
                     $(this).val("+("+p1+")"+p2+"-"+p3);
                 }
@@ -100,9 +98,8 @@
                     let p2 = $(this).val().slice(7,11);
                     let p3 = $(this).val().slice(12,14);
 
-                    console.log($(this).val().slice(2,5));
-                    console.log($(this).val().slice(6,10));
-                    console.log($(this).val().slice(11,15));
+                    
+                    
 
                     $(this).val("+1("+p1+")"+p2+"-"+p3);
 
@@ -111,9 +108,8 @@
                     let p2 = $(this).val().slice(6,10);
                     let p3 = $(this).val().slice(11,15);
 
-                    console.log($(this).val().slice(2,5));
-                    console.log($(this).val().slice(6,10));
-                    console.log($(this).val().slice(11,15));
+                    
+
 
                     $(this).val("+("+p1+")"+p2+"-"+p3);
                 }
@@ -158,9 +154,7 @@
                     let p2 = $(this).val().slice(7,11);
                     let p3 = $(this).val().slice(12,14);
 
-                    console.log($(this).val().slice(2,5));
-                    console.log($(this).val().slice(6,10));
-                    console.log($(this).val().slice(11,15));
+                    
 
                     $(this).val("+1("+p1+")"+p2+"-"+p3);
 
@@ -169,10 +163,8 @@
                     let p2 = $(this).val().slice(6,10);
                     let p3 = $(this).val().slice(11,15);
 
-                    console.log($(this).val().slice(2,5));
-                    console.log($(this).val().slice(6,10));
-                    console.log($(this).val().slice(11,15));
-
+                 
+                    
                     $(this).val("+("+p1+")"+p2+"-"+p3);
                 }
             }
@@ -203,11 +195,8 @@
 
                 let p1 = $(this).val().slice(0,4);
                 let p2 = $(this).val().slice(5,11);
-                // let p3 = $(this).val().slice(12,14);
-
-                // console.log($(this).val().slice(2,5));
-                // console.log($(this).val().slice(6,10));
-                // console.log($(this).val().slice(11,15));
+                
+                
 
                 $(this).val(p1+"-"+p2+"-");
 
@@ -236,7 +225,8 @@
                 let old = $('#txtEstado').data('old') != '' ?  $('#txtEstado').data('old') : '';
                 //alert("Estado Viejo "+old);
                 viejo = $('#txtEstado').data('old') != '' ?  $('#txtEstado').data('old') : '';
-                console.log(viejo);
+               
+                
                 $('#test').val($('#txtEstado').data('old') != '' ?  $('#txtEstado').data('old') : '');
                 $('#txtEstado').empty();
                 $('#txtEstado').append("<option value=''>Seleccione una estado</option>");
@@ -340,7 +330,7 @@
 
                     $('#codigoPais').val();
                     
-                    //console.log(codigos);
+                   
                     $.each(codigos, function(index, value){
                         codigo = value;
                     });
@@ -372,23 +362,7 @@
     $('#txtPais').on('change', loadPais);
     $('#txtEstado').on('change', loadEstado);
    
-    $('#fpais').on('change', function(){
-
-        let p = $('#fpais').val();
-        
-        if( p == "El Salvador"){
-            document.getElementById("fnit_niff").setAttribute("pattern", "[0-9]{4}-[0-9]{6}-[0-9]{3}-[0-9]{1}");
-            document.getElementById("fnit_niff").setAttribute("placeholder", "0000-256359-656-6");
-           
-           
-        } else{
-            
-            document.getElementById("fnit_niff").removeAttribute("pattern");
-            document.getElementById("fnit_niff").removeAttribute("placeholder");
-            
-        }
-        
-    });
+    
 
    
 
@@ -397,7 +371,8 @@
         let estadoId = $('#txtEstado').val();
 
         
-        console.log(estadoId);
+        
+        
        
 
         if($.trim(estadoId) != ''){
@@ -446,3 +421,270 @@
 
         
     }
+
+
+    /// UPDATE -----------------------------------------------------
+    //ftelefono_contacto
+    //ftelefono_fijo
+    //ftelefono_celular
+    //fnit_niff
+    
+    
+    //Cuando cambia El país
+    $('#fpais').on('change', function(){
+
+        let p = $('#fpais').val();
+        
+        if( p == "El Salvador"){
+            document.getElementById("fnit_niff").setAttribute("pattern", "[0-9]{4}-[0-9]{6}-[0-9]{3}-[0-9]{1}");
+            document.getElementById("fnit_niff").setAttribute("placeholder", "0000-256359-656-6");
+            fpais = "sv"
+           
+        } else if(p == "Estados Unidos"){
+            fpais = "us"
+        }
+         else{
+            fpais = "ot"
+            document.getElementById("fnit_niff").removeAttribute("pattern");
+            document.getElementById("fnit_niff").removeAttribute("placeholder");
+            
+        }
+        
+    });
+
+
+    //Telefono contacto
+    
+    $( "#ftelefono_contacto" ).keypress(function() {
+        let fcontador=0;
+        let num = 15;
+
+        if($("#fpais").val()== "Estados Unidos"){
+            num = 16;
+            fcontador=1;
+        } else{
+            num = 15;
+            fcontador=0;
+        }
+
+        if (event.which < 48 || event.which > 57 || this.value.length === num) {
+            return false;
+        }
+
+        if($(this).val().length>0){
+            let valor = $(this).val();
+
+            if($(this).val().length==1){
+                if(fpais == "us"){
+                    $(this).val("+1("+valor);
+                    fcontador = 1;
+                }else{
+                    $(this).val("+("+valor);
+                    fcontador = 0;
+                }
+            }else if($(this).val().length==5+fcontador){
+                $(this).val(valor+")");
+            } else if($(this).val().length==10+fcontador){
+                $(this).val(valor+"-");
+                
+            }else if($(this).val().length>14+fcontador){
+                 
+
+                if(paisValido=="us"){
+                    let p1 = $(this).val().slice(2,6);
+                    let p2 = $(this).val().slice(7,11);
+                    let p3 = $(this).val().slice(12,14);
+
+                 
+
+                    $(this).val("+1("+p1+")"+p2+"-"+p3);
+
+                } else{
+                    let p1 = $(this).val().slice(2,5);
+                    let p2 = $(this).val().slice(6,10);
+                    let p3 = $(this).val().slice(11,15);
+
+                   
+                    
+
+                    $(this).val("+("+p1+")"+p2+"-"+p3);
+                }
+
+
+            }
+        }
+    });
+
+
+    //--------------TELÉFONO FIJO-------------------------
+
+    $( "#ftelefono_fijo" ).keypress(function() {
+
+        
+        let fcontador=0;
+        let num = 15;
+
+        if($("#fpais").val()== "Estados Unidos"){
+            num = 16;
+            fcontador=1;
+        } else{
+            num = 15;
+            fcontador=0;
+        }
+
+        if (event.which < 48 || event.which > 57 || this.value.length === num) {
+            return false;
+        }
+
+        if($(this).val().length>0){
+            let valor = $(this).val();
+
+            if($(this).val().length==1){
+                if(fpais == "us"){
+                    $(this).val("+1("+valor);
+                    fcontador = 1;
+                }else{
+                    $(this).val("+("+valor);
+                    fcontador = 0;
+                }
+            }else if($(this).val().length==5+fcontador){
+                $(this).val(valor+")");
+            } else if($(this).val().length==10+fcontador){
+                $(this).val(valor+"-");
+                
+            }else if($(this).val().length>14+fcontador){
+                 
+
+                if(paisValido=="us"){
+                    let p1 = $(this).val().slice(2,6);
+                    let p2 = $(this).val().slice(7,11);
+                    let p3 = $(this).val().slice(12,14);
+
+                    
+
+                    $(this).val("+1("+p1+")"+p2+"-"+p3);
+
+                } else{
+                    let p1 = $(this).val().slice(2,5);
+                    let p2 = $(this).val().slice(6,10);
+                    let p3 = $(this).val().slice(11,15);
+
+                    $(this).val("+("+p1+")"+p2+"-"+p3);
+                }
+
+
+            }
+        }
+    });
+
+    //----------------TELEFONO CELULAR-----------------------//
+
+
+    $( "#ftelefono_celular" ).keypress(function() {
+
+        
+        let fcontador=0;
+        let num = 15;
+
+        if($("#fpais").val()== "Estados Unidos"){
+            num = 16;
+            fcontador=1;
+        } else{
+            num = 15;
+            fcontador=0;
+        }
+
+        if (event.which < 48 || event.which > 57 || this.value.length === num) {
+            return false;
+        }
+
+        if($(this).val().length>0){
+            let valor = $(this).val();
+
+            if($(this).val().length==1){
+                if(fpais == "us"){
+                    $(this).val("+1("+valor);
+                    fcontador = 1;
+                }else{
+                    $(this).val("+("+valor);
+                    fcontador = 0;
+                }
+            }else if($(this).val().length==5+fcontador){
+                $(this).val(valor+")");
+            } else if($(this).val().length==10+fcontador){
+                $(this).val(valor+"-");
+                
+            }else if($(this).val().length>14+fcontador){
+                 
+
+                if(paisValido=="us"){
+                    let p1 = $(this).val().slice(2,6);
+                    let p2 = $(this).val().slice(7,11);
+                    let p3 = $(this).val().slice(12,14);
+
+                   
+
+                    $(this).val("+1("+p1+")"+p2+"-"+p3);
+
+                } else{
+                    let p1 = $(this).val().slice(2,5);
+                    let p2 = $(this).val().slice(6,10);
+                    let p3 = $(this).val().slice(11,15);
+
+                  
+
+                    $(this).val("+("+p1+")"+p2+"-"+p3);
+                }
+
+
+            }
+        }
+    });
+
+     //Validar Nit de EL SALVADOR ---------------
+     $( "#fnit_niff" ).keypress(function() {
+        
+        if($("#fpais").val()== "El Salvador"){
+
+            if (event.which < 48 || event.which > 57 || this.value.length === 17) {
+                return false;
+            }
+    
+            if($(this).val().length>0){
+    
+                let valor = $(this).val();
+    
+                if($(this).val().length==4){
+                    $(this).val(valor+"-"); 
+                }else if($(this).val().length==11){
+    
+                    let p1 = $(this).val().slice(0,4);
+                    let p2 = $(this).val().slice(5,11);
+                    
+                    
+    
+                    $(this).val(p1+"-"+p2+"-");
+    
+                    
+                }else if($(this).val().length==15){
+                    let p1 = $(this).val().slice(0,4);
+                    let p2 = $(this).val().slice(5,11);
+                    let p3 = $(this).val().slice(12,15);
+                 
+                    $(this).val(p1+"-"+p2+"-"+p3+"-");
+    
+                }
+            }
+           
+        } 
+
+        
+                    
+        
+
+        
+    });
+
+   
+        
+    
