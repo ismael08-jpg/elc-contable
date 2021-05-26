@@ -58,50 +58,8 @@
             @enderror
         </div>
 
-        <div class="col-md-12">
-            <hr>
-            <center><h3 class="mt-3">Persona de Contacto</h3></center>
-        </div>
         <hr>
-        <div class="col-md-6">
-            <label>Nombre<b>*</b></label>
-            <input type="text" maxlength="50" value="{{old('nombre_contacto')}}"  class="txt-form" required name="nombre_contacto" id="nombre_contacto">
-            @error('nombre_contacto')
-            <small>*{{$message}}</small>
-            @enderror
-        </div>
-        <div class="col-md-6">
-            <label>Cargo<b>*</b></label>
-            <input type="text" maxlength="50"  class="txt-form" value="{{old('cargo_contacto')}}" required name="cargo_contacto" id="cargo_contacto">
-            @error('cargo_contacto')
-            <small>*{{$message}}</small>
-            @enderror
-        </div>
-        <div class="col-md-6">
-            <label>Página web</label>
-            <input type="text" maxlength="50"  class="txt-form" value="{{old('pagina_web_contacto')}}" name="pagina_web_contacto" id="pagina_web_contacto" >
-            @error('pagina_web_contacto')
-            <small>*{{$message}}</small>
-            @enderror
-        </div>
-        <div class="col-md-6">
-            <label>Correo <b>*</b></label>
-            <input type="email" placeholder="someone@example.com" value="{{old('correo_contacto')}}" class="txt-form" required name="correo_contacto" id="correo_contacto">
-            @error('correo_contacto')
-            <small>*{{$message}}</small>
-            @enderror
-        </div>
-        <div class="col-md-6">
-            <label>Teléfono Móvil Contacto <b>*</b></label>
-            <input type="text" maxlength="50" required value="{{old('telefono_contacto')}}"  class="txt-form" name="telefono_contacto" id="tContacto">
-            @error('telefono_contacto')
-            <small>*{{$message}}</small>
-            @enderror
-        </div> 
- 
-        <!-- que si -->
-       <hr>
-        
+         
         <div class="col-md-12">
             <center><h3> Dirección</h3></center>
         </div>
@@ -168,6 +126,51 @@
                     @enderror
                 </div>
 
+        <div class="col-md-12">
+            <hr>
+            <center><h3 class="mt-3">Persona de Contacto</h3></center>
+        </div>
+        <hr>
+        <div class="col-md-6">
+            <label>Nombre<b>*</b></label>
+            <input type="text" maxlength="50" value="{{old('nombre_contacto')}}"  class="txt-form" required name="nombre_contacto" id="nombre_contacto">
+            @error('nombre_contacto')
+            <small>*{{$message}}</small>
+            @enderror
+        </div>
+        <div class="col-md-6">
+            <label>Cargo<b>*</b></label>
+            <input type="text" maxlength="50"  class="txt-form" value="{{old('cargo_contacto')}}" required name="cargo_contacto" id="cargo_contacto">
+            @error('cargo_contacto')
+            <small>*{{$message}}</small>
+            @enderror
+        </div>
+        <div class="col-md-6">
+            <label>Página web</label>
+            <input type="text" maxlength="50"  class="txt-form" value="{{old('pagina_web_contacto')}}" name="pagina_web_contacto" id="pagina_web_contacto" >
+            @error('pagina_web_contacto')
+            <small>*{{$message}}</small>
+            @enderror
+        </div>
+        <div class="col-md-6">
+            <label>Correo <b>*</b></label>
+            <input type="email" placeholder="someone@example.com" value="{{old('correo_contacto')}}" class="txt-form" required name="correo_contacto" id="correo_contacto">
+            @error('correo_contacto')
+            <small>*{{$message}}</small>
+            @enderror
+        </div>
+        <div class="col-md-6">
+            <label>Teléfono Móvil Contacto <b>*</b></label>
+            <input type="text"  required value="{{old('telefono_contacto')}}"  class="txt-form" name="telefono_contacto" id="tContacto"  >
+            @error('telefono_contacto')
+            <small>*{{$message}}</small>
+            @enderror
+        </div> 
+ 
+        <!-- que si -->
+      
+       
+
                 
                 <div class="col-md-12">
                     <hr>
@@ -176,7 +179,7 @@
                 <hr>
                 <div class="col-md-6">
                     <label>Teléfono fijo<b>*</b></label>
-                    <input type="text" maxlength="50" value="{{old('telefono_fijo')}}"  class="txt-form" required name="telefono_fijo" id="tFijo">
+                    <input type="text" maxlength="50" value="{{old('telefono_fijo')}}"  class="txt-form" required name="telefono_fijo" id="tFijo" >
                     @error('telefono_fijo')
                         <small>*{{$message}}</small>
                     @enderror
@@ -197,7 +200,7 @@
                 </div>
                 <div class="col-md-6">
                     <label>Teléfono Móvil</label>
-                    <input type="text" maxlength="50"  class="txt-form" name="telefono_celular" id="tMovil" value="{{old('telefono_celular')}}">
+                    <input type="text" maxlength="50"  class="txt-form" name="telefono_celular" id="tMovil" value="{{old('telefono_celular')}}" >
                     @error('telefono_celular')
                         <small>*{{$message}}</small>
                     @enderror

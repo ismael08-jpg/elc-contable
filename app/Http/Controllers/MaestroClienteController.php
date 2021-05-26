@@ -114,9 +114,9 @@ class MaestroClienteController extends Controller
         Auth::user()->autorizarRol([1]);
 
         if($request->pais == 55){
-            $d = 12;
+            $d = 16;
         } else{
-            $d = 11;
+            $d = 15;
         }
 
         $validacion = $request->validate([
@@ -139,7 +139,8 @@ class MaestroClienteController extends Controller
 
             //'pagina_web' =>'required',
             'correo' =>'email|required',
-            'telefono_celular' =>'size:'.$d,
+            
+            //'telefono_celular' =>'size:'.$d,
            'paraiso_fiscal' =>'required',
             'nombre_contacto' =>'required',
             'telefono_contacto' =>'required|size:'.$d,
@@ -165,7 +166,7 @@ class MaestroClienteController extends Controller
             //'condiciones_operacion' =>'required',
         ]);
 
-        $mas = '+';
+       
         
         
 
@@ -199,15 +200,14 @@ class MaestroClienteController extends Controller
 
         $maestro->municipio = $request->municipio;
         
-        $maestro->telefono_fijo = $mas.$request->telefono_fijo; //telefono
+        $maestro->telefono_fijo = $request->telefono_fijo; //telefono
         $maestro->pagina_web = $request->pagina_web;
         $maestro->correo = $request->correo;
         if($request->hasFile('telefono_celular'))
-        $maestro->telefono_celular = $mas.$request->telefono_celular; //Telefono
         $maestro->paraiso_fiscal = $request->paraiso_fiscal;
         $maestro->nombre_contacto = $request->nombre_contacto;
         $maestro->cargo_contacto = $request->cargo_contacto;
-        $maestro->telefono_contacto = $mas.$request->telefono_contacto; //telefono
+        $maestro->telefono_contacto = $request->telefono_contacto; //telefono
         $maestro->pagina_web_contacto = $request->pagina_web_contacto;
         $maestro->correo_contacto = $request->correo_contacto;
         $maestro->moneda_principal = $request->moneda_principal;
