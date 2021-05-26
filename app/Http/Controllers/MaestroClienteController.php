@@ -313,7 +313,7 @@ class MaestroClienteController extends Controller
             
             $maestro = Maestrocliente::find($request->fid_maestro_cliente);
 
-            if($request->hasFile('fid_maestro_cliente'))
+            if($request->hasFile('condiciones_credito'))
             $maestro->condiciones_credito = $request->fcondiciones_credito;
 
             $maestro->id_cliente = $request->fid_cliente;
@@ -333,6 +333,7 @@ class MaestroClienteController extends Controller
             if($request->hasFile('fpagina_web'))
             $maestro->pagina_web = $request->fpagina_web;
             $maestro->correo = $request->fcorreo;
+            if($request->hasFile('ftelefono_celular'))
             $maestro->telefono_celular = $request->ftelefono_celular;
             $maestro->paraiso_fiscal = $request->fparaiso_fiscal;
             $maestro->nombre_contacto = $request->fnombre_contacto;

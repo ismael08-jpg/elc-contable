@@ -23,15 +23,15 @@
 <div>
     <x-table>
         <div class="row justify-content-center pt-5">
-            <h3>Gestión de Maestros de Clientes</h3>
+            
         </div>
         <div class="m-5 my-2">
             <div class="pb-2">
             </div>
             <section style="margin: auto">
-                <div class="container-fluid">
-                    
+                <div class="container-fluid"> 
                     <input type="button" class="btn btn-info" value="Nuevo Maestro" id="btnNuenvoMaestro">
+                    
                     <div id="nuevoMaestro">
                         @include('maestros.formulario.nuevoMaestroCliente')
                         <button id="btnConfirm" class="btn">Enviar</button>

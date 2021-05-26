@@ -1,120 +1,120 @@
     
-    let validador = 0;
-    let indice_marcado = 1;
-    function des(formulario,idradio){
-        formulario.paraiso_fiscal[indice_marcado].checked = true;
-        formulario.paraiso_fiscal[idradio].blur();
-    }
+    // let validador = 0;
+    // let indice_marcado = 1;
+    // function des(formulario,idradio){
+    //     formulario.paraiso_fiscal[indice_marcado].checked = true;
+    //     formulario.paraiso_fiscal[idradio].blur();
+    // }
 
 
-     //Botón de Sow y hide nuevo proveedor
-     let banderaHide = 0;
-     $("#nuevoMaestro").hide('slow'); 
+    //  //Botón de Sow y hide nuevo proveedor
+    //  let banderaHide = 0;
+    //  $("#nuevoMaestro").hide('slow'); 
       
-     $('#btnNuenvoMaestro').on('click', function(){
-         if(banderaHide==0){
-             $("#nuevoMaestro").show('slow'); 
-             banderaHide = 1;
-         }else{
-             $("#nuevoMaestro").hide('slow'); 
-             banderaHide = 0;
-         }
-     });
+    //  $('#btnNuenvoMaestro').on('click', function(){
+    //      if(banderaHide==0){
+    //          $("#nuevoMaestro").show('slow'); 
+    //          banderaHide = 1;
+    //      }else{
+    //          $("#nuevoMaestro").hide('slow'); 
+    //          banderaHide = 0;
+    //      }
+    //  });
 
 
-    $('#fpais').on('change', function(){
-        let pais = $('#fpais').val();
-        let codigo;
-        if($.trim(pais) != ''){
+    // $('#fpais').on('change', function(){
+    //     let pais = $('#fpais').val();
+    //     let codigo;
+    //     if($.trim(pais) != ''){
 
                 
                 
-            $.get('codigoPais', {pais: pais}, function(codigos){
+    //         $.get('codigoPais', {pais: pais}, function(codigos){
 
-                $('#fcodigo_pais').val();
+    //             $('#fcodigo_pais').val();
                 
-                console.log(codigos);
-                $.each(codigos, function(index, value){
-                    codigo = value;
-                });
+    //             console.log(codigos);
+    //             $.each(codigos, function(index, value){
+    //                 codigo = value;
+    //             });
 
-                if(codigo != null){
-                    $('#fcodigo_pais').val(codigo);
-                    document.getElementById("fcodigo_pais").setAttribute("readonly", true);
-                    toastr["info"]("El país seleccionado tiene código: "+codigo);
-                }else{
-                    toastr["warning"]("No ha establecido un código para el país seleccionado");
-                    $('#fcodigo_pais').val('');
-                }
+    //             if(codigo != null){
+    //                 $('#fcodigo_pais').val(codigo);
+    //                 document.getElementById("fcodigo_pais").setAttribute("readonly", true);
+    //                 toastr["info"]("El país seleccionado tiene código: "+codigo);
+    //             }else{
+    //                 toastr["warning"]("No ha establecido un código para el país seleccionado");
+    //                 $('#fcodigo_pais').val('');
+    //             }
 
-            });
-        }
+    //         });
+    //     }
 
-    });
+    // });
 
    
 
 
-    //
-    $('#txtPais').on('change', function(){
-        let paisId = $('#txtPais').val();
-        let codigo;
-        if($.trim(paisId) != ''){
+    // //
+    // $('#txtPais').on('change', function(){
+    //     let paisId = $('#txtPais').val();
+    //     let codigo;
+    //     if($.trim(paisId) != ''){
 
-            // Código de telefono
-            if(paisId != "Estados Unidos")
-            {
-                document.getElementById("tFijo").setAttribute("pattern", "[0-9]{11}");
-                document.getElementById("tFijo").setAttribute("placeholder", "50300000000");//
+    //         // Código de telefono
+    //         if(paisId != "Estados Unidos")
+    //         {
+    //             document.getElementById("tFijo").setAttribute("pattern", "[0-9]{11}");
+    //             document.getElementById("tFijo").setAttribute("placeholder", "50300000000");//
 
-                document.getElementById("tMovil").setAttribute("pattern", "[0-9]{11}");
-                document.getElementById("tMovil").setAttribute("placeholder", "50300000000");
+    //             document.getElementById("tMovil").setAttribute("pattern", "[0-9]{11}");
+    //             document.getElementById("tMovil").setAttribute("placeholder", "50300000000");
 
-                document.getElementById("tContacto").setAttribute("pattern", "[0-9]{11}");
-                document.getElementById("tContacto").setAttribute("placeholder", "50300000000");
-            } else{
-                document.getElementById("tFijo").setAttribute("pattern", "[0-9]{12}");
-                document.getElementById("tFijo").setAttribute("placeholder", "150300000000");
+    //             document.getElementById("tContacto").setAttribute("pattern", "[0-9]{11}");
+    //             document.getElementById("tContacto").setAttribute("placeholder", "50300000000");
+    //         } else{
+    //             document.getElementById("tFijo").setAttribute("pattern", "[0-9]{12}");
+    //             document.getElementById("tFijo").setAttribute("placeholder", "150300000000");
 
-                document.getElementById("tMovil").setAttribute("pattern", "[0-9]{12}");
-                document.getElementById("tMovil").setAttribute("placeholder", "150300000000");
+    //             document.getElementById("tMovil").setAttribute("pattern", "[0-9]{12}");
+    //             document.getElementById("tMovil").setAttribute("placeholder", "150300000000");
 
-                document.getElementById("tContacto").setAttribute("pattern", "[0-9]{12}");
-                document.getElementById("tContacto").setAttribute("placeholder", "150300000000");
-            }
+    //             document.getElementById("tContacto").setAttribute("pattern", "[0-9]{12}");
+    //             document.getElementById("tContacto").setAttribute("placeholder", "150300000000");
+    //         }
 
-            if(paisId != "Estados Unidos")
-            {
-                document.getElementById("tFijo").setAttribute("pattern", "[0-9]{11}");
-                document.getElementById("tFijo").setAttribute("placeholder", "00088888888");
-            } else{
-                document.getElementById("tFijo").setAttribute("pattern", "[0-9]{12}");
-                document.getElementById("tFijo").setAttribute("placeholder", "000088887777");
-            }
+    //         if(paisId != "Estados Unidos")
+    //         {
+    //             document.getElementById("tFijo").setAttribute("pattern", "[0-9]{11}");
+    //             document.getElementById("tFijo").setAttribute("placeholder", "00088888888");
+    //         } else{
+    //             document.getElementById("tFijo").setAttribute("pattern", "[0-9]{12}");
+    //             document.getElementById("tFijo").setAttribute("placeholder", "000088887777");
+    //         }
                 
                 
-            $.get('codigo', {paisId: paisId}, function(codigos){
+    //         $.get('codigo', {paisId: paisId}, function(codigos){
 
-                $('#codigoPais').val();
+    //             $('#codigoPais').val();
                 
-                console.log(codigos);
-                $.each(codigos, function(index, value){
-                    codigo = value;
-                });
+    //             console.log(codigos);
+    //             $.each(codigos, function(index, value){
+    //                 codigo = value;
+    //             });
 
-                if(codigo != null){
-                    $('#codigoPais').val(codigo);
-                    document.getElementById("codigoPais").setAttribute("readonly", true);
-                    toastr["info"]("El país seleccionado tiene código: "+codigo);
-                }else{
-                    toastr["warning"]("No ha establecido un código para el país seleccionado");
-                    $('#codigoPais').val('');
-                }
+    //             if(codigo != null){
+    //                 $('#codigoPais').val(codigo);
+    //                 document.getElementById("codigoPais").setAttribute("readonly", true);
+    //                 toastr["info"]("El país seleccionado tiene código: "+codigo);
+    //             }else{
+    //                 toastr["warning"]("No ha establecido un código para el país seleccionado");
+    //                 $('#codigoPais').val('');
+    //             }
 
-            });
-        }
+    //         });
+    //     }
 
-    }); 
+    // }); 
 
 
 
@@ -272,183 +272,360 @@ $('#maestroProveedorTable').DataTable({
 });
 
 
-$(document).ready(function() {
+// $(document).ready(function() {
 
-    $(function() {  
-        $("textarea[maxlength]").bind('input propertychange', function() {  
-            var maxLength = $(this).attr('maxlength');  
-            if ($(this).val().length > maxLength) {  
-                $(this).val($(this).val().substring(0, maxLength));  
-            }  
-        })  
-    });
+//     $(function() {  
+//         $("textarea[maxlength]").bind('input propertychange', function() {  
+//             var maxLength = $(this).attr('maxlength');  
+//             if ($(this).val().length > maxLength) {  
+//                 $(this).val($(this).val().substring(0, maxLength));  
+//             }  
+//         })  
+//     });
 
-    $('#hiddenSelectMunicipio').hide();
-    $('#hiddenNitValidado').hide();
-    $('#hiddenNRegistroValidado').hide();
+//     $('#hiddenSelectMunicipio').hide();
+//     $('#hiddenNitValidado').hide();
+//     $('#hiddenNRegistroValidado').hide();
 
     
 
-    $('#fpais').on('change', function(){
+//     $('#fpais').on('change', function(){
 
-        let p = $('#fpais').val();
+//         let p = $('#fpais').val();
 
-        if( p == "El Salvador"){
-            document.getElementById("fnit_niff").setAttribute("pattern", "[0-9]{4}-[0-9]{6}-[0-9]{3}-[0-9]{1}");
-            document.getElementById("fnit_niff").setAttribute("placeholder", "0000-256359-656-6");
+//         if( p == "El Salvador"){
+//             document.getElementById("fnit_niff").setAttribute("pattern", "[0-9]{4}-[0-9]{6}-[0-9]{3}-[0-9]{1}");
+//             document.getElementById("fnit_niff").setAttribute("placeholder", "0000-256359-656-6");
            
-        } else{
+//         } else{
             
-            document.getElementById("fnit_niff").removeAttribute("pattern");
-            document.getElementById("fnit_niff").removeAttribute("placeholder");
+//             document.getElementById("fnit_niff").removeAttribute("pattern");
+//             document.getElementById("fnit_niff").removeAttribute("placeholder");
            
-        }
+//         }
 
-    });
+//     });
 
-    $('#txtPais').on('change', function(){
-        let paisId = $('#txtPais').val();
+//     $('#txtPais').on('change', function(){
+//         let paisId = $('#txtPais').val();
 
-        if(paisId == 51){
-            //Municipio
-            $('#hiddenMunicipio').hide('slow');
-            $('#txtMunicipio').prop('disabled', true);
-            $('#hiddenSelectMunicipio').show('slow');
-            $('#selectMunicipio').prop('disabled', false);
+//         if(paisId == 51){
+//             //Municipio
+//             $('#hiddenMunicipio').hide('slow');
+//             $('#txtMunicipio').prop('disabled', true);
+//             $('#hiddenSelectMunicipio').show('slow');
+//             $('#selectMunicipio').prop('disabled', false);
 
-            //nit y nif
-            $('#hiddenNit_niff').hide('slow');
-            $('#txtNit_niff').prop('disabled', true);
-            $('#hiddenNitValidado').show('slow');
-            $('#txtNitValidado').prop('disabled', false);
+//             //nit y nif
+//             $('#hiddenNit_niff').hide('slow');
+//             $('#txtNit_niff').prop('disabled', true);
+//             $('#hiddenNitValidado').show('slow');
+//             $('#txtNitValidado').prop('disabled', false);
 
-            //Número de registro fiscal
-            $('#hiddenNRegistro').hide('slow');
-            $('#txtNRegistro').prop('disabled', true);
-            $('#hiddenNRegistroValidado').show('slow');
-            $('#nRegistroValidado').prop('disabled', false);
-
-
-        } else{
-
-            $('#hiddenMunicipio').show('slow');
-            $('#txtMunicipio').prop('disabled', false);
-            $('#hiddenSelectMunicipio').hide('slow');
-            $('#selectMunicipio').prop('disabled', true);
-
-            //nit y nif
-            $('#hiddenNit_niff').show('slow');
-            $('#txtNit_niff').prop('disabled', false);
-            $('#hiddenNitValidado').hide('slow');
-            $('#txtNitValidado').prop('disabled', true);
-
-            //Número de registro fiscal
-            $('#hiddenNRegistro').show('slow');
-            $('#txtNRegistro').prop('disabled', false);
-            $('#hiddenNRegistroValidado').hide('slow');
-            $('#nRegistroValidado').prop('disabled', true);
-        }
+//             //Número de registro fiscal
+//             $('#hiddenNRegistro').hide('slow');
+//             $('#txtNRegistro').prop('disabled', true);
+//             $('#hiddenNRegistroValidado').show('slow');
+//             $('#nRegistroValidado').prop('disabled', false);
 
 
-    });
+//         } else{
+
+//             $('#hiddenMunicipio').show('slow');
+//             $('#txtMunicipio').prop('disabled', false);
+//             $('#hiddenSelectMunicipio').hide('slow');
+//             $('#selectMunicipio').prop('disabled', true);
+
+//             //nit y nif
+//             $('#hiddenNit_niff').show('slow');
+//             $('#txtNit_niff').prop('disabled', false);
+//             $('#hiddenNitValidado').hide('slow');
+//             $('#txtNitValidado').prop('disabled', true);
+
+//             //Número de registro fiscal
+//             $('#hiddenNRegistro').show('slow');
+//             $('#txtNRegistro').prop('disabled', false);
+//             $('#hiddenNRegistroValidado').hide('slow');
+//             $('#nRegistroValidado').prop('disabled', true);
+//         }
+
+
+//     });
 
     
 
-    $('#txtEstado').on('change', function(){
-        let estadoId = $('#txtEstado').val();
+//     $('#txtEstado').on('change', function(){
+//         let estadoId = $('#txtEstado').val();
 
-        if($.trim(estadoId) != ''){
+//         if($.trim(estadoId) != ''){
 
-            //Dejamos caer los municipios
-            $.get('municipios', {estadoId: estadoId}, function(municipios){
+//             //Dejamos caer los municipios
+//             $.get('municipios', {estadoId: estadoId}, function(municipios){
 
-                $('#selectMunicipio').empty();
-                $('#selectMunicipio').append("<option value=''>Seleccione una Municipio</option>");
-                console.log(municipios);
-                $.each(municipios, function(index, value){
-                    $('#selectMunicipio').append("<option value='"+value+"'>"+value+"</option>");
-                });
+//                 $('#selectMunicipio').empty();
+//                 $('#selectMunicipio').append("<option value=''>Seleccione una Municipio</option>");
+//                 console.log(municipios);
+//                 $.each(municipios, function(index, value){
+//                     $('#selectMunicipio').append("<option value='"+value+"'>"+value+"</option>");
+//                 });
 
-            });
+//             });
 
 
-            // Establecemos si el estado es paraiso fiscal o no lo es.
-            if(validador == 0){
-                let paraisoEstado;
-                $.get('pariso-estado', {estadoId: estadoId}, function(paraiso){
+//             // Establecemos si el estado es paraiso fiscal o no lo es.
+//             if(validador == 0){
+//                 let paraisoEstado;
+//                 $.get('pariso-estado', {estadoId: estadoId}, function(paraiso){
 
-                    $.each(paraiso, function(index, value){
-                        paraisoEstado = value;    
+//                     $.each(paraiso, function(index, value){
+//                         paraisoEstado = value;    
                         
-                    });
-                    document.querySelector("#paraiso_fiscal > [value='"+paraisoEstado+"']").checked = true;	
-                    if(paraisoEstado=="Si"){
-                        toastr["info"]("El estado seleccionado es paraiso fiscal");
-                        indice_marcado = 0;
-                        validador = 1;
-                    } else{
-                        toastr["info"]("El estado seleccionado NO es paraiso fiscal");
-                        indice_marcado = 1;
-                        validador = 0;
-                    }
-                });
-            }
-        }
+//                     });
+//                     document.querySelector("#paraiso_fiscal > [value='"+paraisoEstado+"']").checked = true;	
+//                     if(paraisoEstado=="Si"){
+//                         toastr["info"]("El estado seleccionado es paraiso fiscal");
+//                         indice_marcado = 0;
+//                         validador = 1;
+//                     } else{
+//                         toastr["info"]("El estado seleccionado NO es paraiso fiscal");
+//                         indice_marcado = 1;
+//                         validador = 0;
+//                     }
+//                 });
+//             }
+//         }
 
         
         
 
-    });  
+//     });  
 
 
-    // Cuando cambia el país establecemos si es paraiso fiscal
-    $('#txtPais').on('change', function(){
-        let paisId = $('#txtPais').val();
+//     // Cuando cambia el país establecemos si es paraiso fiscal
+//     $('#txtPais').on('change', function(){
+//         let paisId = $('#txtPais').val();
 
-        if($.trim(paisId) != ''){
+//         if($.trim(paisId) != ''){
 
-            //-- Dejamos caer los estados del país seleccionado
-            $.get('estados', {paisId: paisId}, function(estados){
+//             //-- Dejamos caer los estados del país seleccionado
+//             $.get('estados', {paisId: paisId}, function(estados){
 
-                $('#txtEstado').empty();
-                $('#txtEstado').append("<option value=''>Seleccione una estado</option>");
+//                 $('#txtEstado').empty();
+//                 $('#txtEstado').append("<option value=''>Seleccione una estado</option>");
                 
-                $.each(estados, function(index, value){
-                    $('#txtEstado').append("<option value='"+index+"'>"+value+"</option>");
-                });
+//                 $.each(estados, function(index, value){
+//                     $('#txtEstado').append("<option value='"+index+"'>"+value+"</option>");
+//                 });
 
-            });
+//             });
 
 
-            // Establecemos si es paraiso fiscal o no - ñaña
-            let paraiso_sn;
-            $.get('pariso-pais', {paisId: paisId}, function(paraiso){
+//             // Establecemos si es paraiso fiscal o no - ñaña
+//             let paraiso_sn;
+//             $.get('pariso-pais', {paisId: paisId}, function(paraiso){
 
-                $.each(paraiso, function(index, value){
-                    paraiso_sn = value;    
+//                 $.each(paraiso, function(index, value){
+//                     paraiso_sn = value;    
                     
-                });
+//                 });
 
                 
 
-                document.querySelector("#paraiso_fiscal > [value='"+paraiso_sn+"']").checked = true;	
+//                 document.querySelector("#paraiso_fiscal > [value='"+paraiso_sn+"']").checked = true;	
 
-                if(paraiso_sn=="Si"){
+//                 if(paraiso_sn=="Si"){
                         
-                    toastr["info"]("El país seleccionado es paraiso fiscal.");
-                    indice_marcado = 0;
-                    validador = 1;
-                } else{
-                    toastr["info"]("El país seleccionado NO es paraiso fiscal.");
-                    indice_marcado = 1;
-                    validador = 0;
-                }
-            });
-        }
+//                     toastr["info"]("El país seleccionado es paraiso fiscal.");
+//                     indice_marcado = 0;
+//                     validador = 1;
+//                 } else{
+//                     toastr["info"]("El país seleccionado NO es paraiso fiscal.");
+//                     indice_marcado = 1;
+//                     validador = 0;
+//                 }
+//             });
+//         }
 
 
-    });
+//     });
 
 
 
-});
+// });
+
+
+
+let fpais;
+   
+/*Disculpa por el desorden de código*/
+ var viejo = 255;
+ $('#hiddenSelectMunicipio').hide();
+ $('#hiddenNitValidado').hide();
+ $('#hiddenNRegistroValidado').hide();
+     
+
+
+ $(document).ready(function() {
+     
+     $(function() {  
+         $("textarea[maxlength]").bind('input propertychange', function() {  
+             var maxLength = $(this).attr('maxlength');  
+             if ($(this).val().length > maxLength) {  
+                 $(this).val($(this).val().substring(0, maxLength));  
+             }  
+         })  
+     }); 
+
+     
+     
+       
+
+ });
+
+
+
+ $('#btnConfirm').on('click', function(){
+     $('#confirme').empty();
+     $('#confirme').append('Número de proveedor: <b>'+$('#numero_proveedor_icg').val()+'</b><br>');
+     $('#confirme').append('Otro número de proveedor: <b>'+$('#numero_proveedor').val()+'</b><br>');
+     $('#confirme').append('Nombre comercial: <b>'+$('#nombre_comercial').val()+'</b><br>');
+
+     $('#confirme').append('Nombre del sujeto: <b>'+$('input[name="nombre_del_sujeto"]:checked').val()+'</b><br>');
+    
+     $('#confirme').append('Dirección: <b>'+$('#direccion').val()+'</b><br>');
+     $('#confirme').append('País: <b>'+$('#txtPais').val()+'</b><br>');
+     $('#confirme').append('Código del país sugún mh: <b>'+$('#codigoPais').val()+'</b><br>');
+     $('#confirme').append('Ciudad<b>'+$('#ciudad').val()+'</b><br>');
+     $('#confirme').append('Departamento <b>'+$('#txtEstado').val()+'</b><br>');
+
+     
+     if($('#txtPais').val()=="51"){
+         $('#confirme').append('Municipio: <b>'+$('#selectMunicipio').val()+'</b><br>');
+     }else{
+         $('#confirme').append('Municipio: <b>'+$('#txtMunicipio').val()+'</b><br>');
+     }
+     $('#confirme').append('Teléfono fijo: <b>'+$('#tFijo').val()+'</b><br>');
+     $('#confirme').append('Página web: <b>'+$('#pagina_web').val()+'</b><br>');
+     $('#confirme').append('Correo: <b>'+$('#correo').val()+'</b><br>');
+     $('#confirme').append('Teléfono móvil: <b>'+$('#tMovil').val()+'</b><br>');
+
+     var para = "No";
+     if(indice_marcado == 1){
+         para = "No";
+     }else{
+         para = "Si";
+     }
+     $('#confirme').append('Paraiso Fiscal: <b>'+para+'</b><br>');
+     $('#confirme').append('Nombre Contacto: <b>'+$('#nombre_contacto').val()+'</b><br>');
+     $('#confirme').append('Cargo Contacto: <b>'+$('#cargo_contacto').val()+'</b><br>');
+     $('#confirme').append('Página web contacto: <b>'+$('#pagina_web_contacto').val()+'</b><br>');
+     $('#confirme').append('Coreo contacto: <b>'+$('#correo_contacto').val()+'</b><br>');
+     $('#confirme').append('Moneda Principal: <b>'+$('#moneda_principal').val()+'</b><br>');
+     $('#confirme').append('Tipo de cambio: <b>'+$('#tipo_cambio').val()+'</b><br>');
+     $('#confirme').append('Giro fical del negocio: <b>'+$('#giro_fical_negocio').val()+'</b><br>');
+     $('#confirme').append('Tipo contribuyente: <b>'+$('input[name="tipo_contribuyente"]:checked').val()+'</b><br>');
+     if($('#txtPais').val()=="51"){
+         $('#confirme').append('Nit o Niff: <b>'+$('#txtNitValidado').val()+'</b><br>');
+         $('#confirme').append('Número de registro fiscal: <b>'+$('#nRegistroValidado').val()+'</b><br>');
+     }else{
+         $('#confirme').append('Nit o Niff: <b>'+$('#txtNit_niff').val()+'</b><br>');
+         $('#confirme').append('Número de registro fiscal: <b>'+$('#txtNRegistro').val()+'</b><br>');
+     }    
+     $('#confirme').append('Cobra IVA: <b>'+$('#cobraIva').val()+'</b><br>');
+     $('#confirme').append('Entera IVA: <b>'+$('#enteraIva').val()+'</b><br>');
+     $('#confirme').append('Porcentaje Retención: <b>'+$('#porc_retencion').val()+'</b><br>');
+     $('#confirme').append('Percepción: <b>'+$('input[name="percepcion"]:checked').val()+'</b><br>');
+     $('#confirme').append('Cuenta Pasivo #1: <b>'+$('#cta_pasivo_uno').val()+'</b><br>');
+     $('#confirme').append('Cuenta Pasivo #2: <b>'+$('#cta_pasivo_dos').val()+'</b><br>');
+     $('#confirme').append('Cuenta Activo #1: <b>'+$('#cta_activo_uno').val()+'</b><br>');
+     $('#confirme').append('Cuenta Activo #2: <b>'+$('#cta_activo_dos').val()+'</b><br>');
+     $('#confirme').append('Comisión: <b>'+$('#comision').val()+'%</b><br>');
+     $('#confirme').append('Emitirá NC: <b>'+$('#emitiraNc').val()+'</b><br>');
+     $('#confirme').append('Condiciones de la operación: <b>'+$('#condiciones_operacion').val()+'</b><br>');
+     $('#confirme').append('Condiciones del crédito: <b>'+$('#condiciones_credito').val()+'</b><br>');
+     
+     $('#confirme').append('Nombre del Cliente: <b>'+$('#nombre_cliente').val()+'</b><br>');
+     $('#modalConfirm').modal();
+ });
+ 
+ //Botón de Sow y hide nuevo cliente
+ let banderaHide = 0;
+ $("#nuevoMaestro").hide('slow'); 
+  
+ $('#btnNuenvoMaestro').on('click', function(){
+     if(banderaHide==0){
+         $("#nuevoMaestro").show('slow'); 
+         banderaHide = 1;
+     }else{
+         $("#nuevoMaestro").hide('slow'); 
+         banderaHide = 0;
+     }
+ });
+
+
+
+ //Valida los prarisos fiscales
+ //si el país es paraiso fiscal, no se toman en cuenta sus estados/deptos para evaluar si es paraiso.
+ let validador = 0;
+
+ //Codigo para deshabilitar los radiobotones
+ let indice_marcado = 1;
+ function des(formulario,idradio){
+     formulario.paraiso_fiscal[indice_marcado].checked = true;
+     formulario.paraiso_fiscal[idradio].blur();
+ }
+
+ $('#fpais').on('change', function(){
+     let pais = $('#fpais').val();
+     let codigo;
+     if($.trim(pais) != ''){
+
+             
+             
+         $.get('codigoPais', {pais: pais}, function(codigos){
+
+             $('#fcodigo_pais').val();
+             
+             console.log(codigos);
+             $.each(codigos, function(index, value){
+                 codigo = value;
+             });
+
+             if(codigo != null){
+                 $('#fcodigo_pais').val(codigo);
+                 document.getElementById("fcodigo_pais").setAttribute("readonly", true);
+                 toastr["info"]("El país seleccionado tiene código: "+codigo);
+             }else{
+                 toastr["warning"]("No ha establecido un código para el país seleccionado");
+                 $('#fcodigo_pais').val('');
+             }
+
+         });
+     }
+
+ });
+
+ 
+
+ 
+
+ //datatables
+ $('#maestroClienteTable').DataTable({
+          
+     responsive: true,
+     autowidth: false,
+
+     "language": {
+         "lengthMenu": "Mostrar _MENU_ registros por página",
+         "zeroRecords": "Nada encontrado - disculpa :(",
+         "info": "Mostrando la página _PAGE_ de _PAGES_",
+         "infoEmpty": "No hay registros disponibles",
+         "infoFiltered": "(filtrado de _MAX_ registros totales)",
+         "search": "Buscar:",
+         "paginate": {
+             "next": "Siguiente",
+             "previous": "Anterior",
+         }
+     }
+           
+ });

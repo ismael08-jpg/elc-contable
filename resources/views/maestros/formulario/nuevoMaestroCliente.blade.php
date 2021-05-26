@@ -406,9 +406,4 @@
             @enderror
         </div>
 </div>
-{{-- <div class="row justify-content-center">
-    <input type="submit" value="Crear" class=" mt-5 btn btn-radius btn-azul">
-</div> --}}
-
-
 </form>   
