@@ -9,6 +9,7 @@ use App\Http\Controllers\VentaController;
 use App\Http\Controllers\PaisController;
 use App\Http\Controllers\EstadoController;
 use App\Http\Controllers\CompraController;
+use App\Http\Controllers\CuentasPagarController;
 use App\Http\Controllers\DetalleCompraController;
 use App\Models\CotCatalogoCredito;
 use Illuminate\Support\Facades\Hash;
@@ -88,6 +89,8 @@ Route::put('pais/paraiso-fiscal', [PaisController::class, 'update'])->name('pais
 Route::get('estado/paraiso-fiscal', [EstadoController::class, 'index'])->name('estado.index');
 Route::put('estado/paraiso-fiscal', [EstadoController::class, 'update'])->name('estado.update');
 
+/*--   Cuentas X Cobrar  --*/
+Route::get('/cuentas-x-pagar', [CuentasPagarController::class, 'index'])->name('cuentas-pagar.index');
 
 
 Route::get('/admin/index', [AdministradorController::class, 'index'])->name('administrador.index');

@@ -161,7 +161,7 @@ class MaestroProveedorController extends Controller
         $maestro->comision = $request->comision;
         $maestro->emitira_nc = $request->emitira_nc;
 
-        if($request->has('ondiciones_operacion'))
+        if($request->has('condiciones_operacion'))
         $maestro->condiciones_operacion = $request->condiciones_operacion;
         $maestro->save();
 
@@ -246,7 +246,7 @@ class MaestroProveedorController extends Controller
 
 
            
-            if($request->has('condiciones_credito'))
+            if($request->has('fcondiciones_credito'))
             $maestro->condiciones_credito = $request->fcondiciones_credito;
             $maestro->id_proveedor = $request->fid_proveedor;
             $maestro->numero_proveedor_icg = $request->fnumero_proveedor_icg;

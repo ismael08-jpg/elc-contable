@@ -112,7 +112,7 @@ class MaestroClienteController extends Controller
 
     public function store(Request $request){
 
-        return $request->all();
+        
 
         Auth::user()->autorizarRol([1]);
 
@@ -241,7 +241,7 @@ class MaestroClienteController extends Controller
         $maestro->comision = $request->comision;
         $maestro->emitira_nc = $request->emitira_nc;
 
-        if($request->has('ondiciones_operacion'))
+        if($request->has('condiciones_operacion'))
         $maestro->condiciones_operacion = $request->condiciones_operacion;
         $maestro->save();
 
@@ -325,7 +325,7 @@ class MaestroClienteController extends Controller
             
             $maestro = Maestrocliente::find($request->fid_maestro_cliente);
 
-            if($request->has('condiciones_credito'))
+            if($request->has('fcondiciones_credito'))
             $maestro->condiciones_credito = $request->fcondiciones_credito;
 
             $maestro->id_cliente = $request->fid_cliente;
