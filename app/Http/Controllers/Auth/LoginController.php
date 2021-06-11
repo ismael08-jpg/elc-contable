@@ -39,10 +39,10 @@ class LoginController extends Controller
         $redireccion = '';
         switch(Auth::user()->tipo_usuario){
             case 1:
-                $redireccion = '/admin/index';
+                $redireccion = '/';
             break;
             case 2:
-                $redireccion = '/catalogo-creditos';
+                $redireccion = '/';
             break;
         }
         

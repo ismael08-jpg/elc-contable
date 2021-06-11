@@ -123,50 +123,45 @@ class MaestroClienteController extends Controller
         }
 
         $validacion = $request->validate([
-            //'condiciones_credito' => 'required',
-            'nombre_cliente' => 'required|max:50',
-            'numero_cliente_icg' => 'required|max:50',
-            //'numero_cliente' => 'required',
-            'nombre_comercial' => 'required|max:50',
-
-            'nombre_del_sujeto' => 'required|max:50',
-            //'direccion' => 'required',
-            'pais' =>'required|max:50',
-            'codigo_pais' =>'required|max:50',
-            'ciudad' =>'required|max:50',
-            'departamento' =>'required|max:50',
-            'municipio' =>'required|max:50',
-            
-
-            'telefono_fijo' =>'required|size:'.$d,
-
-            //'pagina_web' =>'required',
-            'correo' =>'email|required',
-            
-            //'telefono_celular' =>'size:'.$d,
-           'paraiso_fiscal' =>'required',
-            'nombre_contacto' =>'required',
-            'telefono_contacto' =>'required|size:'.$d,
-            'cargo_contacto' =>'required',
-            //'pagina_web_contacto' =>
-            'correo_contacto' =>'email|required',
-            'moneda_principal' =>'required',
-            'tipo_cambio' =>'required',
-            'giro_fical_negocio' =>'required',
-            'tipo_contribuyente' =>'required',
-            'nit_niff' =>'required',
-            'n_registro_fiscal' =>'required',
-            'cobra_iva' =>'required',
-            'entera_iva' =>'required',
+            'condiciones_credito' => 'max:200',
+            'nombre_cliente' => 'required|max:100',
+            'numero_cliente_icg' => 'max:50',
+            'numero_cliente' => 'max:50',
+            'nombre_comercial' => 'required|max:100',
+            'nombre_del_sujeto' => 'max:50',
+            'direccion' => 'max:50',
+            'pais' =>'max:50',
+            'codigo_pais' =>'max:50',
+            'ciudad' =>'max:50',
+            'departamento' =>'max:50',
+            'municipio' =>'max:50',
+            'telefono_fijo' =>'max:'.$d,
+            'pagina_web' =>'max:200',
+            'correo' =>'nullable|email|max:50',
+            'telefono_celular' =>'|max:'.$d,
+            'paraiso_fiscal' =>'max:50',
+            'nombre_contacto' =>'max:50',
+            'telefono_contacto' =>'|max:'.$d,
+            'cargo_contacto' =>'max:50',
+            'pagina_web_contacto' => 'max:50',
+            'correo_contacto' =>'nullable|email|max:50',
+            'moneda_principal' =>'max:50',
+            'tipo_cambio' =>'max:50',
+            'giro_fical_negocio' =>'max:50',
+            'tipo_contribuyente' =>'max:50',
+            'nit_niff' =>'max:50',
+            'n_registro_fiscal' =>'max:50',
+            'cobra_iva' =>'max:50',
+            'entera_iva' =>'max:50',
             'porc_retencion' => 'required|numeric|min:0.00',
-            'percepcion' =>'required',
-            'cta_pasivo_uno' =>'required',
-            //'cta_pasivo_dos' =>'required',
-            'cta_activo_uno' =>'required',
-             //'cta_activo_dos' =>
+            'percepcion' =>'max:50',
+            'cta_pasivo_uno' =>'max:50',
+            'cta_pasivo_dos' =>'max:50',
+            'cta_activo_uno' =>'max:50',
+             'cta_activo_dos' => 'max:50',
             'comision' => 'required|numeric|min:0.00',
-            'emitira_nc' =>'required|max:2',
-            //'condiciones_operacion' =>'required',
+            'emitira_nc' =>'max:2',
+            'condiciones_operacion' =>'max:200',
         ]);
 
        
@@ -174,83 +169,22 @@ class MaestroClienteController extends Controller
         
 
         $cliente = new Cliente();
-
         $cliente->nombre_cliente = $request->nombre_cliente;
         $cliente->save();
 
-        $maestro = new Maestrocliente();
-        if($request->has('condiciones_credito')){
-            $maestro->condiciones_credito = $request->condiciones_credito;
-        }
         
 
-        $maestro->id_cliente = $cliente->id_cliente;
-        $maestro->numero_cliente_icg = $request->numero_cliente_icg;
-        if($request->has('numero_cliente')){
-            $maestro->numero_cliente = $request->numero_cliente;
-        }
-        
-        $maestro->nombre_comercial = $request->nombre_comercial;
-        $maestro->nombre_del_sujeto = $request->nombre_del_sujeto;
 
-        if($request->has('direccion'))
-        {
-            $maestro->direccion = $request->direccion;
-        }
-        
+        MaestroCliente::create(array_merge($validacion, ['id_cliente' => $cliente->id_cliente]));
 
-        $pai = Pais::select('nombre_pais')->where('id', '=', $request->pais)->first();
-        $maestro->pais = $pai->nombre_pais;
-        
-        $maestro->codigo_pais = $request->codigo_pais;
-        $maestro->ciudad = $request->ciudad;
-
-        $dep = Estado::select('nombre_estado')->where('id', '=', $request->departamento)->first();
-        $maestro->departamento = $dep->nombre_estado;
-
-        $maestro->municipio = $request->municipio;
-        
-        $maestro->telefono_fijo = $request->telefono_fijo; //telefono
-        $maestro->pagina_web = $request->pagina_web;
-        $maestro->correo = $request->correo;
-        if($request->has('telefono_celular'))
-        $maestro->telefono_celular = $request->telefono_celular;
-        $maestro->paraiso_fiscal = $request->paraiso_fiscal;
-        $maestro->nombre_contacto = $request->nombre_contacto;
-        $maestro->cargo_contacto = $request->cargo_contacto;
-        $maestro->telefono_contacto = $request->telefono_contacto; //telefono
-        $maestro->pagina_web_contacto = $request->pagina_web_contacto;
-        $maestro->correo_contacto = $request->correo_contacto;
-        $maestro->moneda_principal = $request->moneda_principal;
-        $maestro->tipo_cambio = $request->tipo_cambio;
-        $maestro->giro_fical_negocio = $request->giro_fical_negocio;
-        $maestro->tipo_contribuyente = $request->tipo_contribuyente;
-        $maestro->nit_niff = $request->nit_niff;
-
-        $maestro->n_registro_fiscal = $request->n_registro_fiscal;
-        $maestro->cobra_iva = $request->cobra_iva;
-        $maestro->entera_iva = $request->entera_iva;
-        $maestro->porc_retencion = $request->porc_retencion;
-        $maestro->percepcion = $request->percepcion;
-        $maestro->cta_pasivo_uno = $request->cta_pasivo_uno;
-        if($request->has('cta_pasivo_dos'))
-        $maestro->cta_pasivo_dos = $request->cta_pasivo_dos;
-        $maestro->cta_activo_uno = $request->cta_activo_uno;
-        if($request->has('cta_activo_dos'))
-        $maestro->cta_activo_dos = $request->cta_activo_dos;
-        $maestro->comision = $request->comision;
-        $maestro->emitira_nc = $request->emitira_nc;
-
-        if($request->has('condiciones_operacion'))
-        $maestro->condiciones_operacion = $request->condiciones_operacion;
-        $maestro->save();
 
         $request->session()->put('alerta', 'create');
         $request->session()->put('contador', 1);
             
         //return $this->alert;
         return redirect()->route('maestroCliente.index');
-        }
+    }
+    
 
 
 
@@ -277,44 +211,44 @@ class MaestroClienteController extends Controller
                 'fcondiciones_credito' => 'max:200',//-----------
                 'fid_maestro_cliente' => 'required',
                 'fid_cliente' => 'required',
-                'fnombre_cliente' => 'required',
-                'fnumero_cliente_icg' => 'required',
+                'fnombre_cliente' => 'required|max:100',
+                'fnumero_cliente_icg' => 'max:50',
                 'numero_cliente' => 'max:50', //----
-                'fnombre_comercial' => 'required',
+                'fnombre_comercial' => 'required|max:100',
 
-                'fnombre_del_sujeto' => 'required',
+                'fnombre_del_sujeto' => 'max:50',
                 'fdireccion' => 'max:200', //---------------
-                'fpais' =>'required',
-                'fcodigo_pais' =>'required',
-                'fciudad' =>'required',
-                'fdepartamento' =>'required|max:50',
-                'fmunicipio' =>'required|max:50',
-                'ftelefono_fijo' =>'required|max:'.$d, 
+                'fpais' =>'max:50',
+                'fcodigo_pais' =>'max:50',
+                'fciudad' =>'max:50',
+                'fdepartamento' =>'max:50',
+                'fmunicipio' =>'max:50',
+                'ftelefono_fijo' =>'max:'.$d, 
                 'fpagina_web' =>'max:200', //----------------------
-                'fcorreo' =>'email|required',
+                'fcorreo' =>'nullable|email|max:50',
                 'ftelefono_celular' =>'max:'.$d,// ------------------------
-                'fparaiso_fiscal' =>'required',
-                'fnombre_contacto' =>'required',
-                'ftelefono_contacto' =>'required|max:'.$d,
-                'fcargo_contacto' =>'required',
+                'fparaiso_fiscal' =>'max:50',
+                'fnombre_contacto' =>'max:50',
+                'ftelefono_contacto' =>'max:'.$d,
+                'fcargo_contacto' =>'max:50',
                 'fpagina_web_contacto' => 'max:200', ///-----------------
-                'fcorreo_contacto' =>'email|required',
-                'fmoneda_principal' =>'required',
-                'ftipo_cambio' =>'required',
-                'fgiro_fical_negocio' =>'required',
-                'ftipo_contribuyente' =>'required',
-                'fnit_niff' =>'required',
-                'fn_registro_fiscal' =>'required',
-                'fcobra_iva' =>'required',
-                'fentera_iva' =>'required',
+                'fcorreo_contacto' =>'nullable|email|max:50',
+                'fmoneda_principal' =>'max:50',
+                'ftipo_cambio' =>'max:50',
+                'fgiro_fical_negocio' =>'max:50',
+                'ftipo_contribuyente' =>'max:50',
+                'fnit_niff' =>'max:50',
+                'fn_registro_fiscal' =>'max:50',
+                'fcobra_iva' =>'max:2',
+                'fentera_iva' =>'max:2',
                 'fporc_retencion' => 'required|numeric|min:0.00',
-                'fpercepcion' =>'required',
-                'fcta_pasivo_uno' =>'required',
+                'fpercepcion' =>'max:50',
+                'fcta_pasivo_uno' =>'max:50',
                 'fcta_pasivo_dos' =>'max:50',//-----------
-                'fcta_activo_uno' =>'required',
+                'fcta_activo_uno' =>'max:50',
                 'fcta_activo_dos' =>'max:50',//-----------
                 'fcomision' => 'required|numeric|min:0.00',
-                'femitira_nc' =>'required',
+                'femitira_nc' =>'max:50',
                 'fcondiciones_operacion' =>'max:200',//-----------
             ]);
 
@@ -327,55 +261,83 @@ class MaestroClienteController extends Controller
 
             if($request->has('fcondiciones_credito'))
             $maestro->condiciones_credito = $request->fcondiciones_credito;
-
             $maestro->id_cliente = $request->fid_cliente;
+            if($request->has('fnumero_cliente_icg'))
             $maestro->numero_cliente_icg = $request->fnumero_cliente_icg;
             if($request->has('fnumero_cliente'))
             $maestro->numero_cliente = $request->fnumero_cliente;
+            if($request->has('fnombre_comercial'))
             $maestro->nombre_comercial = $request->fnombre_comercial;
+            if($request->has('fnombre_del_sujeto'))
             $maestro->nombre_del_sujeto = $request->fnombre_del_sujeto;
             if($request->has('fdireccion'))
             $maestro->direccion = $request->fdireccion;
+            if($request->has('fpais'))
             $maestro->pais = $request->fpais;
+            if($request->has('fcodigo_pais'))
             $maestro->codigo_pais = $request->fcodigo_pais;
+            if($request->has('fciudad'))
             $maestro->ciudad = $request->fciudad;
+            if($request->has('fdepartamento'))
             $maestro->departamento = $request->fdepartamento;
+            if($request->has('fmunicipio'))
             $maestro->municipio = $request->fmunicipio;
+            if($request->has('ftelefono_fijo'))
             $maestro->telefono_fijo = $request->ftelefono_fijo;
             if($request->has('fpagina_web'))
             $maestro->pagina_web = $request->fpagina_web;
+            if($request->has('fcorreo'))
             $maestro->correo = $request->fcorreo;
             if($request->has('ftelefono_celular'))
             $maestro->telefono_celular = $request->ftelefono_celular;
+            if($request->has('fparaiso_fiscal'))
             $maestro->paraiso_fiscal = $request->fparaiso_fiscal;
+            if($request->has('fnombre_contacto'))
             $maestro->nombre_contacto = $request->fnombre_contacto;
+            if($request->has('fcargo_contacto'))
             $maestro->cargo_contacto = $request->fcargo_contacto;
+            if($request->has('ftelefono_contacto'))
             $maestro->telefono_contacto = $request->ftelefono_contacto;
             if($request->has('fpagina_web_contacto'))
             $maestro->pagina_web_contacto = $request->fpagina_web_contacto;
+            if($request->has('fcorreo_contacto'))
             $maestro->correo_contacto = $request->fcorreo_contacto;
+            if($request->has('fmoneda_principal'))
             $maestro->moneda_principal = $request->fmoneda_principal;
+            if($request->has('ftipo_cambio'))
             $maestro->tipo_cambio = $request->ftipo_cambio;
+            if($request->has('fgiro_fical_negocio'))
             $maestro->giro_fical_negocio = $request->fgiro_fical_negocio;
+            if($request->has('ftipo_contribuyente'))
             $maestro->tipo_contribuyente = $request->ftipo_contribuyente;
+            if($request->has('fnit_niff'))
             $maestro->nit_niff = $request->fnit_niff;
-
+            if($request->has('fn_registro_fiscal'))
             $maestro->n_registro_fiscal = $request->fn_registro_fiscal;
+            if($request->has('fcobra_iva'))
             $maestro->cobra_iva = $request->fcobra_iva;
+            if($request->has('fentera_iva'))
             $maestro->entera_iva = $request->fentera_iva;
+            if($request->has('fporc_retencion'))
             $maestro->porc_retencion = $request->fporc_retencion;
+            if($request->has('fpercepcion'))
             $maestro->percepcion = $request->fpercepcion;
+            if($request->has('fcta_pasivo_dos'))
             $maestro->cta_pasivo_uno = $request->fcta_pasivo_uno;
             if($request->has('fcta_activo_dos'))
             $maestro->cta_pasivo_dos = $request->fcta_pasivo_dos;
+            if($request->has('fcta_activo_uno'))
             $maestro->cta_activo_uno = $request->fcta_activo_uno;
             if($request->has('fcta_activo_dos'))
             $maestro->cta_activo_dos = $request->fcta_activo_dos;
+            if($request->has('fcomision'))
             $maestro->comision = $request->fcomision;
+            if($request->has('femitira_nc'))
             $maestro->emitira_nc = $request->femitira_nc;
 
             if($request->has('fcondiciones_operacion'))
             $maestro->condiciones_operacion = $request->fcondiciones_operacion;
+            
             $maestro->save();
 
             $request->session()->put('alerta', 'update');

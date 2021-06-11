@@ -236,8 +236,11 @@
             $('#fnumero_cliente').val(numero_cliente);
             $('#fnombre_comercial').val(nombre_comercial);
             //$('#fnombre_del_sujeto').val(nombre_del_sujeto);
+            if(nombre_del_sujeto != ''){
+                console.log("Sujeto : "+nombre_del_sujeto);
+                document.querySelector("#fnombre_del_sujeto > [value='"+nombre_del_sujeto+"']").checked = true;	
+            }
             
-            document.querySelector("#fnombre_del_sujeto > [value='"+nombre_del_sujeto+"']").checked = true;	
             //fparaiso_fiscal
             $('#fdireccion').val(direccion);
             $('#fpais').val(pais);
@@ -250,6 +253,7 @@
             $('#fcorreo').val(correo);
             $('#ftelefono_celular').val(telefono_celular);
             //$('#fparaiso_fiscal').val(paraiso_fiscal);
+            if(paraiso_fiscal != '')
             document.querySelector("#fparaiso_fiscal > [value='"+paraiso_fiscal+"']").checked = true;	
             $('#fnombre_contacto').val(nombre_contacto);
             $('#fcargo_contacto').val(cargo_contacto);
@@ -261,15 +265,19 @@
             $('#fgiro_fical_negocio').val(giro_fical_negocio);
 
             // $('#ftipo_contribuyente').val(tipo_contribuyente);
+            if(tipo_contribuyente != '')
             document.querySelector("#ftipo_contribuyente > [value='"+tipo_contribuyente+"']").checked = true;
             $('#fnit_niff').val(nit_niff);
             $('#fn_registro_fiscal').val(n_registro_fiscal);
             //$('#fcobra_iva').val(cobra_iva);
+            if(cobra_iva != '')
             document.querySelector("#fcobra_iva > [value='"+cobra_iva+"']").checked = true;
             //$('#fentera_iva').val(entera_iva);
+            if(cobra_iva != '')
             document.querySelector("#fentera_iva > [value='"+entera_iva+"']").checked = true;
             $('#fporc_retencion').val(porc_retencion);
             //$('#fpercepcion').val(percepcion);
+            if(percepcion!= '')
             document.querySelector("#fpercepcion > [value='"+percepcion+"']").checked = true;
             $('#fcta_pasivo_uno').val(cta_pasivo_uno);
             $('#fcta_pasivo_dos').val(cta_pasivo_dos);
@@ -277,6 +285,7 @@
             $('#fcta_activo_dos').val(cta_activo_dos);
             $('#fcomision').val(comision);
             //$('#femitira_nc').val(emitira_nc);
+            if(emitira_nc != '')
             document.querySelector("#femitira_nc > [value='"+emitira_nc+"']").checked = true;
             $('#fcondiciones_operacion').val(condiciones_operacion);
             

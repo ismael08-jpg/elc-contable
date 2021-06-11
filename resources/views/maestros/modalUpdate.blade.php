@@ -37,14 +37,14 @@
                       
                           <div class="col-md-6">
                               <label>Nombre del Cliente<b>*</b></label>
-                              <input type="text" class="txt-form" value="{{old('fnombre_cliente')}}"  id="fnombre_cliente" name="fnombre_cliente" required>
+                              <input type="text" class="txt-form" value="{{old('fnombre_cliente')}}"  id="fnombre_cliente" name="fnombre_cliente" required >
                               @error('fnombre_cliente')
                                 <small>*{{$message}}</small>
                               @enderror
                             </div>
                           <div class="col-md-6">
                               <label>N° Cliente ICG<b>*</b></label>
-                              <input type="text" class="txt-form" value="{{old('fnumero_cliente_icg')}}"  name="fnumero_cliente_icg" id="fnumero_cliente_icg" required>
+                              <input type="text" class="txt-form" value="{{old('fnumero_cliente_icg')}}"  name="fnumero_cliente_icg" id="fnumero_cliente_icg" >
                                 @error('fnumero_cliente_icg')
                                     <small>*{{$message}}</small>
                                 @enderror
@@ -68,7 +68,7 @@
 
                               <label>Nombre del Sujeto<b>*</b></label><br>
                               <div id="fnombre_del_sujeto">
-                                  <input type="radio" id="fnombre_del_sujeto_natural" required name="fnombre_del_sujeto" required
+                                  <input type="radio" id="fnombre_del_sujeto_natural"  name="fnombre_del_sujeto" 
                                       value="Natural" {{ old('fnombre_del_sujeto')=="Natural" ? 'checked='.'"'.'checked'.'"' : '' }} >
                                   <label for="male">Natural</label><br>
                                   <input type="radio" id="fnombre_del_sujeto_juridico"  {{ old('fnombre_del_sujeto')=="Juridico" ? 'checked='.'"'.'checked'.'"' : '' }} name="fnombre_del_sujeto" value="Juridico">
@@ -83,7 +83,7 @@
                           <div class="col-md-6">
                               <label>¿Es paraiso fiscal?</label><br>
                               <div id="fparaiso_fiscal">
-                                  <input type="radio" id="natural" name="fparaiso_fiscal" required value="Si" {{ old('fparaiso_fiscal')=="Si" ? 'checked='.'"'.'checked'.'"' : '' }} >
+                                  <input type="radio" id="natural" name="fparaiso_fiscal"  value="Si" {{ old('fparaiso_fiscal')=="Si" ? 'checked='.'"'.'checked'.'"' : '' }} >
                                   <label for="male">Si</label><br>
                                   <input type="radio" id="juridico" name="fparaiso_fiscal" value="No" {{ old('fparaiso_fiscal')=="No" ? 'checked='.'"'.'checked'.'"' : '' }} >
                                   <label for="female">No</label><br>
@@ -102,14 +102,14 @@
                           <hr>
                           <div class="col-md-6">
                               <label>Nombre<b>*</b></label>
-                              <input type="text" class="txt-form" value="{{old('fnombre_contacto')}}" required name="fnombre_contacto" id="fnombre_contacto">
+                              <input type="text" class="txt-form" value="{{old('fnombre_contacto')}}"  name="fnombre_contacto" id="fnombre_contacto">
                               @error('fnombre_contacto')
                               <small>*{{$message}}</small>
                                 @enderror
                             </div>
                           <div class="col-md-6">
                               <label>Cargo<b>*</b></label>
-                              <input type="text" class="txt-form" value="{{old('fcargo_contacto')}}" required name="fcargo_contacto" id="fcargo_contacto">
+                              <input type="text" class="txt-form" value="{{old('fcargo_contacto')}}"  name="fcargo_contacto" id="fcargo_contacto">
                               @error('fcargo_contacto')
                               <small>*{{$message}}</small>
                                 @enderror
@@ -123,7 +123,7 @@
                             </div>
                           <div class="col-md-6">
                               <label>Correo <b>*</b></label>
-                              <input type="email" placeholder="someone@example.com" value="{{old('fcorreo_contacto')}}"  class="txt-form" required name="fcorreo_contacto" id="fcorreo_contacto">
+                              <input type="email" placeholder="someone@example.com" value="{{old('fcorreo_contacto')}}"  class="txt-form"  name="fcorreo_contacto" id="fcorreo_contacto">
                               @error('fcorreo_contacto')
                               <small>*{{$message}}</small>
                                 @enderror
@@ -162,7 +162,7 @@
                           </div>
                           <div class="col-md-6">
                               <label>País<b>*</b></label> 
-                              <select required name="fpais" id="fpais" class="select-css">
+                              <select  name="fpais" id="fpais" class="select-css">
                                   @foreach ($pais as $pais)
                                       <option  {{ old('fpais') == $pais->nombre_pais ? 'selected' : '' }} value="{{$pais->nombre_pais}}">{{$pais->nombre_pais}}</option>
                                   @endforeach
@@ -173,21 +173,21 @@
                           </div>
                           <div class="col-md-6">
                               <label>Código país (según mh)<b>*</b></label>
-                              <input type="text" class="txt-form" required value="{{old('fcodigo_pais')}}" name="fcodigo_pais" id="fcodigo_pais">
+                              <input type="text" class="txt-form"  value="{{old('fcodigo_pais')}}" name="fcodigo_pais" id="fcodigo_pais">
                               @error('fcodigo_pais')
                               <small>*{{$message}}</small>
                                 @enderror
                             </div>
                           <div class="col-md-6">
                               <label>Ciudad<b>*</b></label>
-                              <input type="text" class="txt-form" value="{{old('fciudad')}}" required id="fciudad" name="fciudad">
+                              <input type="text" class="txt-form" value="{{old('fciudad')}}"  id="fciudad" name="fciudad">
                               @error('fciudad')
                               <small>*{{$message}}</small>
                                 @enderror
                             </div>
                           <div class="col-md-6">
                               <label>Departamento/estado<b>*</b></label>
-                              <select name="fdepartamento" id="fdepartamento" required class="select-css">
+                              <select name="fdepartamento" id="fdepartamento"  class="select-css">
                                   @foreach ($estado as $estado)
                                     <option value="{{$estado->nombre_estado}}"  {{ old('fdepartamento') == $estado->nombre_estado? 'selected' : '' }}>{{$estado->nombre_estado}}</option>
                                   @endforeach
@@ -214,7 +214,7 @@
                           <hr>
                           <div class="col-md-6">
                               <label>Teléfono fijo<b>*</b></label>
-                              <input type="text" class="txt-form" required name="ftelefono_fijo" value="{{old('ftelefono_fijo')}}" id="ftelefono_fijo">
+                              <input type="text" class="txt-form"  name="ftelefono_fijo" value="{{old('ftelefono_fijo')}}" id="ftelefono_fijo">
                               @error('ftelefono_fijo')
                               <small>*{{$message}}</small>
                                 @enderror
@@ -228,7 +228,7 @@
                             </div>
                           <div class="col-md-6">
                               <label>Correo<b>*</b></label>
-                              <input type="email" placeholder="someone@example.com"  value="{{old('fcorreo')}}" class="txt-form" id="fcorreo" required name="fcorreo" >
+                              <input type="email" placeholder="someone@example.com"  value="{{old('fcorreo')}}" class="txt-form" id="fcorreo"  name="fcorreo" >
                               @error('fcorreo')
                               <small>*{{$message}}</small>
                                 @enderror
@@ -259,7 +259,7 @@
                       <div class="col-md-6">
                           <label>Moneda principal<b>*</b></label>
                           
-                            <select name="fmoneda_principal" id="fmoneda_principal" class="select-css" required >
+                            <select name="fmoneda_principal" id="fmoneda_principal" class="select-css"  >
                                 @foreach ($moneda as $m)
                                     <option value="{{$m->nombre_moneda}} ({{$m->simbolo}})" {{ old('fmoneda_principal') == $m->nombre_moneda." (".$m->simbolo.")" ? 'selected' : '' }}>{{$m->nombre_moneda}} ({{$m->simbolo}})</option>
                                 @endforeach
@@ -270,7 +270,7 @@
                       </div>
                       <div class="col-md-6">
                           <label>Tipo de cambio</label>
-                          <select name="ftipo_cambio" id="ftipo_cambio" class="select-css" required >
+                          <select name="ftipo_cambio" id="ftipo_cambio" class="select-css"  >
                             @foreach ($moneda as $m)
                                 <option value="{{$m->nombre_moneda}} ({{$m->simbolo}})" {{ old('ftipo_cambio') == $m->nombre_moneda." (".$m->simbolo.")" ? 'selected' : '' }}>{{$m->nombre_moneda}} ({{$m->simbolo}})</option>
                             @endforeach
@@ -281,7 +281,7 @@
                       </div>
                       <div class="col-md-6">
                           <label>Giro Fiscal del negocio<b>*</b></label>
-                          <input type="text" class="txt-form" required name="fgiro_fical_negocio" value="{{old('fgiro_fical_negocio')}}" id="fgiro_fical_negocio">
+                          <input type="text" class="txt-form"  name="fgiro_fical_negocio" value="{{old('fgiro_fical_negocio')}}" id="fgiro_fical_negocio">
                           @error('fgiro_fical_negocio')
                           <small>*{{$message}}</small>
                             @enderror
@@ -289,7 +289,7 @@
                       <div class="col-md-6">
                           <label>Tipo contribuyente<b>*</b></label><br>
                           <div id="ftipo_contribuyente">
-                              <input type="radio"  name="ftipo_contribuyente" required value="Grande"  {{ old('ftipo_contribuyente')=="Grande" ? 'checked='.'"'.'checked'.'"' : '' }}  >
+                              <input type="radio"  name="ftipo_contribuyente"  value="Grande"  {{ old('ftipo_contribuyente')=="Grande" ? 'checked='.'"'.'checked'.'"' : '' }}  >
                               <label for="grande">Grande</label><br>
                               <input type="radio"  name="ftipo_contribuyente" value="Mediano"  {{ old('ftipo_contribuyente')=="Mediano" ? 'checked='.'"'.'checked'.'"' : '' }}  >
                               <label for="mediano">Mediano</label><br>
@@ -302,14 +302,14 @@
                       </div>
                       <div class="col-md-6">
                           <label>NIT/NIFF<b>*</b></label>
-                          <input type="text" class="txt-form" value="{{old('fnit_niff')}}"  required name="fnit_niff" id="fnit_niff">
+                          <input type="text" class="txt-form" value="{{old('fnit_niff')}}"   name="fnit_niff" id="fnit_niff">
                           @error('fnit_niff')
                           <small>*{{$message}}</small>
                             @enderror
                      </div>
                       <div class="col-md-6">
                           <label>N° Registro fiscal<b>*</b></label>
-                          <input type="text" class="txt-form" required value="{{old('fn_registro_fiscal')}}"  name="fn_registro_fiscal" id="fn_registro_fiscal">
+                          <input type="text" class="txt-form"  value="{{old('fn_registro_fiscal')}}"  name="fn_registro_fiscal" id="fn_registro_fiscal">
                           @error('fn_registro_fiscal')
                           <small>*{{$message}}</small>
                             @enderror
@@ -318,7 +318,7 @@
                       <div class="col-md-6">
                           <label>¿Se cobra IVA?<b>*</b></label><br>
                           <div id="fcobra_iva">
-                              <input type="radio" name="fcobra_iva" {{ old('fcobra_iva')=="Si" ? 'checked='.'"'.'checked'.'"' : '' }} required value="Si">
+                              <input type="radio" name="fcobra_iva" {{ old('fcobra_iva')=="Si" ? 'checked='.'"'.'checked'.'"' : '' }}  value="Si">
                               <label for="si">Si</label>
                               <input class="ml-4" type="radio"{{ old('fcobra_iva')=="No" ? 'checked='.'"'.'checked'.'"' : '' }} name="fcobra_iva" value="No">
                               <label for="no">No</label><br>
@@ -330,7 +330,7 @@
                       <div class="col-md-6">
                           <label>¿Se entera IVA?<b>*</b></label><br>
                           <div id="fentera_iva">
-                              <input type="radio"  name="fentera_iva" {{ old('fentera_iva')=="Si" ? 'checked='.'"'.'checked'.'"' : '' }} required value="Si">
+                              <input type="radio"  name="fentera_iva" {{ old('fentera_iva')=="Si" ? 'checked='.'"'.'checked'.'"' : '' }}  value="Si">
                               <label for="si">Si</label>
                               <input class="ml-4" type="radio"  {{ old('fentera_iva')=="No" ? 'checked='.'"'.'checked'.'"' : '' }} name="fentera_iva" value="No">
                               <label for="no">No</label><br>
@@ -342,7 +342,7 @@
                       <div class="col-md-6">
                           <label>Emitirá N/C<b>*</b></label><br>
                           <div id="femitira_nc">
-                              <input type="radio" id="emitiraNc" name="femitira_nc" {{ old('femitira_nc')=="Si" ? 'checked='.'"'.'checked'.'"' : '' }} required value="Si" >
+                              <input type="radio" id="emitiraNc" name="femitira_nc" {{ old('femitira_nc')=="Si" ? 'checked='.'"'.'checked'.'"' : '' }}  value="Si" >
                               <label for="si">Si</label>
                               <input class="ml-4" type="radio" id="emitiraNc2" {{ old('femitira_nc')=="No" ? 'checked='.'"'.'checked'.'"' : '' }} name="femitira_nc" value="No">
                               <label for="no">No</label><br>
@@ -353,7 +353,7 @@
                       </div>
                       <div class="mt-2 col-md-6">
                           <label>Retención (%)<b>*</b></label>
-                          <input type="number" required class="txt-form" value="{{old('fporc_retencion')}}"   min="0" name="fporc_retencion" id="fporc_retencion">
+                          <input type="number"  class="txt-form" value="{{old('fporc_retencion')}}" required   min="0" name="fporc_retencion" id="fporc_retencion">
                           @error('fporc_retencion')
                           <small>*{{$message}}</small>
                             @enderror
@@ -362,7 +362,7 @@
                           <label>Percepció<b>*</b></label>
 
                           <div id="fpercepcion">
-                              <input type="radio" id="percepcion1" name="fpercepcion" {{ old('fpercepcion')=="Si" ? 'checked='.'"'.'checked'.'"' : '' }} required value="Si">
+                              <input type="radio" id="percepcion1" name="fpercepcion" {{ old('fpercepcion')=="Si" ? 'checked='.'"'.'checked'.'"' : '' }}  value="Si">
                               <label for="si">Si</label>
                               <input class="ml-4" type="radio" id="percepcion2" {{ old('fpercepcion')=="No" ? 'checked='.'"'.'checked'.'"' : '' }} name="fpercepcion" value="No">
                               <label for="no">No</label><br>
@@ -373,7 +373,7 @@
                       </div>
                       <div class="mt-2 col-md-6">
                           <label>Cuenta Pasivo #1<b>*</b></label>
-                          <input type="text" class="txt-form" value="{{old('fcta_pasivo_uno')}}" required name="fcta_pasivo_uno" id="fcta_pasivo_uno">
+                          <input type="text" class="txt-form" value="{{old('fcta_pasivo_uno')}}"  name="fcta_pasivo_uno" id="fcta_pasivo_uno">
                           @error('fcta_pasivo_uno')
                           <small>*{{$message}}</small>
                             @enderror
@@ -387,7 +387,7 @@
                         </div>
                       <div class="mt-2 col-md-6">
                           <label>Cuenta Activo #1<b>*</b></label>
-                          <input type="text" class="txt-form"  value="{{old('fcta_activo_uno')}}" required name="fcta_activo_uno" id="fcta_activo_uno">
+                          <input type="text" class="txt-form"  value="{{old('fcta_activo_uno')}}"  name="fcta_activo_uno" id="fcta_activo_uno">
                           @error('fcta_activo_uno')
                           <small>*{{$message}}</small>
                             @enderror
@@ -401,7 +401,7 @@
                         </div>
                       <div class="mt-2 col-md-6">
                           <label>% Comisión<b>*</b></label>
-                          <input type="number" required class="txt-form" value="{{old('fcomision')}}" min="0" id="fcomision" name="fcomision">
+                          <input type="number"  class="txt-form" value="{{old('fcomision')}}" min="0" required id="fcomision" name="fcomision">
                           @error('fcomision')
                           <small>*{{$message}}</small>
                             @enderror
@@ -417,7 +417,7 @@
 
                       <div class="mt-2 col-md-6">
                         <label>Condiciones del crédito </label>
-                        <textarea name="fcondiciones_credito" value="{{old('fcondiciones_credito')}}" id="fcondiciones_credito"  maxlength="50"  class="txt-form" cols="30" rows="3"></textarea>
+                        <textarea name="fcondiciones_credito" id="fcondiciones_credito"  maxlength="50"  class="txt-form" cols="30" rows="3">{{old('fcondiciones_credito')}}</textarea>
                         @error('fcondiciones_credito')
                         <small>*{{$message}}</small>
                           @enderror  

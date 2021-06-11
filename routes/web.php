@@ -93,7 +93,7 @@ Route::put('estado/paraiso-fiscal', [EstadoController::class, 'update'])->name('
 Route::get('/cuentas-x-pagar', [CuentasPagarController::class, 'index'])->name('cuentas-pagar.index');
 
 
-Route::get('/admin/index', [AdministradorController::class, 'index'])->name('administrador.index');
+Route::get('/', [AdministradorController::class, 'index'])->name('administrador.index');
 
 
 

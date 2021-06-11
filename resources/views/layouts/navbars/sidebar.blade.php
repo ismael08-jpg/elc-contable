@@ -5,7 +5,7 @@
       Tip 2: you can also add an image using data-image tag
   -->
   <div class="logo">
-    <a href="https://analitics-as.com" class="simple-text logo-normal">
+    <a href="https://as-analitics.com" class="simple-text logo-normal">
       {{ __('Eurolatin') }}
     </a>
   </div>

@@ -119,13 +119,13 @@
         <!--	Plugin for Tags, full documentation here: https://github.com/bootstrap-tagsinput/bootstrap-tagsinputs  -->
         <script src="{{ asset('assets/js/plugins/bootstrap-tagsinput.js')}}"></script>
         <!-- Plugin for Fileupload, full documentation here: http://www.jasny.net/bootstrap/javascript/#fileinput -->
-        <script src="{{ asset('assets/js/plugins/jasny-bootstrap.min.js')}}"></script>
+        {{-- <script src="{{ asset('assets/js/plugins/jasny-bootstrap.min.js')}}"></script> --}}
         <!--  Full Calendar Plugin, full documentation here: https://github.com/fullcalendar/fullcalendar    -->
         {{-- <script src="{{ asset('assets/js/plugins/fullcalendar.min.js')}}"></script> --}}
         <!-- Vector Map plugin, full documentation here: http://jvectormap.com/documentation/ -->
-        <script src="{{ asset('assets/js/plugins/jquery-jvectormap.js')}}"></script>
+        {{-- <script src="{{ asset('assets/js/plugins/jquery-jvectormap.js')}}"></script> --}}
         <!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
-        <script src="{{ asset('assets/js/plugins/nouislider.min.js')}}"></script>
+        {{-- <script src="{{ asset('assets/js/plugins/nouislider.min.js')}}"></script> --}}
         <!-- Include a polyfill for ES6 Promises (optional) for IE11, UC Browser and Android browser support SweetAlert -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
         <!-- Library for adding dinamically elements -->
@@ -134,7 +134,7 @@
         <!-- Chartist JS -->
         <script src="{{ asset('assets/js/plugins/chartist.min.js')}}"></script>
         <!--  Notifications Plugin    -->
-        <script src="{{ asset('assets/js/plugins/bootstrap-notify.js')}}"></script>
+        {{-- <script src="{{ asset('assets/js/plugins/bootstrap-notify.js')}}"></script> --}}
         <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
         <script src="{{ asset('assets/js/material-dashboard.js?v=2.1.1')}}" type="text/javascript"></script>
         <!-- Material Dashboard DEMO methods, don't include it in your project! -->
