@@ -10,6 +10,7 @@ use App\Http\Controllers\PaisController;
 use App\Http\Controllers\EstadoController;
 use App\Http\Controllers\CompraController;
 use App\Http\Controllers\CuentasPagarController;
+use App\Http\Controllers\CuentasCobrarController;
 use App\Http\Controllers\DetalleCompraController;
 use App\Models\CotCatalogoCredito;
 use Illuminate\Support\Facades\Hash;
@@ -80,6 +81,16 @@ Route::get('/compra/detalle-compra/{id}', [DetalleCompraController::class, 'inde
 Route::post('/compra/detalle-compra/create', [DetalleCompraController::class, 'store'])->name('detalleCompra.create');
 Route::put('/compra/detalle-compra/update', [DetalleCompraController::class, 'update'])->name('detalleCompra.update');
 Route::delete('/compra/detalle-compra/destroy', [DetalleCompraController::class, 'destroy'])->name('detalleCompra.delete');
+
+//-- Cuentas Por Pagar --//
+Route::put('/compra/pagar/iva', [CuentasPagarController::class, 'iva'])->name('compra.pagar.iva');
+Route::put('/compra/pagar/retencion', [CuentasPagarController::class, 'retencion'])->name('compra.pagar.retencion');
+Route::put('/compra/cobrar/comision', [CuentasCobrarController::class, 'comision'])->name('compra.cobrar.comision');
+
+
+
+
+
 
 /*/-- PAIS --/*/
 Route::get('pais/paraiso-fiscal', [PaisController::class, 'index'])->name('pais.index');

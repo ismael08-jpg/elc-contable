@@ -7,6 +7,16 @@
         color: red;
         font-size: 15px;
     }
+
+    button{
+        background: none;
+        color: inherit;
+        border: none;
+        padding: 0;
+        font: inherit;
+        cursor: pointer;
+        outline: inherit;
+    }
 </style>
 
 
@@ -26,7 +36,9 @@
         @include('compra.compraTable')
         @include('compra.modals.update')
         @include('compra.modals.delete')
-
+        @include('compra.modals.iva')
+        @include('compra.modals.retencion')
+        @include('compra.modals.comision')
         
     </x-table>
 </div>

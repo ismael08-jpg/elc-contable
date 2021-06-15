@@ -28,24 +28,44 @@
              <td>{{$con->fecha_emision->format('d/m/Y')}}</td>
              <td>{{$con->fecha_vencimiento->format('d/m/Y')}}</td>
 
-             @if ($con->fecha_pagi_iva==null)
-                <th style="background-color: #f55c47; border-radius: 5px;">${{number_format($con->iva,2,'.',',')}}</th>
+             <!--IVA-->
+             @if ($con->fecha_pago_iva==null)
+                <th style="background-color: #f55c47; border-radius: 5px;"> <button onclick="pagarIva({{$con->id_compra}}, 'no')"> ${{number_format($con->iva,2,'.',',')}}</button></th>
              @else
-                <th style="background-color: #81b214; border-radius: 5px;">${{number_format($con->iva,2,'.',',')}}</th>
+                <th style="background-color: #81b214; border-radius: 5px;"><button onclick="pagarIva({{$con->id_compra}}, '{{$con->cuentas_pagar->fecha_pago_iva->format('Y-m-d')}}')"> ${{number_format($con->iva,2,'.',',')}}</button></th>
              @endif
 
+             <!--Retención-->
+
              @if ($con->fecha_pago_retencion==null)
-                <th style="background-color: #f55c47; border-radius: 5px;">${{number_format($con->retencion,2,'.',',')}}</th>
+                <th style="background-color: #f55c47; border-radius: 5px;">
+                  <button onclick="pagarRetencion({{$con->id_compra}}, 'no')" >
+                     ${{number_format($con->retencion,2,'.',',')}}
+                  </button>
+               </th>
              @else
-                <th style="background-color: #81b214; border-radius: 5px;">${{number_format($con->retencion,2,'.',',')}}</th>
+                <th style="background-color: #81b214; border-radius: 5px;"> 
+                  <button onclick="pagarRetencion({{$con->id_compra}}, '{{$con->cuentas_pagar->fecha_pago_retencion->format('Y-m-d')}}')">
+                     ${{number_format($con->retencion,2,'.',',')}}
+                  </button>
+               </th>
              @endif
              
-             @if ($con->fecha_pago_monto==null)
-                <th style="background-color: #f55c47; border-radius: 5px;">${{number_format($con->monto_cobrar,2,'.',',')}}</th>
+             <!--Comisión-->
+            
+             @if ($con->cuentas_cobrar->fecha_pago_monto==null)
+                <th style="background-color: #f55c47; border-radius: 5px;">
+                  <button onclick="cobrarComision({{$con->id_compra}}, 'no')" >
+                     ${{number_format($con->monto_cobrar,2,'.',',')}}
+                  </button>
+               </th>
              @else
-                <th style="background-color: #81b214; border-radius: 5px;">${{number_format($con->monto_cobrar,2,'.',',')}}</th>
+                <th style="background-color: #81b214; border-radius: 5px;"> 
+                  <button onclick="cobrarComision({{$con->id_compra}}, '{{$con->cuentas_cobrar->fecha_pago_monto->format('Y-m-d')}}')">
+                     ${{number_format($con->monto_cobrar,2,'.',',')}}
+                  </button>
+               </th>
              @endif
-          
 
              
 

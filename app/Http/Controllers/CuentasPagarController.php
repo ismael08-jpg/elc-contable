@@ -37,4 +37,54 @@ class CuentasPagarController extends Controller
 
         return  view('cuentasPagar.cuentasPagarGeneral', compact('compras', 'ventas'));
     }
+
+
+    //modificar la fecha de pago del IVA
+    public function iva(Request $request){
+        Auth::user()->autorizarRol([1]);
+        
+         //Validaciones de Laravel
+         $validacion = $request->validate([
+            'mId_compra' => 'required',
+            'mFecha_pago_iva' => 'required',
+        ]);
+
+        $compra = Compra::find($request->mId_compra);
+        $cuentaPagar = CuentasPagar::find($compra->id_cuenta_pagar);
+        $cuentaPagar->fecha_pago_iva = $request->mFecha_pago_iva;
+        $cuentaPagar->save();
+
+        $request->session()->put('alerta', 'update');
+        $request->session()->put('contador', 1);
+
+        return redirect()->route('compra.index', $compra->id_venta);
+        
+    }
+
+
+    //modificar la fecha de pago de la retención
+    public function retencion(Request $request){
+        Auth::user()->autorizarRol([1]);
+        
+         //Validaciones de Laravel
+         $validacion = $request->validate([
+            'rId_compra' => 'required',
+            'rFecha_pago_retencion' => 'required',
+        ]);
+
+        $compra = Compra::find($request->rId_compra);
+        $cuentaPagar = CuentasPagar::find($compra->id_cuenta_pagar);
+
+        $cuentaPagar->fecha_pago_retencion = $request->rFecha_pago_retencion;
+        $cuentaPagar->save();
+
+        $request->session()->put('alerta', 'update');
+        $request->session()->put('contador', 1);
+
+        return redirect()->route('compra.index', $compra->id_venta);
+        
+    }
+
+
+    
 }
