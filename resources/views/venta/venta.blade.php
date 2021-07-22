@@ -1,5 +1,5 @@
 @extends('layouts.main', ['activePage' => 'venta', 'titlePage' => __('Venta')])
-@section('title', 'Nueva Venta')
+@section('title', 'Nueva Venta ELC')
 @section('content')
 <style>
     b{
